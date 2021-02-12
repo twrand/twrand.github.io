@@ -66,7 +66,7 @@ var books = [
 	{ title:"Candide", author:"Voltaire", year:1759, done:true, genre:"early", rank:{tgb:52} },
 	{ title:"Robinson Crusoe", author:"Defoe", year:1719, done:false, genre:"early", rank:{tgb:103} },
 	{ title:"Gulliver’s Travels", author:"Swift", year:1726, done:true, genre:"early", rank:{tgb:36} },
-	{ title:"Tom Jones", author:"Fielding", year:1749, done:false, genre:"early", rank:{tgb:105} },
+	{ title:"Tom Jones", author:"Fielding", year:1749, done:true, genre:"early", rank:{tgb:105} },
 	{ title:"Tristram Shandy", author:"Sterne", year:1759, done:false, genre:"early", rank:{tgb:46} },
 	
 	// 19th Century Literature
@@ -81,13 +81,13 @@ var books = [
 	{ title:"Wuthering Heights", author:"E. Bronte", year:1847, done:true, genre:"19th", rank:{tgb:15} },
 	{ title:"Bleak House", author:"Dickens", year:1852, done:true, genre:"19th", rank:{tgb:116} },
 	{ title:"David Copperfield", author:"Dickens", year:1850, done:true, genre:"19th", rank:{tgb:45} },
-	{ title:"Great Expectations", author:"Dickens", year:1860, done:false, genre:"19th", rank:{tgb:27} },
+	{ title:"Great Expectations", author:"Dickens", year:1860, done:true, genre:"19th", rank:{tgb:27} },
 	{ title:"The Pickwick Papers", author:"Dickens", year:1836, done:true, genre:"19th", rank:{tgb:190} },
 	{ title:"A Tale of Two Cities", author:"Dickens", year:1859, done:true, genre:"personal", rank:{tgb:231} },
 	{ title:"The Brothers Karamazov", author:"Dostoyevsky", year:1880, done:true, genre:"19th", rank:{tgb:13} },
 	{ title:"Crime and Punishment", author:"Dostoyevsky", year:1866, done:true, genre:"19th", rank:{tgb:14} },
 	{ title:"The Idiot", author:"Dostoyevsky", year:1869, done:true, genre:"19th", rank:{tgb:54} },
-	{ title:"The Possessed", author:"Dostoyevsky", year:1871, done:false, genre:"19th", rank:{tgb:69} },
+	{ title:"The Possessed", author:"Dostoyevsky", year:1871, done:true, genre:"19th", rank:{tgb:69} },
 	{ title:"The Count of Monte Cristo", author:"Dumas", year:1844, done:true, genre:"19th", rank:{tgb:135} },
 	{ title:"The Three Musketeers", author:"Dumas", year:1844, done:true, genre:"personal", rank:{tgb:222} },
 	{ title:"Middlemarch", author:"Eliot", year:1871, done:true, genre:"19th", rank:{tgb:35} },
@@ -279,7 +279,7 @@ var books = [
 	// Commentary
 	{ title:"Notes of a Native Son", author:"Baldwin", year:1955, done:true, genre:"commentary" },
 	{ title:"The Fire Next Time", author:"Baldwin", year:1963, done:false, genre:"commentary" },
-	{ title:"Slouching Toward Bethlehem", author:"Didion", year:1968, done:false, genre:"commentary" },
+	{ title:"Slouching Toward Bethlehem", author:"Didion", year:1968, done:true, genre:"commentary" },
 	{ title:"Writings of Emerson", author:"Emerson", year:1885, done:true, genre:"commentary" },
 	{ title:"Being Mortal", author:"Gawande", year:2014, done:true, genre:"commentary" },
 	{ title:"Essays", author:"Montaigne", year:1580, done:true, genre:"commentary" },
@@ -344,7 +344,7 @@ var books = [
 	{ title:"In Cold Blood", author:"Capote", year:1965, done:true, genre:"historical" },
 	{ title:"Black Reconstruction in America", author:"DuBois", year:1935, done:false, genre:"historical" },
 	{ title:"Hiroshima", author:"Hersey", year:1946, done:false, genre:"historical" },
-	{ title:"The Death and Life of Great American Cities", author:"Jacobs", year:1961, done:false, genre:"historical" },
+	{ title:"The Death and Life of Great American Cities", author:"Jacobs", year:1961, done:true, genre:"historical" },
 	{ title:"Modern Times", author:"Johnson", year:1983, done:false, genre:"historical" },
 	{ title:"This Radical Land", author:"Miller", year:2018, done:true, genre:"historical" },
 	{ title:"Making of the Atomic Bomb", author:"Rhodes", year:1986, done:true, genre:"historical" },
@@ -452,7 +452,7 @@ var books = [
 	// Economics
 	{ title:"The Division of Labor", author:"Durkheim", year:1893, done:false, genre:"economics" },
 	{ title:"The Communist Manifesto", author:"Marx and Engels", year:1848, done:false, genre:"economics" },
-	{ title:"The Wealth of Nations", author:"Smith", year:1776, done:false, genre:"economics" },
+	{ title:"The Wealth of Nations", author:"Smith", year:1776, done:true, genre:"economics" },
 	{ title:"The Protestant Ethic and the Spirit of Capitalism", author:"Weber", year:1905, done:false, genre:"economics" },
 	// Language and Linguistics
 	{ title:"The Language Instinct", author:"Pinker", year:1994, done:true, genre:"language" },
