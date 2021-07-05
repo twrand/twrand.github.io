@@ -1,0 +1,21 @@
+﻿Title,Questions Name,Questions Type,Answers
+Polling1,,,
+,How useful was this meeting?,multiple,
+,,,Extremely useful
+,,,Somewhat useful
+,,,Not useful at all
+,How useful was this course?,single,
+,,,Extremely useful
+,,,Somewhat useful
+,,,Not useful at all
+,,,
+Polling2,,,
+,How useful was this meeting?,multiple,
+,,,Extremely useful
+,,,Somewhat useful
+,,,Not useful at all
+,How useful was this course?,single,
+,,,Extremely useful
+,,,Somewhat useful
+,,,Not useful at all
+,,,
