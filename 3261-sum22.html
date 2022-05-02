@@ -1,0 +1,380 @@
+<!--
+
+To do list:
+ - Font compatibility and testing
+ - LaTeX embedding
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="main.css" id="main"/>
+		<link rel="shortcut icon" href="img/twr.ico">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant|Cantarell">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text">
+		<title> COMS W3261: Summer 2022 </title>
+	</head>
+	<body>
+		<!-- MathJax -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- Below script mysteriously fixes subscript sizing issues w/ MathJax -->
+		<script>
+		MathJax = {
+		  startup: {
+			ready: function () {
+			  var math = MathJax._.core.MmlTree.MmlNodes.math.MmlMath;
+			  math.defaults.scriptminsize = '0px';
+			  MathJax.startup.defaultReady();
+			}
+		  }
+		};
+		</script>
+		
+		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
+			<div class=topblock>	
+				<div class=topcontent>
+					<div id="name">
+					<h1> <a href="3261-sum22.html"> COMS W3261: Summer 2022 </a> </h1>
+					</div>
+					<div id="menubar">
+						<!-- <a href="3261-sum22.html#syllabus">SYLLABUS</a> --> 	
+						<a href="3261-sum22.html#calendar">CALENDAR</a>
+						<a href="3261-sum22.html#homework">HOMEWORK</a>							
+						<a href="3261-sum22.html#lectures">LECTURES</a>
+						
+						<a href="index.html">HOME</a>
+						<a href="http://www.cs.columbia.edu/theory/">THEORY@CU</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class=centerblock>
+				<div class=maintext>
+					<div class=mainsection>
+						<a class="anchor" name="about"></a>
+						<div class=lalign >
+							<h2> Welcome to Computer Science Theory </h2>
+						</div>
+						<a class="anchor" name="info"></a>
+						<div>
+							<p>
+								Are you curious about the fundamental nature of computation? What makes some problems hard, and others easy? The formal concepts required to think abstractly about what computers can do, including topics in programming languages, cryptography, security, software engineering, economics and many more? Computer science theory may be for you. 
+							</p>
+							
+							<p>
+								Mathematics teaches us to ask questions like "What is the value of f(x)?", "Do any objects of type Y exist?", and "Is Z true?"
+								Theoretical computer science builds on this tradition, expanding the scope of inquiry to include questions like "How much time (and other limited resources) does it take to evaluate f(x)?", "Can I formally specify a procedure for finding a Y?", and "Can the truth of Z be computed?"
+							</p>
+							
+							<p>
+								The course is highly abstract: there will be no programming and problem sets will revolve around formal proofs. Students are expected to be comfortable with discrete mathematics and proofs.
+								<!--(For a refresher, see Chapter 0 of the textbook or the Lecture 0 recording, coming soon.) -->
+							</p>
+						
+							<p> Questions? Please email me at t.randolph@columbia.edu!
+						
+							<br /><br />
+							
+							
+							<div class=lalign >
+							<h2> 
+								SYLLABUS							
+							</h2>
+							</div>
+							<a class="anchor" name="syllabus"></a>
+							
+							<p> 
+							<b> Resources & Quick Links. </b> 
+								<p> 
+									The text for the course is <i><a href="https://www.goodreads.com/book/show/13839366-introduction-to-the-theory-of-computation">Introduction to the Theory of Computation</a></i>, 3rd Edition, by Michael Sipser. 
+									</p>
+									<p> 
+										The question-and-answer forum for this class is hosted on <a href="https://edstem.org/us/courses/22066">ed</a>. For homework, exams, and grades we'll use <a href="https://www.gradescope.com/courses/391891">Gradescope</a> (course code: 2KGDW8). We probably won't use <a href="https://courseworks2.columbia.edu/courses/153358">CourseWorks</a>. 
+									</p>
+									<p> 
+										Supplemental explanations and examples will be posted on the course <a href="https://www.youtube.com/channel/UCBxAh4nMO4xYTLqNijZkzXQ">YouTube channel</a>.
+									</p>
+							</p>
+							<ul>
+								<li class="collapsible">
+									<b> Who, What, Where, When </b> (click to expand/collapse)
+								</li>
+								<div class="content">
+									<p>
+										<b> People. </b> Instructor: <a href="http://twrand.github.io">Tim Randolph</a> (twr2111, t.randolph@columbia.edu). TAs: To be announced.
+									</p>
+								
+									<p> 
+										<b> Dates and times. </b> Tuesday and Thursday during Summer A term, 1:00PM - 4:10PM EST: 5/24, 5/26, 5/31, 6/2, 6/7, 6/9, 6/14, 6/16, 6/21, 6/23, and 6/28. The take-home final exam will be held within the range 6/29-7/1. See <a href="3261-sum22.html#calendar">calendar</a>.
+									</p>
+									
+									<p>
+										<b> Locations. </b> Lecture location is TBA. My office hours will be held in CSB 522. (To reach CSB 522, enter Mudd at the 4F campus level and go into the CS department. Go down the hallway, past the CS lounge, and climb the stairs at the end.)
+									</p>
+								 
+									<p>
+										<b> Enrollment details. </b> This is a 3-credit required course for the CS major. COMS W3203 Discrete Math (or instructor permission) is a prerequisite. My goal is to enroll every student who wants to participate in the course. Please email me if you have enrollment concerns.<br/>
+										Course number: COMS W3261. Call number: 10332. <a href="http://www.columbia.edu/cu/bulletin/uwb/#/cu/bulletin/uwb/subj/COMS/W3261-20222-001/">Catalog</a>; <a href="https://vergil.registrar.columbia.edu/#/courses/COMSW3261_001_2022_2">Vergil</a>.
+									</p>
+									
+									<p>
+										<b> Office and TA Hours. </b> To be announced; also see <a href="3261-sum22.html#calendar">calendar</a>. Please come to office hours at least once, even if it's just to introduce yourself!
+									</p>
+								</div>
+								<li class="collapsible">
+									<b> Assignments and Grading </b> (click to expand/collapse)
+								</li>
+								<div class="content">
+									<p>
+										<b> Homework. </b> There will be six problem sets. Each will have about six problems, be due on a Tuesday night at 11:59PM EST, and cover material up to and including the lecture of the previous Thursday. The rapid turnaround time is intended to keep you on top of a fast-moving and cumulative course without large, delayed assignments. 
+									</p>
+									<p>
+										Please <b>anonymize</b> your submission (no name, UNI, etc.) This helps us grade fairly; the solution is still linked to your Gradescope account.
+									</p>
+									<p>
+										You're highly encouraged to write up your problem sets using LaTeX, a markup langauge for mathematics. The website <a href="https://www.overleaf.com/">Overleaf</a> (essentially Google Docs for LaTeX) makes this easier. Here's a <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">quick tutorial</a>. Why bother with LaTeX? (1) It's a handy language used by almost all people who write up math and science. (2) It may be required in future courses. (3) It gets increasingly convenient as the equation you want to typeset gets more complex.
+									</p>
+									<p>
+										The goal of the homework is to practice using the mathematical machines, proofs, and concepts you'll use in this course and beyond. It's intended to be challenging and complex without being frustrating or confusing. To that end, the homework is annotated with a rationale (why are we doing this?) and references (if the question is baffling, where should we look for help?)
+									</p>
+									
+									<p>
+										<b> Late work. </b> You have a total of 3 late days for the course. Late time is rounded up to the nearest day (cannot be subdivided) and is measured from submission time on Gradescope. Additional late days beyond the initial 3 will be penalized at a rate of 10% of the initial grade per late day. <b> No homework will be accepted after 11:59PM EST on the Saturday after the initial due date</b> (4 days afterwards); this rule exists so that we can share homework solutions. For exceptions to the above, please contact me through your academic adviser.
+									</p>
+									<p>
+										<b> Regrade policy. </b> To request a regrade, submit a detailed and clearly stated argument for what you believe is incorrect and why to Gradescope within 7 days after the assignment is returned. We'll respond within a week. Keep in mind that a regrade may lower the overall score and that regrades are final.
+									</p>
+									<p>
+										<b> Exam. </b> There will be one cumulative final exam. You can take the exam remotely during any consecutive 12 hours within a certain 48-hour window (likely 6/30-7/1).
+									</p>
+									<p>
+										<b> Resource and collaboration rules for assignments. </b> For problem sets, you're welcome to refer to (1) the textbook, (2) your notes, and (3) course materials (videos, ed posts, and anything else linked on this page). You can cite results proved or stated in class or on previous homeworks, but please don't cite results from the internet or later in the textbook without independent proof. (For example, a theorem from a later chapter might make a homework question trivial; don't cite this, as it defeats the point of the question.) 
+									</p>
+									<p>
+										You're welcome to collaborate with your peers on problem sets, in office hours or elsewhere. However, you must <b> write up your own solutions independently</b>. Please also <b> don't share written solutions</b>, and cite your collaborators. 
+									<p>
+									</p>
+										<b> Contact the course staff if you're unsure whether a resource or collaboration is allowed, or if you need accommodation! We don't want to adjudicate after the fact. </b>
+									</p>
+									<p>
+										<b> Academic Honesty Violations. </b> Distributing written solutions, using question-and-answer sites (StackExchange, Chegg, etc.) to solve homework problems, and posting or sourcing answers on the internet will result in a 0 on the assignment (at minimum). Students are also expected to adhere to the <a href="https://www.college.columbia.edu/academics/academicintegrity">Honor Code</a> and the <a href="https://www.cs.columbia.edu/academic/academic-honesty/">Columbia CS Academic Honesty Policy</a>. Please contact the instructor or TAs with any questions.
+									</p>
+									
+									<p>
+										<b> Grading. </b> Grades will be calculated using the maximum of the following two formulas. The first is intended to reward consistent hard work on problem sets, and the second is intended to reward persistence and improvement.
+									<p>
+									<p>
+										<b> Formula 1: </b> 12.5% * 6 homeworks + 25% * 1 exam = 100% (+ possible extra credit). <br />
+										<b> Formula 2: </b> 6% * HW1 + 8% * HW2 + 10% * HW3 + 12% * HW4 + 14% * HW5 + 16% * HW6 + 34% * 1 exam = 100% (+ possible extra credit).
+									</p>
+										
+										
+									</p>
+								</div>
+							</ul>
+							
+							<p>
+								Help make the course better! <a href="https://forms.gle/ZvFtdXam4XG8mReb8">Submit anonymous feedback here</a>.
+							</p>
+							
+							
+						</div>
+					</div>
+					
+					<div class=mainsection>
+						<div class=lalign>
+							<h2> CALENDAR </h2>
+						</div>
+						<a class="anchor" name="calendar"></a>
+						
+						<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=aXZ1N3NlY2tqbDNocDVxZ3E3MmwwdDg3czhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23C0CA33" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+					</div>
+					
+					<div class=mainsection>
+						<div class=lalign>
+							<h2> Homework </h2>
+						</div>
+						<a class="anchor" name="homework"></a>
+						
+						<ul>
+							<li> Problem Set 0 (Optional, no points)     (<a href="pdfs/3261hw/HW0.pdf">PDF</a>) (<a href="pdfs/3261hw/HW0.tex">TEX</a>) </li>
+							<!-- <li> Problem Set 1 (Due 7/6/21@11:59PM EST)  (<a href="pdfs/3261hw/HW1.pdf">PDF</a>) (<a href="pdfs/3261hw/HW1.tex">TEX</a>) 
+							(<a href="pdfs/3261hw/HW1_solutions.pdf">Solutions</a>)</li>
+							<li> Problem Set 2 (Due 7/12/21@11:59PM EST) (<a href="pdfs/3261hw/HW2.pdf">PDF</a>) (<a href="pdfs/3261hw/HW2.tex">TEX</a>) 
+							(<a href="pdfs/3261hw/HW2_solutions.pdf">Solutions</a>)</li>
+							<li> Problem Set 3 (Due 7/19/21@11:59PM EST) (<a href="pdfs/3261hw/HW3.pdf">PDF</a>) (<a href="pdfs/3261hw/HW3.tex">TEX</a>) 
+							(<a href="pdfs/3261hw/HW3_solutions.pdf">Solutions</a>) </li>
+							<li> Problem Set 4 (Due 7/26/21@11:59PM EST) (<a href="pdfs/3261hw/HW4.pdf">PDF</a>) (<a href="pdfs/3261hw/HW4.tex">TEX</a>) 
+							(<a href="pdfs/3261hw/HW4_solutions.pdf">Solutions</a>) </li>
+							<li> Problem Set 5 (Due 8/2/21@11:59PM EST)  (<a href="pdfs/3261hw/HW5.pdf">PDF</a>) (<a href="pdfs/3261hw/HW5.tex">TEX</a>)
+							(<a href="pdfs/3261hw/HW5_solutions.pdf">Solutions</a>) </li>
+							<li> Problem Set 6 (Due 8/9/21@11:59PM EST)  (<a href="pdfs/3261hw/HW6.pdf">PDF</a>) (<a href="pdfs/3261hw/HW6.tex">TEX</a>) 
+							(<a href="pdfs/3261hw/HW6_solutions.pdf">Solutions</a>) </li>
+							<li> Final Exam (Due 8/11/21@11:59PM EST)  (<a href="pdfs/3261hw/final.pdf">PDF</a>) (<a href="pdfs/3261hw/final.tex">TEX</a>)
+							(<a href="pdfs/3261hw/final_solutions.pdf">Solutions</a>) </li>							
+							<li> <a href="https://docs.google.com/document/d/1nJcg0J0IBlW6FQAh9tnEdQ8dGwcKYL9aWsjiFgTqE40/edit?usp=sharing">Final Exam Topic Guide</a> </li> -->
+						</ul>
+						
+						Submit to <a href="https://www.gradescope.com/courses/271732">Gradescope</a> (course code: 2KGDW8). Don't forget to anonymize your submission!
+						
+					</div>
+					
+					<div class=mainsection>
+						<div class=lalign>
+							<h2> Course Content </h2>
+						</div>
+						<a class="anchor" name="lectures"></a>
+						
+						<ul>
+							<li class="collapsible">
+								<b> LECTURE 0 </b> [<a href="https://www.youtube.com/watch?v=nYFCP5wWjmo">VIDEO</a>] [<a href="pdfs/notability/COMSW3261_Lecture0_notability.pdf">VIDEO NOTES</a>]
+							</li>
+							<div class="content">
+								<ol>
+									<li> <b> Summary. </b> A 30-minute review of discrete mathematics material. We introduce sets, sequences, graphs, alphabets, strings, languages, boolean logic, and proofs.
+									</li>
+									<li> <b> Resources. </b> Sipser 0.2, 0.3, and 0.4, pp. 3-25.  
+									</li>
+									<li> <b> Just for fun. </b> Sipser, Preface: "To the Student" and "To the Educator".
+									</li> 
+								<ol>
+							</div>
+						</ul>
+						
+						Video lectures from Summer 2021 are available on <a href="3261-sum21.html#lectures">last summer's course page</a>. These are not required viewing and the content may not match up exactly.
+						
+						<!-- <h3> Lecture 1 (6/28) 
+							[VIDEO (<a href="https://youtu.be/I6FOc7yVGdY">1</a>) (<a href="https://youtu.be/EC8vGK6WoZA">2</a>)]
+							[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture1.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture1.2_notability.pdf">2</a>)]
+							[<a href="pdfs/notability/COMSW3261_Lecture1_class.pdf">IN-CLASS NOTES</a>]
+							</h3><p>
+						Introduction to class. Alphabets, strings, and languages. Deterministic finite automata (DFAs), formal definition of computation and regular languages. <br />
+						<b> Reading: </b> Chapter 1.1 (pp. 31-47). Syllabus (this website.) <br/>
+						
+						</p>
+						<h3> Lecture 2 (6/30) 
+						[VIDEO (<a href="https://youtu.be/_hDH2VLh0HE">1</a>) (<a href="https://youtu.be/rJ2FGgLv0Lo">2</a>) (<a href="https://youtu.be/Ku6fkIqq06M">3</a>)] 
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture2.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture2.2_notability.pdf">2</a>) (<a href="pdfs/notability/COMSW3261_Lecture2.3_notability.pdf">3</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture2_class.pdf">IN-CLASS NOTES</a>]
+						</h3><p>
+						Definition of regular languages. Regular languages are closed under union. Introduced Nondeterministic Finite Automata. Converting NFAs to DFAs, and the corollary result that regular languages are exactly those recognized by NFAs.
+						</p>
+						
+						<br />
+						No class on 7/5 (University holiday.)
+						
+						<h3> Lecture 3 (7/7) 
+						[VIDEO (<a href="https://www.youtube.com/watch?v=JQ8CgzEkwX4">1</a>) (<a href="https://www.youtube.com/watch?v=6vcnziZKbHU">2</a>) (<a href="https://www.youtube.com/watch?v=pPRQfMF1PU4">3</a>)] 
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture3.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture3.2_notability.pdf">2</a>) (<a href="pdfs/notability/COMSW3261_Lecture3.3_notability.pdf">3</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture3_class.pdf">IN-CLASS NOTES</a>]
+						</h3><p>
+						Proved that regular languages are closed under union, concatenation, and Kleene star using NFAs. Introduced regular expressions and showed that every language described by a regular expression is regular by reducing to an equivalent NFA.
+						</p>
+						
+						<h3> Lecture 4 (7/12) 
+						[VIDEO (<a href="https://youtu.be/4dheG8-OseA">1</a>) (<a href="https://youtu.be/472FcCZjcWM">2</a>)] 
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture4.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture4.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture4_class.pdf">IN-CLASS NOTES</a>]
+						</h3><p>
+						Showed that every regular language can be described by a regular expression using a new automaton called a Generalized NFA (GNFA). Thus the class of languages described by regular expressions is exactly the regular languages. Talked about nonregular languages and introduced the pumping lemma.
+						</p>
+						
+						<h3> Lecture 5 (7/14) 
+						[VIDEO (<a href="https://youtu.be/FUfGqaQ931Y">1</a>) (<a href="https://youtu.be/OnA3U6RKdYY">2</a>)] 
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture5.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture5.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture5_class.pdf">IN-CLASS NOTES</a>]
+						</h3><p>
+						More practice with proving languages irregular using closure properties and the pumping lemma. Introduced context-free grammars and context-free languages. Defined derivations, parse trees and leftmost derivations.
+						</p>
+						
+						<h3> Lecture 6 (7/19) 
+						[VIDEO (<a href="https://youtu.be/Rb7j3duxAJs">1</a>) (<a href="https://youtu.be/WLw2mch0YiU">2</a>)]
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture6.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture6.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture6_class.pdf">IN-CLASS NOTES</a>] </h3><p>
+						Review of context-free languages and definition of Chomsky Normal Form. The regular languages are a proper subset of the context-free languages. Introduction to pushdown automata and examples.
+						</p>
+						
+						<h3> Lecture 7 (7/21) 
+						[VIDEO (<a href="https://youtu.be/29T65YIMXS0">1</a>) (<a href="https://youtu.be/fz051XwlOkU">2</a>)]
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture7.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture7.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture7_class.pdf">IN-CLASS NOTES</a>] </h3><p>
+						Proof that a language is context-free if and only if some Pushdown Automaton recognizes it. The Pumping Lemma for context-free languages.
+						</p>
+						
+						<h3> Lecture 8 (7/26)
+						[VIDEO (<a href="https://youtu.be/RnaUJu6fmXA">1</a>) (<a href="https://youtu.be/pU3IsA3BFrM">2</a>)]
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture8.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture8.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture8_class.pdf">IN-CLASS NOTES</a>] </h3><p>
+						Examples of the pumping lemma for context-free languages. Turing machines, Turing-recognizability and Turing-decidability. 
+						</p>
+						
+						<h3> Lecture 9 (7/28) 
+						[VIDEO (<a href="https://youtu.be/1mlVJc9HRxI">1</a>) (<a href="https://youtu.be/IKF364r4eog">2</a>) (<a href="https://youtu.be/D_1DkEQDA4U">3</a>)]
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture9.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture9.2_notability.pdf">2</a>) (<a href="pdfs/notability/COMSW3261_Lecture9.3_notability.pdf">3</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture9_class.pdf">IN-CLASS NOTES</a>] </h3><p>
+						Multitape TMS, Nondeterministic TMs, and enumerators. High-level descriptions and the Church-Turing thesis: from TMs to ``algorithms". 
+						</p>
+						
+						<h3> Lecture 10 (8/2) 
+						[VIDEO (<a href="https://youtu.be/kynOnMnGt4Y">1</a>) (<a href="https://youtu.be/w24bytgH5tc">2</a>)]
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture10.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture10.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture10_class.pdf">IN-CLASS NOTES</a>] </h3><p>
+						Proving that many languages are decidable. The language \( A_{TM} \) is not decidable and its complement isn't even recognizable. A language is decidable if and only if it is Turing-recognizable and Co-Turing recognizable (so recognizability is not closed under complement.)
+						</p>
+						
+						<h3> Lecture 11 (8/4) 
+						[VIDEO (<a href="https://youtu.be/2-dRZ1ZX5gg">1</a>) (<a href="https://youtu.be/6MYZ6pA13zY">2</a>)]
+						[VIDEO NOTES (<a href="pdfs/notability/COMSW3261_Lecture11.1_notability.pdf">1</a>) (<a href="pdfs/notability/COMSW3261_Lecture11.2_notability.pdf">2</a>)]
+						[<a href="pdfs/notability/COMSW3261_Lecture11_class.pdf">IN-CLASS NOTES</a>] </h3><p>
+						Turing reductions and proof that the halting problem is not decidable. The problem of determining whether a TM recognizes a regular language, or the empty language, is undecidable. Review of big-O and big-Omega notation and introduction to time complexity. The time complexity classes P and NP. (Is it true that P=NP?)
+						</p>
+						
+						<h3> Final Exam (8/10, 8/11) </h3><p>
+						<a href="https://docs.google.com/document/d/1nJcg0J0IBlW6FQAh9tnEdQ8dGwcKYL9aWsjiFgTqE40/edit?usp=sharing">Final Exam Topic Guide</a>
+						</p> -->	
+					</div>
+				</div> <!-- maintext -->
+			</div> <!-- centerblock -->
+			
+			
+			
+			<div class=bottomblock>
+				<div class=bottomtext>
+					CONTACT: [FIRST INITIAL].[LAST NAME]@COLUMBIA.EDU.
+				</div>
+				
+				<div id="copy"> 
+					<img src="img/cc.png" height="15px" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2022.
+				</div> 
+				
+			</div>
+		</div> <!--wrapper -->
+		
+		<!-- Script for collapsible divs -->
+		<script>
+			var coll = document.getElementsByClassName("collapsible");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				content.classList.toggle("open");
+			  });
+			}
+				
+			var coll = document.getElementsByClassName("book");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+				  coll[i].addEventListener("click", function() {
+				this.classList.toggle("book-active");
+				var content = this.nextElementSibling;
+				content.classList.toggle("open");
+			  });
+			}
+		</script>
+	</body>
+</html>
