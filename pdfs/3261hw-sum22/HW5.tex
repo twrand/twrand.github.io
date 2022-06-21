@@ -1,0 +1,298 @@
+\documentclass[letterpaper,11pt,twoside]{article}
+
+\usepackage[left=1in, right=1in, bottom=1.25in, top=1.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+%\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage[mathscr]{euscript}
+\usepackage{latexsym,bbm,xspace,graphicx,float,mathtools,mathdots,xspace}
+\usepackage{enumitem}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{bm}
+\usepackage[backref, colorlinks,citecolor=blue,linkcolor=magenta,bookmarks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% tikz
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{tablefootnote}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\textbf{\thepage}} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{claim}{Claim}
+\newtheorem{property}{Property}
+\newtheorem{op}{Open Problem}
+\newtheorem{problem}{Problem}
+\newtheorem{question}{Question}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{sketch}{Sketch}
+\newtheorem{idea}{Idea}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newtheoremstyle{restate}{}{}{\itshape}{}{\bfseries}{~(restated).}{.5em}{\thmnote{#3}}
+\theoremstyle{restate}
+\newtheorem*{restate}{}
+
+
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{observation}{Observation}{Observations}
+\crefname{claim}{Claim}{Claims}
+\crefname{property}{Property}{Properties}
+\crefname{op}{Open Problem}{Open Problems}
+\crefname{problem}{Problem}{Problems}
+\crefname{question}{Question}{Questions}
+
+% \crefname{fact}{Fact}{Facts}
+
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\crefname{sketch}{Sketch}{Sketches}
+\crefname{idea}{Idea}{Ideas}
+
+% \crefname{condition}{Condition}{Conditions}
+
+\crefname{remark}{Remark}{Remarks}
+
+
+
+\crefname{equation}{Equation}{Equations}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GENERAL-PURPOSE MACROS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ignore}[1]{}
+\newcommand{\eps}{\epsilon}
+\newcommand{\simple}{\mathrm{simple}}
+\newcommand{\E}{\operatorname{{\bf E}}}
+\newcommand{\Ex}{\mathop{{\bf E}\/}}
+\renewcommand{\Pr}{\operatorname{{\bf Pr}}}
+\newcommand{\Prx}{\mathop{{\bf Pr}\/}}
+\newcommand{\Var}{\operatorname{{\bf Var}}}
+\newcommand{\Varx}{\mathop{{\bf Var}\/}}
+\newcommand{\tO}{\tilde{O}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\rZ}{\mathcal{Z}}
+
+\DeclareMathOperator\erf{erf}
+
+\newcommand{\polylog}{\mathrm{polylog}}
+\newcommand{\poly}{\mathrm{poly}}
+\newcommand{\bcalZ}{\bm{\mathcal{Z}}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bxi}{\bm{\xi}}
+
+% Blind (markerless) footnotes
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%
+% NUMBER SYSTEMS %
+%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb R}
+\newcommand{\RR}{\R_{\geq 0}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\NN}{\N_{\geq 1}}
+\newcommand{\Z}{\mathbb Z}
+
+\renewcommand{\i}{\mathbf{i}}   % for complex numbers
+\renewcommand{\d}{\mathrm{d}}   % for integrals
+\newcommand{\lhs}{\mathrm{LHS}} % for inequalities
+\newcommand{\rhs}{\mathrm{RHS}} % for inequalities
+\newcommand{\supp}{\mathrm{supp}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\sig}{\mathrm{sig}}
+
+\newcommand{\comment}[1]{}
+
+% Define colors
+\def\colorful{1}
+\ifnum\colorful=1
+\newcommand{\violet}[1]{{\color{violet}{#1}}}
+\newcommand{\orange}[1]{{\color{orange}{#1}}}
+\newcommand{\blue}[1]{{{\color{blue}#1}}}
+\newcommand{\red}[1]{{\color{red} {#1}}}
+\newcommand{\green}[1]{{\color{green} {#1}}}
+\newcommand{\pink}[1]{{\color{pink}{#1}}}
+\newcommand{\gray}[1]{{\color{gray}{#1}}}
+\fi
+\ifnum\colorful=0
+\newcommand{\violet}[1]{{{#1}}}
+\newcommand{\orange}[1]{{{#1}}}
+\newcommand{\blue}[1]{{{#1}}}
+\newcommand{\red}[1]{{{#1}}}
+\newcommand{\green}[1]{{{#1}}}
+\newcommand{\gray}[1]{{{#1}}}
+\fi
+
+\title{Homework 5}
+% \author{Tim Randolph}
+\date{COMS W3261, Summer A 2022}
+
+\begin{document}
+
+\maketitle
+
+This homework is due \textbf{Tuesday, 6/28/2022, at 11:59pm EST}. Submit to GradeScope (course code: 2KGDW8).
+
+\textbf{Grading policy reminder:} \LaTeX~is preferred, but neatly typed or handwritten solutions are acceptable. I recommend using the .tex file for the homework as a template to write up your answers. Your TAs may dock points for indecipherable writing.\\
+
+Proofs should be complete; that is, include enough information that a reader can clearly tell that the argument is rigorous. \\
+
+If a question is ambiguous, please state your assumptions. This way, we can give you credit for correct work. (Even better, post on Ed so that we can resolve the ambiguity.) \\
+
+\textbf{\LaTeX~resources.}
+\begin{itemize}
+    \item The website \href{https://www.overleaf.com/}{Overleaf} (essentially Google Docs for LaTeX) may make compiling and organizing your .tex files easier. Here's a quick \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{tutorial}.
+    \item \href{https://detexify.kirelabs.org/classify.html}{Detexify} is a nice tool that lets you draw a symbol and returns the \LaTeX~codes for similar symbols. 
+    \item The tool \href{https://www.tablesgenerator.com/}{Table Generator} makes building tables in \LaTeX~much easier.
+    \item The tool \href{http://madebyevan.com/fsm/}{Finite State Machine Designer} may be useful for drawing automata. See also this example (\href{https://static.us.edusercontent.com/files/HZeTXimODzWeLvHIqsvjL2BG}{PDF}) (\href{https://static.us.edusercontent.com/files/RI3W8tQNvHMWFe9MkXV1KztA}{.tex}) of how to make fancy edges (courtesy of Eumin Hong).
+    \item The website \href{https://www.mathcha.io/}{mathcha.io} allows you to draw diagrams and convert them to \LaTeX~code.
+    \item To use the previous drawing tools (and for most drawing in \LaTeX), you'll need to use the package Tikz (add the command ``\textbackslash usepackage\{tikz\}'' to the preamble of your .tex file to import the package). 
+    \item \href{https://www.overleaf.com/learn/latex/Positioning_of_Figures}{This tutorial} is a helpful guide to positioning figures.
+\end{itemize}  
+
+
+
+\clearpage
+\section{Problem 1 (9 points)}
+
+\begin{enumerate}
+    \item (3 points) Prove that the language
+    \[
+    A_{CFG-fast} := \{ \langle G, w \rangle \; | \; G \text{ is a CFG and } w \text{ can be derived in } G \text{ in at most } |w| \text{ steps.} \}
+    \]
+    is decidable by giving a high-level description of a Turing Machine that decides $A_{CFG-fast}$. As an example, the hypothetical derivation $S \rightarrow AA \rightarrow 00A \rightarrow 00B \rightarrow 001$ takes four steps (uses a substitution rule four times before reaching a string of terminals) to derive the string 001, which has length 3.
+
+    \item (3 points) Prove that the language
+    \[
+    INC_{DFA} := \{ \langle D_1, D_2 \rangle \; | \; D_1, D_2 \text{ are DFAs and } L(D_1) \subseteq L(D_2) \}
+    \]
+    is decidable by giving a high-level description of a Turing Machine that decides $INC_{DFA}$.
+    
+    \item (3 points) Prove that the language
+    \begin{align*}
+    EQ2_{TM} := \{\langle M_1, M_2, w \rangle \; &| \; M_1, M_2 \text{ are Turing Machines, } w \text{ is a string and } \\
+    &M_1, M_2 \text{ either both accept or both reject on } w\}
+    \end{align*}
+    is recognizable by giving a high-level description of a Turing Machine that recognizes $EQ2_{TM}$. Why doesn't your recognizer decide the language?
+\end{enumerate}
+
+
+    \blfootnote{ Rationale: The goal of this problem is to practice programming Turing Machines to decide and recognize languages, especially tricky ones that require simulating other automata. }
+    \blfootnote{ References: See Sipser 193-197 for many examples of decidable languages, or review the notes and solutions to problems from Lectures 8 and 9. }
+
+
+
+\clearpage
+\section{Problem 2 (7 points)}
+    Recall that a \emph{configuration} summarizes a Turing Machine at a particular moment in time: in particular, a configuration is a finite string that includes (1) which internal state we're in, (2) what tape square the tape head is pointing at and (3) the contents of the tape (leaving out the infinite number of blank squares to the right of any square touched by the input or the tape head.) The subsequent behavior of a Turing Machine is completely determined by its current configuration. Thus, if we ever enter the same configuration twice, we're caught in an infinite loop.
+    
+    I have a brilliant idea for a hypercomputer (the Time-Saving Machine, or TiM) that defeats the halting problem! In particular, my hypercomputer is \emph{exactly} the same as a Turing Machine, with the following special rule that takes priority over normal execution: if a TiM ever enters the same configuration twice, it immediately halts and rejects.
+    
+    \begin{enumerate}
+        \item (2 points). Give a high-level description of a TiM that runs forever without halting.
+
+        
+        \item (5 points). Show that a TiM is no more powerful than a TM by proving that every TiM has an equivalent TM. (A high-level description of a TiM simulation is fine.)
+        
+    \end{enumerate}
+    
+    
+    \blfootnote{ Rationale: The goal of this question is to practice showing that Turing Machine variants are equal to Turing Machines in power. }
+    \blfootnote{ References: See Sipser pp. 176-181, which shows how to reduce multitape and nondeterministic TMs to regular TMs. See also the review video Example 6: Reducing Variant TMs to TMs. }
+
+\clearpage
+\section{Problem 3 (6 points)}
+    Recall the language
+    \begin{align*}
+    EQ2_{TM} := \{\langle M_1, M_2, w \rangle \; &| \; M_1, M_2 \text{ are Turing Machines, } w \text{ is a string and } \\
+    &M_1, M_2 \text{ either both accept or both reject on } w\},
+    \end{align*}
+    which you showed is Turing-recognizable in problem 1. Show that this language is undecidable by reducing from the halting problem. [Hint: Start with the assumption that this language is decidable, and find a contradiction.]
+    
+    \blfootnote{ Rationale: The goal of this question is to practice showing undecidability by reducing one problem to another problem. }
+    \blfootnote{ References: See Sipser 215-220, in which several languages are shown to be undecidable by reducing from the halting problem. }
+    
+\clearpage
+\section{Problem 4 (8 points)}
+    For the following questions, an answer of a sentence or two is fine.
+    \begin{enumerate}
+        \item The final exam will be available on Gradescope from 12:01am EST on Wednesday, June 29 until 9:00pm EST on Friday, July 1. You  can take the final during any contiguous 12 hours during this time period (your time starts when you download the file, and ends when you upload it again.) The test is not designed to take the whole 12 hours.
+        
+        During the final exam, you'll be allowed to use your notes, the textbook, your past HW, and resources linked on the course homepage, including past lecture notes, review videos, and the course skeleton. You won't be allowed to collaborate or use external resources on the internet. The course staff will respond to Ed posts only to give basic clarifications about the problem statements.
+        \begin{enumerate}
+            \item Locate your graded submissions for HW1, HW2, HW3 and HW4. Locate your notes, or download the notability notes for the previous lectures. 
+            \item (1 point) Looking over your past work, what are one or two things you don't understand well or would like to review? What's one thing you have down pat?
+            \item (1 point) Set a goal (in terms of performance, score, or something else) for the final exam.
+            \item (2 points) What's your study plan to achieve that goal?
+        \end{enumerate}
+        
+        \item (1 point) What action, activity, or HW problem constitutes your best work of the term?
+        \item (1 point) What's something that could have gone better, or that you would do differently if you took the class again?
+        \item (1 point) How would you self-evaluate your performance in this class?
+        \item (1 point) Is there anything left over that you'd like to learn in the future?
+    \end{enumerate}
+
+    \blfootnote{ Rationale: The goal of this question is to get you thinking about what you've learned in this course and prepare you for the final. Good luck! }
+    \blfootnote{ References: Homework solutions, course skeleton, and review videos on the course webpage. }
+
+
+\clearpage
+\section{Problem 5 (2 Extra Credit Points): Nondeterministic Turing Machines}
+Recall the language of graphs that contain Hamiltonian paths from the previous homework:
+\[
+    A_3 := \{\langle G \rangle: G \text{ is a graph that contains a Hamiltonian path}\}
+\]
+(A Hamiltonian path is a path through the graph that touches every vertex exactly once.)
+
+In HW4, you showed how to recognize this language using a deterministic TM. (In case you chose not to write a decider: it's possible to write a deterministic TM that decides this TM using a similar simple strategy.)
+
+However, a \textit{Nondeterministic} Turing Machine can solve this problem in time $O(n)$, where $n$ is the number of vertices in the graph! Give a high-level description of an NTM that decides this language in time $O(n)$. 
+    
+\end{document}
