@@ -1,0 +1,407 @@
+<!--
+
+To do list:
+ - Font compatibility and testing
+ - LaTeX embedding
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="main.css" id="main"/>
+		<link rel="shortcut icon" href="img/twr.ico">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant|Cantarell">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text">
+		<title> COMS W3261: Summer 2022 </title>
+	</head>
+	<body>
+		<!-- MathJax -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- Below script mysteriously fixes subscript sizing issues w/ MathJax -->
+		<script>
+		MathJax = {
+		  startup: {
+			ready: function () {
+			  var math = MathJax._.core.MmlTree.MmlNodes.math.MmlMath;
+			  math.defaults.scriptminsize = '0px';
+			  MathJax.startup.defaultReady();
+			}
+		  }
+		};
+		</script>
+		
+		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
+			<div class=topblock>	
+				<div class=topcontent>
+					<div id="name">
+					<h1> <a href="https://twrand.github.io/"> Tim Randolph </a> </h1>
+					</div>
+					<div id="menubar">
+						<a href="overview.html">OVERVIEW</a>
+						&nbsp;
+						<a href="syllabus.html">EXAMPLE SYLLABUS</a>
+						&nbsp;
+						<a href="materials.html">COURSE MATERIALS</a>
+						&nbsp;
+						<a href="feedback.html">STUDENT FEEDBACK</a>
+						&nbsp;
+						<a href="https://twrand.github.io/">HOME</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class=widecenterblock>
+				<div class=widemaintext>
+				
+					<!-- <div class=row>
+						<div class="column left">
+							left 1
+						</div>
+						<div class="column right">
+							left 2
+						</div>
+					</div> -->
+				
+					<div class=row>
+					<div class="column left">
+							
+						<div class=mainsection>
+							<a class="anchor" name="about"></a>
+							<div class=lalign >
+								<h2> Welcome to Computer Science Theory </h2>
+							</div>
+							<a class="anchor" name="info"></a>
+							<div>
+								<p>
+									Are you curious about the fundamental nature of computation? What makes some problems hard, and others easy? The formal concepts required to think abstractly about what computers can do, including topics in programming languages, cryptography, security, software engineering, economics and many more? Computer science theory may be for you. 
+								</p>
+								
+								<p>
+									Mathematics teaches us to ask questions like "What is the value of f(x)?", "Do any objects of type Y exist?", and "Is Z true?"
+									Theoretical computer science builds on this tradition, expanding the scope of inquiry to include questions like "How much time (and other limited resources) does it take to evaluate f(x)?", "Can I formally specify a procedure for finding a Y?", and "Can the truth of Z be computed?"
+								</p>
+								
+								<p>
+									The course is highly abstract: there will be no programming and problem sets will revolve around formal proofs. Students are expected to be comfortable with discrete mathematics and proofs.
+									<!--(For a refresher, see Chapter 0 of the textbook or the Lecture 0 recording, coming soon.) -->
+								</p>
+							
+								<p> Questions? Please email me at t.randolph@columbia.edu!
+							
+								<br /><br />
+								
+								
+								<div class=lalign >
+								<h2> 
+									SYLLABUS							
+								</h2>
+								</div>
+								<a class="anchor" name="syllabus"></a>
+								
+										<p> 
+										<b> Resources & Quick Links. </b> 
+											<p>
+											<b> Course evaluations. </b> There are two course evaluations for this course: the standard evaluation, available on Courseworks, and a <a href="https://forms.gle/ePBuasT1Wd5t2NGE7">supplemental evalation</a> specific to this course. Please fill out both! I'll read your feedback carefully and use it to improve the course.
+										</p>
+							
+								
+										<p> 
+										The text for the course is <i><a href="https://www.goodreads.com/book/show/13839366-introduction-to-the-theory-of-computation">Introduction to the Theory of Computation</a></i>, 3rd Edition, by Michael Sipser. 
+										</p>
+										<p> 
+											The question-and-answer forum for this class is hosted on <a href="https://edstem.org/us/courses/22066">Ed</a>. For homework, exams, and grades we'll use <a href="https://www.gradescope.com/courses/391891">Gradescope</a> (course code: 2KGDW8). We probably won't use <a href="https://Courseworks2.columbia.edu/courses/153358">CourseWorks</a>. 
+										</p>
+										<p> 
+											Supplemental explanations and examples will be posted on the course <a href="https://www.youtube.com/channel/UCBxAh4nMO4xYTLqNijZkzXQ">YouTube channel</a>.
+										</p>
+										<p>
+											For HW template files, notes from TA office hours, and other useful tidbits, check out the TA-run <a href="https://github.com/eh2890/COMS_W3261_Su2022">Github repo</a>.
+										</p>
+								</p>
+								<ul>
+									<li class="collapsible">
+										<b> Who, What, Where, When </b> (click to expand/collapse)
+									</li>
+									<div class="content">
+										<p>
+											<b> People. </b> Instructor: <a href="http://twrand.github.io">Tim Randolph</a> (twr2111, t.randolph@columbia.edu). TAs: To be announced.
+										</p>
+									
+										<p> 
+											<b> Dates and times. </b> Tuesday and Thursday during Summer A term, 1:00PM - 4:10PM EST: 5/24, 5/26, 5/31, 6/2, 6/7, 6/9, 6/14, 6/16, 6/21, 6/23, and 6/28. The take-home final exam will be held within the range 6/29-7/1. See <a href="3261-sum22.html#calendar">calendar</a>.
+										</p>
+										
+										<p>
+											<b> Locations. </b> Lecture location is 428 Pupin. My office hours will be held in the CS Lounge, or in my office (CSB 522) if lounge space isn't available. (To reach CSB 522, enter Mudd at the 4F campus level and go into the CS department. Go down the hallway, past the CS lounge, and climb the stairs at the end.)
+										</p>
+									 
+										<p>
+											<b> Enrollment details. </b> This is a 3-credit required course for the CS major. COMS W3203 Discrete Math (or instructor permission) is a prerequisite. My goal is to enroll every student who wants to participate in the course. Please email me if you have enrollment concerns.<br/>
+											Course number: COMS W3261. Call number: 10332. <a href="http://www.columbia.edu/cu/bulletin/uwb/#/cu/bulletin/uwb/subj/COMS/W3261-20222-001/">Catalog</a>; <a href="https://vergil.registrar.columbia.edu/#/courses/COMSW3261_001_2022_2">Vergil</a>.
+										</p>
+										
+										<p>
+											<b> Office and TA Hours. </b> Tim: Monday/Tuesday 9-10:30am EST in-person, Thursday 5:30-6:30pm EST on Zoom. See <a href="3261-sum22.html#calendar">calendar</a> for details/adjustments. Please come to office hours at least once, even if it's just to introduce yourself! Eumin, Melody and Yunya (TAs): see calendar.
+										</p>
+									</div>
+									<li class="collapsible">
+										<b> Assignments and Grading </b> (click to expand/collapse)
+									</li>
+									<div class="content">
+										<p>
+											<b> Homework. </b> There will be five problem sets. Each will have about six problems, be due on a Tuesday night at 11:59PM EST, and cover material up to and including the lecture of the previous Thursday. The rapid turnaround time is intended to keep you on top of a fast-moving and cumulative course without large, delayed assignments. 
+										</p>
+										<p>
+											Please <b>anonymize</b> your submission (no name, UNI, etc.) This helps us grade fairly; the solution is still linked to your Gradescope account.
+										</p>
+										<p>
+											You're highly encouraged to write up your problem sets using LaTeX, a markup langauge for mathematics. The website <a href="https://www.overleaf.com/">Overleaf</a> (essentially Google Docs for LaTeX) makes this easier. Here's a <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">quick tutorial</a>. Why bother with LaTeX? (1) It's a handy language used by almost all people who write up math and science. (2) It may be required in future courses. (3) It gets increasingly convenient as the equation you want to typeset gets more complex.
+										</p>
+										<p>
+											The goal of the homework is to practice using the mathematical machines, proofs, and concepts you'll use in this course and beyond. It's intended to be challenging and complex without being frustrating or confusing. To that end, the homework is annotated with a rationale (why are we doing this?) and references (if the question is baffling, where should we look for help?)
+										</p>
+										
+										<p>
+											<b> Late work. </b> You have a total of 3 late days for the course. Late time is rounded up to the nearest day (cannot be subdivided) and is measured from submission time on Gradescope. <b> No homework will be accepted after 11:59PM EST on the Saturday after the initial due date</b> (4 days afterwards); this rule exists so that we can share homework solutions. 
+										</p>
+										<p>
+											<b> If you need an emergency exception to the late work policy</b>, please email me before the due date with your reason(s) and a new proposed due date, which should be before Friday at 11:59 pm. I'm happy to discuss accommodations.
+										</p>
+										<p>
+											<b> Regrade policy. </b> To request a regrade, submit a detailed and clearly stated argument for what you believe is incorrect and why to Gradescope within 7 days after the assignment is returned. We'll respond within a week. Keep in mind that a regrade may lower the overall score and that regrades are final.
+										</p>
+										<p>
+											<b> Exam. </b> There will be one cumulative final exam. You can take the exam remotely during any consecutive 12 hours within a certain 48-hour window (likely 6/30-7/1).
+										</p>
+										<p>
+											<b> Resource and collaboration rules for assignments. </b> For problem sets, you're welcome to refer to (1) the textbook, (2) your notes, and (3) course materials (videos, ed posts, and anything else linked on this page). You can cite results proved or stated in class or on previous homeworks, but please don't cite results from the internet or later in the textbook without independent proof. (For example, a theorem from a later chapter might make a homework question trivial; don't cite this, as it defeats the point of the question.) 
+										</p>
+										<p>
+											You're welcome to collaborate with your peers on problem sets, in office hours or elsewhere. However, you must <b> write up your own solutions independently</b>. Please also <b> don't share written solutions</b>, and cite your collaborators. 
+										<p>
+										</p>
+											<b> Contact the course staff if you're unsure whether a resource or collaboration is allowed, or if you need accommodation! We don't want to adjudicate after the fact. </b>
+										</p>
+										<p>
+											<b> Academic Honesty Violations. </b> Distributing written solutions, using question-and-answer sites (StackExchange, Chegg, etc.) to solve homework problems, and posting or sourcing answers on the internet will result in a 0 on the assignment (at minimum). Students are also expected to adhere to the <a href="https://www.college.columbia.edu/academics/academicintegrity">Honor Code</a> and the <a href="https://www.cs.columbia.edu/academic/academic-honesty/">Columbia CS Academic Honesty Policy</a>. Please contact the instructor or TAs with any questions.
+										</p>
+										
+										<p>
+											<b> Grading. </b> Grades will be calculated using the maximum of the following two formulas. The first is intended to reward consistent hard work on problem sets, and the second is intended to reward persistence and improvement.
+										<p>
+										<p>
+											<b> Formula 1: </b> 15% * 5 homeworks + 25% * 1 exam = 100% (+ possible extra credit). <br />
+											<b> Formula 2: </b> 8% * HW1 + 10% * HW2 + 12% * HW3 + 14% * HW4 + 16% * HW5 + 40% * 1 exam = 100% (+ possible extra credit).
+										</p>
+											Percentages to letter grades will be calculated as follows: 60.0-69.9%: D; 70.0-72.9%: C-, 73.0-76.9%: C, 77.0-79.9%: C+, 80.0-82.9%: B-, 83.0-86.9%: B, 87.0-89.9%: B+, 90.0-92.9%: A-, 93.0+%: A; threshold for A+ TBD based on extra credit distribution and extraordinary effort.
+										</p>
+										<p>
+											<b>Missing and severely deficient work.</b> This class has three policies intended to correct grade discrepancies resulting from missing or severely deficient work:
+											<ol>
+												<li>1. A 50% grade floor. This is better thought of as a translation + rescaling of the grade range (50-100%) to five equal quintiles than "free half-credit".
+												<li>2. Missing work calculated with respect to other problem sets: A missing problem set will be given a grade of (average of other problem sets) - 25%, calculated at the end of the term. For example, a student who recieves a 90% on 4 submitted assignments and does not submit 1 assignment would recieve a total HW grade of (90+90+90+90+(90-25))/5 = 85%  rather than a (90+90+90+90+0)/5 = 72%.
+												<li>3. I'll reach out to any student who misses a problem set or submits mostly deficient work to schedule a time to chat about the problem set. This may feel like a reward or a penalty depending on your perspective.
+												<li> Note that missing work will still significantly hurt your grade (I trust you to do the math yourself.)
+											</ol>
+										</p>
+									</div>
+								</ul>
+								
+								<p>
+									Help make the course better! <a href="https://forms.gle/ZvFtdXam4XG8mReb8">Submit anonymous feedback here</a>.
+								</p>
+								
+								
+							</div>
+						</div>
+						
+						<!-- <div class=mainsection>
+							<div class=lalign>
+								<h2> CALENDAR </h2>
+							</div>
+							<a class="anchor" name="calendar"></a>
+							
+							<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=aXZ1N3NlY2tqbDNocDVxZ3E3MmwwdDg3czhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23C0CA33" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+						</div> -->
+						
+						<div class=mainsection>
+							<div class=lalign>
+								<h2> Homework </h2>
+							</div>
+							<a class="anchor" name="homework"></a>
+							
+							A homework template and copies of the HW files can be downloaded from the TA-run <a href="https://github.com/eh2890/COMS_W3261_Su2022">Github repo</a>.
+							
+							<ul>
+								<li> Problem Set 0 (Optional, no points)     (<a href="pdfs/3261hw-sum22/HW0.pdf">PDF</a>) (<a href="pdfs/3261hw-sum22/HW0.tex">TEX</a>) (<a href="pdfs/3261hw-sum22/HW0-solutions.pdf">Solutions</a>)</li>
+								<li> Problem Set 1 (Due 5/31/22@11:59PM EST)  (<a href="pdfs/3261hw-sum22/HW1.pdf">PDF</a>) (<a href="pdfs/3261hw-sum22/HW1.tex">TEX</a>) 
+								(<a href="pdfs/3261hw-sum22/HW1-solutions.pdf">Solutions</a>)</li>
+								<li> Problem Set 2 (Due 6/7/22@11:59PM EST) (<a href="pdfs/3261hw-sum22/HW2.pdf">PDF</a>) (<a href="pdfs/3261hw-sum22/HW2.tex">TEX</a>) 
+								(<a href="pdfs/3261hw-sum22/HW2-solutions.pdf">Solutions</a>)</li>
+								<li> Problem Set 3 (Due 6/14/22@11:59PM EST) (<a href="pdfs/3261hw-sum22/HW3.pdf">PDF</a>) (<a href="pdfs/3261hw-sum22/HW3.tex">TEX</a>) 
+								(<a href="pdfs/3261hw-sum22/HW3-solutions.pdf">Solutions</a>) </li>
+								<li> Problem Set 4 (Due 6/21/22@11:59PM EST)  (<a href="pdfs/3261hw-sum22/HW4.pdf">PDF</a>) (<a href="pdfs/3261hw-sum22/HW4.tex">TEX</a>)
+								(<a href="pdfs/3261hw-sum22/HW4-solutions.pdf">Solutions</a>) </li>
+								<li> Problem Set 5 (Due 6/28/22@11:59PM EST)  (<a href="pdfs/3261hw-sum22/HW5.pdf">PDF</a>) (<a href="pdfs/3261hw-sum22/HW5.tex">TEX</a>) 
+								(<a href="pdfs/3261hw-sum22/HW5-solutions.pdf">Solutions</a>) </li>
+								<li> Final Exam (Due 7/1/22@9:00PM EST)	(<a href="pdfs/3261hw-sum22/final-solutions.pdf">Solutions</a>) </li>					
+							</ul>
+							
+							Submit to <a href="https://www.gradescope.com/courses/391891">Gradescope</a> (course code: 2KGDW8). Don't forget to anonymize your submission!
+							
+						</div>
+						
+						<div class=mainsection>
+							<div class=lalign>
+								<h2> Course Content </h2>
+							</div>
+							<a class="anchor" name="lectures"></a>
+							
+							<b> Course evaluations. </b> There are two course evaluations for this course: the standard evaluation, available on Courseworks, and a <a href="https://forms.gle/ePBuasT1Wd5t2NGE7">supplemental evalation</a> specific to this course. Please fill out both! I'll read your feedback carefully and use it to improve the course. <br /><br />
+							
+							The <a href="https://docs.google.com/document/d/1PHCNkMitYsMpbh-sxrBmr-cGbpUEshfdFDS2k09fHrI/edit?usp=sharing">Course Skeleton</a> contains a bulleted summary of everything we've covered this summer. It's designed as a place to help you start studying and organize your thoughts, but it is not a substitute for notes!
+							
+							Spot an erratum in the homework or solutions? Please post on Ed.
+							
+							<ul>
+								<li class="collapsible">
+									<b> LECTURE 0 </b> [<a href="https://www.youtube.com/watch?v=nYFCP5wWjmo">VIDEO</a>] [<a href="pdfs/notability/COMSW3261_Lecture0_notability.pdf">VIDEO NOTES</a>]
+								</li>
+								<div class="content">
+									<ol>
+										<li> <b> Summary. </b> A 30-minute review of discrete mathematics material. We introduce sets, sequences, graphs, alphabets, strings, languages, boolean logic, and proofs.
+										</li>
+										<li> <b> Resources. </b> Sipser 0.2, 0.3, and 0.4, pp. 3-25.  
+										</li>
+										<li> <b> Just for fun. </b> Sipser, Preface: "To the Student" and "To the Educator".
+										</li> 
+									<ol>
+								</div>
+								
+								<li class="uncollapsible"> <b> Lecture 1 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec1.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lightning Review 1: Strings, Languages, DFAs </b> [<a href="https://www.youtube.com/watch?v=-EXzFO67QcU">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR1.pdf">NOTES</a>] </li>
+								<li class="uncollapsible"> <b> Example 1: Designing and Building a DFA </b> [<a href="https://www.youtube.com/watch?v=mWqUR-N7Iqk&list=PLSpnclqYnfQ4y0oCF9pakbwWBoZDAPM_9">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex1.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 2 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec2.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lightning Review 2: NFAs </b> [<a href="https://www.youtube.com/watch?v=pszAf5W1Xt4&list=PLSpnclqYnfQ4y0oCF9pakbwWBoZDAPM_9&index=4">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR2.pdf">NOTES</a>] </li>
+								
+								
+								
+								<li class="uncollapsible"> <b> Bonus Review 1: Epsilon Transitions </b> [<a href="https://www.youtube.com/watch?v=ZlkaomOPeIA">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_MR1.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Bonus Review 2: Proving Regularity Using Closure Properties </b> [<a href="https://www.youtube.com/watch?v=a-I_qtyoHsM">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_MR2.pdf">NOTES</a>] </li>
+								
+								
+								
+								<li class="uncollapsible"> <b> Lecture 3 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec3.pdf">NOTES</a>] 
+								[<a href="https://create.kahoot.it/share/lecture-3-review-kahoot/fa64eba6-d20a-4f0c-8007-d6a0b7dc20d1">Kahoot: DFAs/NFAs</a>]
+								</li>
+								
+								<li class="uncollapsible"> <b> Example 2: Converting NFAs to DFAs </b> [<a href="https://www.youtube.com/watch?v=vknabNUn9HQ&list=PLSpnclqYnfQ4y0oCF9pakbwWBoZDAPM_9&index=5">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex2.pdf">NOTES</a>] </li>
+								<li class="uncollapsible"> <b> Lightning Review 3: Regular Expressions </b> [<a href="https://www.youtube.com/watch?v=ifbAioBmXZo&list=PLSpnclqYnfQ4y0oCF9pakbwWBoZDAPM_9&index=5">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR3.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 4 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec4.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Example 3: From DFA to GNFA to Regular Expression </b> [<a href="https://www.youtube.com/watch?v=B_sWA0Kx2Jc">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex3.pdf">NOTES</a>] </li>
+								<li class="uncollapsible"> <b> Lightning Review 4: The Pumping Lemma </b> [<a href="https://www.youtube.com/watch?v=WrpRTlargXA">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR4.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 5 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec5.pdf">NOTES</a>] </li>
+								
+								
+								<li class="uncollapsible"> <b> Example 4: Proving Nonregularity Using the Pumping Lemma </b> [<a href="https://www.youtube.com/watch?v=DGBi_Qa2GP0">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex4.pdf">NOTES</a>] </li>
+								<li class="uncollapsible"> <b> Lightning Review 5: Context-Free Grammars </b> [<a href="https://www.youtube.com/watch?v=SZVF03FBAcc">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR5.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 6 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec6.pdf">NOTES</a>] 
+								[<a href="https://create.kahoot.it/share/lecture-6-review-kahoot/2a2eb2c6-6707-4738-9a62-0bd2703dd1e0">Kahoot: CFGs</a>]</li>
+								
+								<li class="uncollapsible"> <b> Lightning Review 6: Pushdown Automata </b> [<a href="https://www.youtube.com/watch?v=0eHz_4rT74M">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR6.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 7 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec7.pdf">NOTES</a>] </li>
+								
+								
+								<li class="uncollapsible"> <b> Example 5: Using the Context-Free Pumping Lemma </b> [<a href="https://youtu.be/hV46ObsGPME">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex5.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lightning Review 7: Turing Machines </b> [<a href="https://youtu.be/JOCGkUJ4gy8">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR7.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 8 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec8.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Example 7: Proving Decidability and Recognizability </b> [<a href="https://youtu.be/tDeXctuhShM">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex7.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 9 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec9.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Example 6: Reducing Variant TMs to TMs </b> [<a href="https://youtu.be/yNchL9Y_Nvg">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex6.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lightning Review 8: Proving Undecidability via Paradox </b> [<a href="https://youtu.be/rq64FLYeETE">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_LR8.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Lecture 10 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec10.pdf">NOTES</a>] </li>
+								
+								<li class="uncollapsible"> <b> Example 8: Proving Undecidability and Unrecognizability via Reduction </b> [<a href="https://youtu.be/sT3QNin5Qpc">VIDEO</a>] [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Ex8.pdf">NOTES</a>] </li>
+							
+								<li class="uncollapsible"> <b> Lecture 11 </b> (See course skeleton for outline) [<a href="https://twrand.github.io/pdfs/notability/COMSW3261_sum22_Lec11.pdf">NOTES</a>] </li>
+							</ul>
+							
+							Video lectures from Summer 2021 are available on <a href="3261-sum21.html#lectures">last summer's course page</a>. These are not required viewing and the content may not match up exactly.
+							
+						</div> <!-- mainsection -->
+					</div> <!-- column left -->
+					
+					<div class="column right">
+						<div class="commentbox">
+							This is my annotated syllabus page. Notes will go in boxes floating on the right.
+						</div>
+						
+						<br/><br/><br/><br/><br/>
+						
+						<div class="commentbox">
+							In surveys, my students report that they prefer simple one-stop webpages over bloated Learning Management Systems, so I've integrated the syllabus with web resources while trying to keep things simple.
+						</div>
+					</div> <!-- column right -->
+					</div> <!--row -->
+				</div> <!-- widemaintext -->
+			</div> <!-- centerblock -->
+			
+			
+			<!-- not sure how to fix this so it's commented out -->
+			<!-- not sure how to fix this so it's commented out -->
+			<!-- <div class=bottomblock>
+				<div class="bottomtext">
+					CONTACT: [FIRST INITIAL].[LAST NAME]@COLUMBIA.EDU.
+				</div>
+				
+				<div id="copy"> 
+					<img src="img/cc.png" height="15px" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2022.
+				</div> 
+				
+			</div> -->
+		</div> <!--wrapper -->
+		
+		<!-- Script for collapsible divs -->
+		<script>
+			var coll = document.getElementsByClassName("collapsible");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				content.classList.toggle("open");
+			  });
+			}
+				
+			var coll = document.getElementsByClassName("book");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+				  coll[i].addEventListener("click", function() {
+				this.classList.toggle("book-active");
+				var content = this.nextElementSibling;
+				content.classList.toggle("open");
+			  });
+			}
+		</script>
+	</body>
+</html>

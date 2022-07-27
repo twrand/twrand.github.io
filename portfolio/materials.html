@@ -1,0 +1,157 @@
+<!--
+
+To do list:
+ - Font compatibility and testing
+ - LaTeX embedding
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="main.css" id="main"/>
+		<link rel="shortcut icon" href="img/twr.ico">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant|Cantarell">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text">
+		<title> COMS W3261: Summer 2022 </title>
+	</head>
+	<body>
+		<!-- MathJax -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- Below script mysteriously fixes subscript sizing issues w/ MathJax -->
+		<script>
+		MathJax = {
+		  startup: {
+			ready: function () {
+			  var math = MathJax._.core.MmlTree.MmlNodes.math.MmlMath;
+			  math.defaults.scriptminsize = '0px';
+			  MathJax.startup.defaultReady();
+			}
+		  }
+		};
+		</script>
+		
+		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
+			<div class=topblock>	
+				<div class=topcontent>
+					<div id="name">
+					<h1> <a href="https://twrand.github.io/"> Tim Randolph </a> </h1>
+					</div>
+					<div id="menubar">
+						<a href="overview.html">OVERVIEW</a>
+						&nbsp;
+						<a href="syllabus.html">EXAMPLE SYLLABUS</a>
+						&nbsp;
+						<a href="materials.html">COURSE MATERIALS</a>
+						&nbsp;
+						<a href="feedback.html">STUDENT FEEDBACK</a>
+						&nbsp;
+						<a href="https://twrand.github.io/">HOME</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class=widecenterblock>
+				<div class=widemaintext>
+				
+					<!-- <div class=row>
+						<div class="column left">
+							left 1
+						</div>
+						<div class="column right">
+							left 2
+						</div>
+					</div> -->
+				
+					<div class=row>
+					<div class="column left">
+							
+						<div class=mainsection>
+							<img src="img/HW1-1.png" width="600">
+							<img src="img/HW1-2.png" width="600">
+							<img src="img/HW1-3.png" width="600">
+							<img src="img/HW1-4.png" width="600">
+							<img src="img/HW1-5.png" width="600">
+							<img src="img/HW1-6.png" width="600">
+							<img src="img/HW1-7.png" width="600">
+							<br/><br/><br/><hr/><br/><br/><br/>
+							<img src="img/puzzle1.jpg" width="600">
+							<img src="img/puzzle2.jpg" width="600">
+						</div> <!-- mainsection -->
+					</div> <!-- column left -->
+					
+					<div class="column right">
+						<div class="commentbox">
+							This is my annotated course materials page. To do: snip and resize the images to the left so that they're easier to see.
+						</div>
+						
+						<br/><br/><br/><br/><br/>
+						
+						<div class="commentbox">
+							I design my problem sets to include the three R's: rationale, resources, and rubric. 
+						</div>
+						
+						<br/><br/><br/>
+						
+						<div class="commentbox">
+							Rationale: Each problem is footnoted with the reason <i>why</i> I think it's worth the students' time. I think this is owed to the students in my class, and including it forces me to think critically about the work I ask my students to do.
+						</div>
+						
+						<br/><br/><br/>
+						
+						<div class="commentbox">
+							Resources: I don't want my students to waste time stuck on a problem. The resources linked won't give them the answer, but they will go over critical concepts and equip students with the concepts needed to explore and engage with the material. 
+						</div>
+						
+						<br/><br/><br/>
+						
+						<div class="commentbox">
+							Rubric: Clear grading standards are a must for equity and transparency.
+						</div>
+					</div> <!-- column right -->
+					</div> <!--row -->
+				</div> <!-- widemaintext -->
+			</div> <!-- centerblock -->
+			
+			
+			<!-- not sure how to fix this so it's commented out -->
+			<!-- not sure how to fix this so it's commented out -->
+			<!-- <div class=bottomblock>
+				<div class="bottomtext">
+					CONTACT: [FIRST INITIAL].[LAST NAME]@COLUMBIA.EDU.
+				</div>
+				
+				<div id="copy"> 
+					<img src="img/cc.png" height="15px" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2022.
+				</div> 
+				
+			</div> -->
+		</div> <!--wrapper -->
+		
+		<!-- Script for collapsible divs -->
+		<script>
+			var coll = document.getElementsByClassName("collapsible");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				content.classList.toggle("open");
+			  });
+			}
+				
+			var coll = document.getElementsByClassName("book");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+				  coll[i].addEventListener("click", function() {
+				this.classList.toggle("book-active");
+				var content = this.nextElementSibling;
+				content.classList.toggle("open");
+			  });
+			}
+		</script>
+	</body>
+</html>
