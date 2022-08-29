@@ -72,6 +72,27 @@
 /*.active {
 	box-shadow: 0px 1px #AAAAAA;
 }*/
+
+/* CSS for collapsible book blurbs */
+.book {
+	background-color: #FFFFFF;
+	color: #000000;
+	cursor: pointer;
+	width: 95%;
+	border: none;
+	text-align: left;
+	outline: none;
+	
+	font-size: 12px;
+}
+.book:hover {
+	box-shadow: 0px 1px #86B3D1;
+}
+.book-active {
+	box-shadow: 0px 1px #DDDDDD;
+}
+
+
 .collapsible:hover {
     box-shadow: 0px 1px #86B3D1;
 }
