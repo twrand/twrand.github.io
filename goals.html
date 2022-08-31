@@ -120,6 +120,13 @@ To do list:
 					<td class="tg-0lax">101.4m</td>
 					<td class="tg-0lax">24:00:33 (3rd)</td>
 				  </tr>
+				  <tr>
+					<td class="tg-0lax"><a href="https://ultrasignup.com/register.aspx?did=88861">
+						Wasatch 100</a></td>
+					<td class="tg-0lax">9/9/22</td>
+					<td class="tg-0lax">100m</td>
+					<td class="tg-0lax">TBD</td>
+				  </tr>
 				</table>
 				</tr>
 				</div>
@@ -131,7 +138,12 @@ To do list:
 					<h2> Reading </h2>
 				</div>
 				
-				My library & to-read list.
+				<p>
+				My library & to-read list. TGB and TGB-NF refer to rankings on The Greatest Books' <a href="https://thegreatestbooks.org/">fiction</a> and <a href="https://thegreatestbooks.org/nonfiction">nonfiction</a> lists, respectively. I've relied heavily on the <a href="https://galaxy.opensyllabus.org/">Open Syllabus' Galaxy project </a> for nonfiction books. </p>
+				<p>
+				<span style="color:green;font-weight:bold;">(S)</span> indicates physical books currently on the shelf, <span style="color:chocolate;font-weight:bold;">(A)</span> indicates books in my Audible library, and <span style="color:purple;font-weight:bold;">(L)</span> indicates lost or on loan. Books are classified by subject according to a system adapted from the <a href="https://bisg.org/page/BISACEdition">BISAC Subject Headings List</a>, <a href="https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes">Dewey Decimal Classification</a>, and Wikipedia's <a href="https://en.wikipedia.org/wiki/Outline_of_science">Outline of Science</a>. Within sections, books are sorted lexicographically by author last name.
+				</p>
+				
 				
 				<a class="anchor" name="reading"></a>
 				
@@ -232,6 +244,15 @@ To do list:
 								listing = listing + "TGB-NF #" + b.rank.tgbn;
 							}
 							listing = listing + "]"
+						}
+						if(b.hasOwnProperty("S")) {
+							listing = listing + " <span style=\"color:green;font-weight:bold;\">(S)</span> ";
+						}
+						if(b.hasOwnProperty("A")) {
+							listing = listing + " <span style=\"color:chocolate;font-weight:bold;\">(A)</span> ";
+						}
+						if(b.hasOwnProperty("L")) {
+							listing = listing + " <span style=\"color:purple;font-weight:bold;\">(L)</span> ";
 						}
 						
 						listing = "<button type=\"button\" class=\"book\">" + listing;
