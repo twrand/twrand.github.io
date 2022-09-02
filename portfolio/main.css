@@ -286,6 +286,88 @@ h3 { /* Used for paper subheadings in subsection */
 	margin: auto;
 	top: 70px;
 }
+
+#bodyp2label {
+	position: absolute;
+	margin-top: -12px;
+	margin-left: 50px;
+	font-family: var(--alt-font);
+	color: #b5d5eb;
+}
+#bodyp3label {
+	position: absolute;
+	margin-top: -8px;
+	margin-left: 50px;
+	font-family: var(--alt-font);
+	color: #aeeba7;
+}
+#bodyp4label {
+	position: absolute;
+	margin-top: -8px;
+	margin-left: 50px;
+	font-family: var(--alt-font);
+	color: #e8dca2;
+}
+#bodyp5label {
+	position: absolute;
+	margin-top: -8px;
+	margin-left: 50px;
+	font-family: var(--alt-font);
+	color: #eac5eb;
+}
+#bodyp1 {
+	margin-bottom: -35px;
+	margin-top: -20px;
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 6px;
+	padding-bottom: 20px;
+	/*background-color: #e8f9fa;*/
+}
+#bodyp2 {
+	margin: 10px;
+	margin-left: -15px;
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #edf9fa;
+}
+#bodyp3 {
+	margin: 10px;
+	margin-left: 15px;
+	margin-right:-15px;
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 12px;
+	padding-bottom: 20px;
+	background-color: #effced;
+}
+#bodyp4 {
+	margin: 10px;
+	margin-left: -15px;
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 12px;
+	padding-bottom: 20px;
+	background-color: #fffded;
+}
+#bodyp5 {
+	margin: 10px;
+	margin-left: 15px;
+	margin-right:-15px;
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 12px;
+	padding-bottom: 20px;
+	background-color: #fef0ff;
+}
+
 #copy {
 	padding-top: 20px;
 	
