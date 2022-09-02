@@ -432,5 +432,5 @@ h3 { /* Used for paper subheadings in subsection */
 	border-style:solid;
 	border-color:#98cbed;
 	border-radius: 3px;
-	font-family: Cantarell, sans-serif;
+	/* font-family: Cantarell, sans-serif;*/ 
 }
