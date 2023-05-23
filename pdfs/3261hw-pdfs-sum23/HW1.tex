@@ -1,0 +1,511 @@
+\documentclass[letterpaper,11pt,twoside]{article}
+
+\usepackage[left=1in, right=1in, bottom=1.25in, top=1.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+%\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage[mathscr]{euscript}
+\usepackage{latexsym,bbm,xspace,graphicx,float,mathtools,mathdots,xspace}
+\usepackage{enumitem}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{bm}
+\usepackage[backref, colorlinks,citecolor=blue,linkcolor=magenta,bookmarks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{booktabs}
+
+% tikz
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{tablefootnote}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\textbf{\thepage}} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{claim}{Claim}
+\newtheorem{property}{Property}
+\newtheorem{op}{Open Problem}
+\newtheorem{problem}{Problem}
+\newtheorem{question}{Question}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{sketch}{Sketch}
+\newtheorem{idea}{Idea}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newtheoremstyle{restate}{}{}{\itshape}{}{\bfseries}{~(restated).}{.5em}{\thmnote{#3}}
+\theoremstyle{restate}
+\newtheorem*{restate}{}
+
+
+
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{observation}{Observation}{Observations}
+\crefname{claim}{Claim}{Claims}
+\crefname{property}{Property}{Properties}
+\crefname{op}{Open Problem}{Open Problems}
+\crefname{problem}{Problem}{Problems}
+\crefname{question}{Question}{Questions}
+
+% \crefname{fact}{Fact}{Facts}
+
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\crefname{sketch}{Sketch}{Sketches}
+\crefname{idea}{Idea}{Ideas}
+
+% \crefname{condition}{Condition}{Conditions}
+
+\crefname{remark}{Remark}{Remarks}
+
+
+
+\crefname{equation}{Equation}{Equations}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GENERAL-PURPOSE MACROS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\uth}{\bigskip \bigskip {\huge {\red{UP TO HERE}} \bigskip \bigskip}}
+\newcommand{\ignore}[1]{}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\simple}{\mathrm{simple}}
+\newcommand{\E}{\operatorname{{\bf E}}}
+\newcommand{\Ex}{\mathop{{\bf E}\/}}
+\renewcommand{\Pr}{\operatorname{{\bf Pr}}}
+\newcommand{\Prx}{\mathop{{\bf Pr}\/}}
+\newcommand{\Var}{\operatorname{{\bf Var}}}
+\newcommand{\Varx}{\mathop{{\bf Var}\/}}
+\newcommand{\tO}{\tilde{O}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\rZ}{\mathcal{Z}}
+
+\DeclareMathOperator\erf{erf}
+
+\newcommand{\polylog}{\mathrm{polylog}}
+\newcommand{\poly}{\mathrm{poly}}
+\newcommand{\bcalZ}{\bm{\mathcal{Z}}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bxi}{\bm{\xi}}
+
+% Blind (markerless) footnotes
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%
+% NUMBER SYSTEMS %
+%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb R}
+\newcommand{\RR}{\R_{\geq 0}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\NN}{\N_{\geq 1}}
+\newcommand{\Z}{\mathbb Z}
+
+\renewcommand{\i}{\mathbf{i}}   % for complex numbers
+\renewcommand{\d}{\mathrm{d}}   % for integrals
+\newcommand{\lhs}{\mathrm{LHS}} % for inequalities
+\newcommand{\rhs}{\mathrm{RHS}} % for inequalities
+\newcommand{\supp}{\mathrm{supp}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\sig}{\mathrm{sig}}
+
+\newcommand{\comment}[1]{}
+
+% Define colors
+\def\colorful{1}
+\ifnum\colorful=1
+\newcommand{\violet}[1]{{\color{violet}{#1}}}
+\newcommand{\orange}[1]{{\color{orange}{#1}}}
+\newcommand{\blue}[1]{{{\color{blue}#1}}}
+\newcommand{\red}[1]{{\color{red} {#1}}}
+\newcommand{\green}[1]{{\color{green} {#1}}}
+\newcommand{\pink}[1]{{\color{pink}{#1}}}
+\newcommand{\gray}[1]{{\color{gray}{#1}}}
+\fi
+\ifnum\colorful=0
+\newcommand{\violet}[1]{{{#1}}}
+\newcommand{\orange}[1]{{{#1}}}
+\newcommand{\blue}[1]{{{#1}}}
+\newcommand{\red}[1]{{{#1}}}
+\newcommand{\green}[1]{{{#1}}}
+\newcommand{\gray}[1]{{{#1}}}
+\fi
+
+\title{Homework 1}
+% \author{Tim Randolph}
+\date{COMS W3261, Summer A 2023}
+
+\begin{document}
+
+\maketitle
+
+This homework is due \textbf{Monday, 5/29/2023, at 11:59pm EST}. Submit to GradeScope (course code: K3VK75). If you use late days, the absolute latest we can accept a submission is Friday at 11:59 PM EST.
+
+\textbf{Grading policy reminder:} \LaTeX~is preferred, but neatly typed or handwritten solutions are acceptable.\footnote{The website \href{https://www.overleaf.com/}{Overleaf} (essentially Google Docs for LaTeX) may make compiling and organizing your .tex files easier. Here's a quick \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{tutorial}.} Feel free to use the .tex file for the homework as a template to write up your answers, or use the template posted on the course website. Your TAs may dock points for indecipherable writing.\\
+
+Proofs should be complete; that is, include enough information that a reader can clearly tell that the argument is rigorous. \\
+
+If a question is ambiguous, please state your assumptions. This way, we can give you credit for correct work. (Even better, post on Ed so that we can resolve the ambiguity.) \\
+
+\textbf{\LaTeX~resources.}
+\begin{itemize}
+    \item \href{https://detexify.kirelabs.org/classify.html}{Detexify} is a nice tool that lets you draw a symbol and returns the \LaTeX~codes for similar symbols. 
+    \item The tool \href{https://www.tablesgenerator.com/}{Table Generator} makes building tables in \LaTeX~much easier.
+    \item The tool \href{http://madebyevan.com/fsm/}{Finite State Machine Designer} may be useful for drawing automata. See also this example (\href{https://static.us.edusercontent.com/files/HZeTXimODzWeLvHIqsvjL2BG}{PDF}) (\href{https://static.us.edusercontent.com/files/RI3W8tQNvHMWFe9MkXV1KztA}{.tex}) of how to make fancy edges (courtesy of Eumin Hong).
+    \item The website \href{https://www.mathcha.io/}{mathcha.io} allows you to draw diagrams and convert them to \LaTeX~code.
+    \item To use the previous drawing tools (and for most drawing in \LaTeX), you'll need to use the package Tikz (add the command ``\textbackslash usepackage\{tikz\}'' to the preamble of your .tex file to import the package). 
+    \item \href{https://www.overleaf.com/learn/latex/Positioning_of_Figures}{This tutorial} is a helpful guide to positioning figures.
+\end{itemize}  
+
+\clearpage
+
+\section*{Problem 1}
+
+% Note: the following Tikz code was generated using http://madebyevan.com/fsm/
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (20.9,-23.4) circle (3);
+\draw (20.9,-23.4) node {$q_0$};
+\draw [black] (32,-35.5) circle (3);
+\draw (32,-35.5) node {$q_1$};
+\draw [black] (32,-35.5) circle (2.4);
+\draw [black] (45.8,-35.5) circle (3);
+\draw (45.8,-35.5) node {$q_2$};
+\draw [black] (57.6,-23.4) circle (3);
+\draw (57.6,-23.4) node {$q_3$};
+\draw [black] (57.6,-23.4) circle (2.4);
+\draw [black] (38.5,-15) circle (3);
+\draw (38.5,-15) node {$q_4$};
+\draw [black] (38.5,-15) circle (2.4);
+\draw [black] (14.9,-23.4) -- (17.9,-23.4);
+\fill [black] (17.9,-23.4) -- (17.1,-22.9) -- (17.1,-23.9);
+\draw [black] (22.93,-25.61) -- (29.97,-33.29);
+\fill [black] (29.97,-33.29) -- (29.8,-32.36) -- (29.06,-33.04);
+\draw (25.91,-30.91) node [left] {$1$};
+\draw [black] (35,-35.5) -- (42.8,-35.5);
+\fill [black] (42.8,-35.5) -- (42,-35) -- (42,-36);
+\draw (38.9,-36) node [below] {$1$};
+\draw [black] (54.85,-22.19) -- (41.25,-16.21);
+\fill [black] (41.25,-16.21) -- (41.78,-16.99) -- (42.18,-16.07);
+\draw (49.03,-18.69) node [above] {$1$};
+\draw [black] (35.79,-16.29) -- (23.61,-22.11);
+\fill [black] (23.61,-22.11) -- (24.54,-22.21) -- (24.11,-21.31);
+\draw (28.71,-18.69) node [above] {$1$};
+\draw [black] (20.601,-26.373) arc (21.99462:-266.00538:2.25);
+\draw (16.32,-29.62) node [below] {$0$};
+\fill [black] (18.36,-24.97) -- (17.43,-24.81) -- (17.8,-25.73);
+\draw [black] (32.864,-38.361) arc (44.53768:-243.46232:2.25);
+\draw (30.45,-42.75) node [below] {$0$};
+\fill [black] (30.25,-37.93) -- (29.33,-38.13) -- (30.04,-38.84);
+\draw [black] (47.123,-38.18) arc (54:-234:2.25);
+\draw (45.8,-42.75) node [below] {$0$};
+\fill [black] (44.48,-38.18) -- (43.6,-38.53) -- (44.41,-39.12);
+\draw [black] (60.549,-23.88) arc (108.48019:-179.51981:2.25);
+\draw (63.68,-28.69) node [right] {$0$};
+\fill [black] (59.01,-26.03) -- (58.79,-26.95) -- (59.74,-26.63);
+\draw [black] (38.717,-12.02) arc (203.5618:-84.4382:2.25);
+\draw (42.92,-8.68) node [above] {$0$};
+\fill [black] (41,-13.36) -- (41.93,-13.5) -- (41.53,-12.58);
+\draw [black] (47.89,-33.35) -- (55.51,-25.55);
+\fill [black] (55.51,-25.55) -- (54.59,-25.77) -- (55.3,-26.47);
+\draw (52.23,-30.92) node [right] {$1$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+    \item (3 points.) The DFA state diagram above is defined on the alphabet $\Sigma = \{0,1\}$. Write out its formal definition (as a 5-tuple). When specifying the transition function $\delta$, you can draw a table or simply describe the output of $\delta$ for all states on all possible inputs. 
+    
+    \item (3 points.) Describe the language recognized by the DFA in one or two sentences, then explain why the DFA accepts a string if and only if it matches your description. [Hint: Test some strings and look for a pattern; never forget the empty string $\epsilon$!]
+    
+    \end{enumerate}
+    
+\blfootnote{ Rationale: The goal of this question is to make sure you're comfortable reading state diagrams, evaluating DFAs on strings, and reasoning about what they do. }
+\blfootnote{ References: Sipser 1.1 pp. 34-37; Lightning review of DFAs from the Resource Archive section of the course webpage.}
+    
+\clearpage
+\section*{Problem 2.}
+    \begin{enumerate}
+    \item (4 points.) Consider the DFA drawn below. What is the language recognized by this DFA (over what alphabet)? Describe your reasoning.
+    
+    \begin{center}
+    \begin{tikzpicture}[scale=0.18]
+    \tikzstyle{every node}+=[inner sep=0pt]
+    \draw [black] (31,-25.2) circle (3);
+    \draw (31,-25.2) node {$q_1$};
+    \draw [black] (31,-25.2) circle (2.4);
+    \draw [black] (45.6,-25.2) circle (3);
+    \draw (45.6,-25.2) node {$q_2$};
+    \draw [black] (45.6,-25.2) circle (2.4);
+    \draw [black] (59.3,-25.2) circle (3);
+    \draw (59.3,-25.2) node {$q_3$};
+    \draw [black] (59.3,-25.2) circle (2.4);
+    \draw [black] (52.5,-37.8) circle (3);
+    \draw (52.5,-37.8) node {$q_4$};
+    \draw [black] (34,-25.2) -- (42.6,-25.2);
+    \fill [black] (42.6,-25.2) -- (41.8,-24.7) -- (41.8,-25.7);
+    \draw (38.3,-24.7) node [above] {$b$};
+    \draw [black] (48.6,-25.2) -- (56.3,-25.2);
+    \fill [black] (56.3,-25.2) -- (55.5,-24.7) -- (55.5,-25.7);
+    \draw (52.45,-25.7) node [below] {$c$};
+    \draw [black] (28.48,-23.593) arc (265.20427:-22.79573:2.25);
+    \draw (26.56,-18.93) node [above] {$a$};
+    \fill [black] (30.74,-22.22) -- (31.31,-21.47) -- (30.31,-21.38);
+    \draw [black] (45.982,-22.236) arc (200.389:-87.611:2.25);
+    \draw (50.34,-19.08) node [above] {$b$};
+    \fill [black] (48.18,-23.7) -- (49.11,-23.89) -- (48.76,-22.95);
+    \draw [black] (60.367,-22.409) arc (186.81308:-101.18692:2.25);
+    \draw (64.79,-19.15) node [right] {$c$};
+    \fill [black] (62.16,-24.35) -- (63.02,-24.75) -- (62.9,-23.76);
+    \draw [black] (32.234,-22.471) arc (149.90081:30.09919:14.929);
+    \fill [black] (58.07,-22.47) -- (58.1,-21.53) -- (57.23,-22.03);
+    \draw (45.15,-14.53) node [above] {$c$};
+    \draw [black] (47.04,-27.83) -- (51.06,-35.17);
+    \fill [black] (51.06,-35.17) -- (51.11,-34.23) -- (50.24,-34.71);
+    \draw (48.38,-32.69) node [left] {$a$};
+    \draw [black] (57.88,-27.84) -- (53.92,-35.16);
+    \fill [black] (53.92,-35.16) -- (54.74,-34.69) -- (53.86,-34.22);
+    \draw (55.23,-30.32) node [left] {$a,b$};
+    \draw [black] (55.18,-36.477) arc (144:-144:2.25);
+    \draw (59.75,-37.8) node [right] {$a,b,c$};
+    \fill [black] (55.18,-39.12) -- (55.53,-40) -- (56.12,-39.19);
+    \draw [black] (24.5,-25.2) -- (28,-25.2);
+    \fill [black] (28,-25.2) -- (27.2,-24.7) -- (27.2,-25.7);
+    \end{tikzpicture}
+    \end{center}
+    
+    \item (4 points.) The DFA drawn below recognizes all strings over the alphabet $\{1, 2, 3\}$ that end in a 1 or a 3 and don't contain 1's and 3's adjacent to each other (that is, the substrings $13$ and $31$ are forbidden). Draw a DFA state diagram that recognizes the same language (that is, accepts exactly the same set of strings over $\{1, 2, 3\}$) but which has \textbf{at most four states} in total.
+        
+    Explain in words why your DFA recognizes the same language as the pictured DFA.
+    \begin{center}
+    \begin{tikzpicture}[scale=0.2]
+    \tikzstyle{every node}+=[inner sep=0pt]
+    \draw [black] (20.5,-28.7) circle (3);
+    \draw (20.5,-28.7) node {$q_0$};
+    \draw [black] (37.2,-28.7) circle (3);
+    \draw (37.2,-28.7) node {$q_2$};
+    \draw [black] (37.2,-16.4) circle (3);
+    \draw (37.2,-16.4) node {$q_1$};
+    \draw [black] (37.2,-16.4) circle (2.4);
+    \draw [black] (37.2,-41.1) circle (3);
+    \draw (37.2,-41.1) node {$q_3$};
+    \draw [black] (37.2,-41.1) circle (2.4);
+    \draw [black] (49.8,-16.4) circle (3);
+    \draw (49.8,-16.4) node {$q_4$};
+    \draw [black] (49.8,-41.1) circle (3);
+    \draw (49.8,-41.1) node {$q_5$};
+    \draw [black] (14,-28.7) -- (17.5,-28.7);
+    \fill [black] (17.5,-28.7) -- (16.7,-28.2) -- (16.7,-29.2);
+    \draw [black] (23.5,-28.7) -- (34.2,-28.7);
+    \fill [black] (34.2,-28.7) -- (33.4,-28.2) -- (33.4,-29.2);
+    \draw (28.85,-29.2) node [below] {$2$};
+    \draw [black] (35.666,-26.136) arc (-158.0588:-201.9412:9.598);
+    \fill [black] (35.67,-18.96) -- (34.9,-19.52) -- (35.83,-19.89);
+    \draw (34.47,-22.55) node [left] {$1$};
+    \draw [black] (34.22,-16.179) arc (293.49388:5.49388:2.25);
+    \draw (30.74,-11.72) node [left] {$1$};
+    \fill [black] (35.56,-13.9) -- (35.7,-12.97) -- (34.79,-13.37);
+    \draw [black] (38.789,-18.929) arc (22.90493:-22.90493:9.303);
+    \fill [black] (38.79,-26.17) -- (39.56,-25.63) -- (38.64,-25.24);
+    \draw (40.02,-22.55) node [right] {$2$};
+    \draw [black] (22.233,-26.253) arc (141.66951:111.07579:28.518);
+    \fill [black] (34.35,-17.33) -- (33.42,-17.15) -- (33.78,-18.08);
+    \draw (26.69,-20.48) node [above] {$1$};
+    \draw [black] (22.91,-30.49) -- (34.79,-39.31);
+    \fill [black] (34.79,-39.31) -- (34.45,-38.43) -- (33.85,-39.24);
+    \draw (27.85,-35.4) node [below] {$3$};
+    \draw [black] (35.87,-38.421) arc (-161.38423:-198.61577:11.031);
+    \fill [black] (35.87,-38.42) -- (36.09,-37.5) -- (35.14,-37.82);
+    \draw (34.79,-34.9) node [left] {$3$};
+    \draw [black] (38.588,-31.348) arc (19.56168:-19.56168:10.608);
+    \fill [black] (38.59,-31.35) -- (38.38,-32.27) -- (39.33,-31.93);
+    \draw (39.7,-34.9) node [right] {$2$};
+    \draw [black] (40.2,-16.4) -- (46.8,-16.4);
+    \fill [black] (46.8,-16.4) -- (46,-15.9) -- (46,-16.9);
+    \draw (43.5,-16.9) node [below] {$3$};
+    \draw [black] (40.2,-41.1) -- (46.8,-41.1);
+    \fill [black] (46.8,-41.1) -- (46,-40.6) -- (46,-41.6);
+    \draw (43.5,-41.6) node [below] {$1$};
+    \draw [black] (52.48,-15.077) arc (144:-144:2.25);
+    \draw (57.05,-16.4) node [right] {$1,2,3$};
+    \fill [black] (52.48,-17.72) -- (52.83,-18.6) -- (53.42,-17.79);
+    \draw [black] (52.48,-39.777) arc (144:-144:2.25);
+    \draw (57.05,-41.1) node [right] {$1,2,3$};
+    \fill [black] (52.48,-42.42) -- (52.83,-43.3) -- (53.42,-42.49);
+    \draw [black] (39.88,-27.377) arc (144:-144:2.25);
+    \draw (44.45,-28.7) node [right] {$2$};
+    \fill [black] (39.88,-30.02) -- (40.23,-30.9) -- (40.82,-30.09);
+    \draw [black] (35.563,-43.6) arc (-5.49264:-293.49264:2.25);
+    \draw (30.74,-45.78) node [left] {$3$};
+    \fill [black] (34.22,-41.32) -- (33.47,-40.75) -- (33.38,-41.74);
+    \end{tikzpicture}
+    \end{center}
+ 
+\end{enumerate}
+
+\blfootnote{ Rationale: More practice reading state diagrams and evaluating DFAs on strings; also, practice designing DFAs to perform a task and simplifying them. }
+\blfootnote{ References: Sipser 1.1 pp. 34-37 (DFAs); Sipser 1.1 pp. 41-43 (designing DFAs); Lightning reviews of DFAs and designing DFAs from the Resource Archive section of the course webpage.}
+
+
+
+\clearpage
+\section*{Problem 3}
+
+\begin{enumerate}
+    \item (4 points). 
+    %Recall that counting in binary works the same as in base ten, only with far fewer digits. 
+    In binary, the natural numbers are $0, 1, 10, 11, 100, 101, ..., $ etc. Draw a state diagram for an NFA on the alphabet $\Sigma = \{0, 1\}$ that recognizes the language of binary natural numbers divisible by 4. (For instance, your machine should accept $100$, but reject $11$ and $101$. Reject strings with extra leading zeroes, like $0100$.)
+    
+    Explain in words why your NFA recognizes the language specified.
+    
+    \item (2 points). 
+    Over the binary alphabet $\{0,1\}$, Let $L_1$ be the language of all strings whose length is divisible by 3, and $L_2$ be the language of all strings that have an even number of $0$'s. The state diagram below depicts an NFA that recognizes $L_1 \cup L_2$.
+
+    Specify the elements of a 5-tuple $(Q, \Sigma, \delta, q_0, F)$ equivalent to the NFA state diagram below. When specifying the transition function, feel free to specify $\delta$ only for inputs that transition to a non-empty set of states; for the others, you can assume $\delta$ maps to $\emptyset$. No justification required.
+
+    \begin{center}
+        \begin{tikzpicture}[scale=0.2]
+        \tikzstyle{every node}+=[inner sep=0pt]
+        \draw [black] (25.8,-28) circle (3);
+        \draw (25.8,-28) node {$q_0$};
+        \draw [black] (38.9,-21.2) circle (3);
+        \draw (38.9,-21.2) node {$q_1$};
+        \draw [black] (38.9,-21.2) circle (2.4);
+        \draw [black] (56,-21.2) circle (3);
+        \draw (56,-21.2) node {$q_2$};
+        \draw [black] (38.9,-33.8) circle (3);
+        \draw (38.9,-33.8) node {$q_3$};
+        \draw [black] (38.9,-33.8) circle (2.4);
+        \draw [black] (56,-33.8) circle (3);
+        \draw (56,-33.8) node {$q_4$};
+        \draw [black] (47.3,-40.8) circle (3);
+        \draw (47.3,-40.8) node {$q_5$};
+        \draw [black] (20.6,-28) -- (22.8,-28);
+        \fill [black] (22.8,-28) -- (22,-27.5) -- (22,-28.5);
+        \draw [black] (28.46,-26.62) -- (36.24,-22.58);
+        \fill [black] (36.24,-22.58) -- (35.3,-22.51) -- (35.76,-23.39);
+        \draw (33.26,-25.1) node [below] {$\epsilon$};
+        \draw [black] (53.251,-22.394) arc (-71.27866:-108.72134:18.075);
+        \fill [black] (53.25,-22.39) -- (52.33,-22.18) -- (52.65,-23.12);
+        \draw (47.45,-23.85) node [below] {$0$};
+        \draw [black] (41.432,-19.602) arc (116.00238:63.99762:13.727);
+        \fill [black] (41.43,-19.6) -- (42.37,-19.7) -- (41.93,-18.8);
+        \draw (47.45,-17.71) node [above] {$0$};
+        \draw [black] (36.077,-20.22) arc (278.59197:-9.40803:2.25);
+        \draw (33.14,-15.91) node [above] {$1$};
+        \fill [black] (37.96,-18.36) -- (38.34,-17.5) -- (37.35,-17.65);
+        \draw [black] (56.96,-18.37) arc (189:-99:2.25);
+        \draw (61.3,-14.95) node [right] {$1$};
+        \fill [black] (58.83,-20.24) -- (59.7,-20.61) -- (59.54,-19.62);
+        \draw [black] (28.54,-29.21) -- (36.16,-32.59);
+        \fill [black] (36.16,-32.59) -- (35.63,-31.8) -- (35.22,-32.72);
+        \draw (31.45,-31.41) node [below] {$\epsilon$};
+        \draw [black] (41.9,-33.8) -- (53,-33.8);
+        \fill [black] (53,-33.8) -- (52.2,-33.3) -- (52.2,-34.3);
+        \draw (47.45,-33.3) node [above] {$0,1$};
+        \draw [black] (53.66,-35.68) -- (49.64,-38.92);
+        \fill [black] (49.64,-38.92) -- (50.57,-38.81) -- (49.95,-38.03);
+        \draw (53.41,-37.79) node [below] {$0,1$};
+        \draw [black] (45,-38.88) -- (41.2,-35.72);
+        \fill [black] (41.2,-35.72) -- (41.5,-36.62) -- (42.14,-35.85);
+        \draw (41.34,-37.79) node [below] {$0,1$};
+        \end{tikzpicture}
+        \end{center}
+
+
+    \item (4 points). Draw the state diagram of a \emph{DFA} over $\{0,1\}$, \textbf{with at most 6 states}, that also recognizes $L_1 \cup L_2$. Explain in words why your DFA recognizes this language. (We'll discuss a general procedure for converting NFAs to DFAs in Lecture 3, but this question doesn't require it.)
+\end{enumerate}
+
+\blfootnote{Rationale: The purpose of this question is to get experience in building, testing, and simplifying NFAs, as well as converting NFAs to DFAs. }
+\blfootnote{References: Sipser 1.2 pp. 47-53 (NFAs), also see the Lightning Review video on NFAs in the Resource Archive section of the course webpage. }
+
+\clearpage
+\section*{Problem 4}
+
+\begin{enumerate}
+    \item (2 points.) Recall that the (Kleene) star operation is defined as follows:
+    \[
+        A^* = \{ x_1x_2\dots x_k \; | \; x_1, x_2, \dots, x_k \in A, k \geq 0\}.
+    \]
+    Let $A$ and $B$ be regular languages. Is it true that $(A \cup B)^*$ and $A^* \cup B^*$ are the same language? If so, provide a proof. If not, provide a counterexample. (Recall the order of operations: $A^*\cup B^* = (A^*) \cup (B^*)$.)
+
+    \item (2 points.) Let $A$ be a regular language. Is it true that $A^*A^*$ and $(AA)^*$ are the same language? If so, provide a proof. If not, provide a counterexample.
+
+\end{enumerate}
+
+\blfootnote{Some practice reasoning about the regular operations.}
+\blfootnote{References: Sipser p.44-45 (definition of Union, Concatenation, and Star, as well as closure).}
+
+\clearpage
+\section*{Problem 5}
+
+\begin{enumerate}
+    \item (6 points.) Given a language $A$ over an alphabet $\Sigma$, define $doub(A)$ as follows:
+    \[
+        doub(A) := \{w_1w_1w_2w_2\dots w_nw_n \; | \; w_1w_2\dots w_n \in A; w_1, w_2, \dots, w_n \in \Sigma\}.
+    \]
+    That is, each string in $doub(A)$ can be obtained by beginning with some string $w_1w_2\dots w_n$ in $A$ and replacing each character with two copies of itself.
+
+    Show that the class of regular languages is closed under the operation $doub$ by explaining how to modify an arbitrary DFA $D_1$ so that it recognizes the language $doub(L(D_1))$. For simplicity, you may consider just the case in which the alphabet is $\Sigma = \{0,1\}$.
+
+    \item (2 points.) Given a language $A$ over an alphabet $\Sigma$, define $oct(A)$ similarly to $doub(A)$, except that we now replace each character with \emph{eight} copies of itself. 
+
+    Show that the class of regular languages is closed under the operation $oct$ by reasoning from the fact that the regular languages are closed under other, previously proved, regular expressions. (That is, prove \emph{without} explaining how to modify a DFA.) You may assume that $doub$ is regular.
+\end{enumerate}
+
+\blfootnote{Rationale: The point of this question is to practice proving regularity of operations using various techniques. }
+\blfootnote{References: Sipser pp.45-46 for an example of constructing a DFA that recognizes $A_1 \cup A_2$, given DFAs that recognize $A_1$ and $A_2$; for part 2 Sipser p.44-45 (definition of Union, Concatenation, and Star, as well as closure). }
+
+\clearpage
+\section*{Problem 6 (1 point)}
+    \begin{enumerate}
+        \item Do you have any leftover questions or confusions from week 1 that you'd like to see addressed in class?
+        
+        \item (Optional) Any other thoughts? Thank you!
+    \end{enumerate}
+
+\blfootnote{ Rationale: We'll spend more time reviewing the toughest topics from each week, and we'll repeat the activities that are most useful. Also, feedback helps make the course better. }
+
+\end{document}
