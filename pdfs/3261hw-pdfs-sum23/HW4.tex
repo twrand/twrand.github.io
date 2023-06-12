@@ -1,0 +1,416 @@
+\documentclass[letterpaper,11pt,twoside]{article}
+
+\usepackage[left=1in, right=1in, bottom=1.25in, top=1.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+%\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage[mathscr]{euscript}
+\usepackage{latexsym,bbm,xspace,graphicx,float,mathtools,mathdots,xspace}
+\usepackage{enumitem}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{bm}
+\usepackage[backref, colorlinks,citecolor=blue,linkcolor=magenta,bookmarks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% tikz
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{tablefootnote}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\textbf{\thepage}} % except the center
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{claim}{Claim}
+\newtheorem{property}{Property}
+\newtheorem{op}{Open Problem}
+\newtheorem{problem}{Problem}
+\newtheorem{question}{Question}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{sketch}{Sketch}
+\newtheorem{idea}{Idea}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newtheoremstyle{restate}{}{}{\itshape}{}{\bfseries}{~(restated).}{.5em}{\thmnote{#3}}
+\theoremstyle{restate}
+\newtheorem*{restate}{}
+
+
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{observation}{Observation}{Observations}
+\crefname{claim}{Claim}{Claims}
+\crefname{property}{Property}{Properties}
+\crefname{op}{Open Problem}{Open Problems}
+\crefname{problem}{Problem}{Problems}
+\crefname{question}{Question}{Questions}
+
+% \crefname{fact}{Fact}{Facts}
+
+\crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\crefname{sketch}{Sketch}{Sketches}
+\crefname{idea}{Idea}{Ideas}
+
+% \crefname{condition}{Condition}{Conditions}
+
+\crefname{remark}{Remark}{Remarks}
+
+
+
+\crefname{equation}{Equation}{Equations}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GENERAL-PURPOSE MACROS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ignore}[1]{}
+\newcommand{\eps}{\epsilon}
+\newcommand{\simple}{\mathrm{simple}}
+\newcommand{\E}{\operatorname{{\bf E}}}
+\newcommand{\Ex}{\mathop{{\bf E}\/}}
+\renewcommand{\Pr}{\operatorname{{\bf Pr}}}
+\newcommand{\Prx}{\mathop{{\bf Pr}\/}}
+\newcommand{\Var}{\operatorname{{\bf Var}}}
+\newcommand{\Varx}{\mathop{{\bf Var}\/}}
+\newcommand{\tO}{\tilde{O}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\rZ}{\mathcal{Z}}
+
+\DeclareMathOperator\erf{erf}
+
+\newcommand{\polylog}{\mathrm{polylog}}
+\newcommand{\poly}{\mathrm{poly}}
+\newcommand{\bcalZ}{\bm{\mathcal{Z}}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bxi}{\bm{\xi}}
+
+% Blind (markerless) footnotes
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%
+% NUMBER SYSTEMS %
+%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb R}
+\newcommand{\RR}{\R_{\geq 0}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\NN}{\N_{\geq 1}}
+\newcommand{\Z}{\mathbb Z}
+
+\renewcommand{\i}{\mathbf{i}}   % for complex numbers
+\renewcommand{\d}{\mathrm{d}}   % for integrals
+\newcommand{\lhs}{\mathrm{LHS}} % for inequalities
+\newcommand{\rhs}{\mathrm{RHS}} % for inequalities
+\newcommand{\supp}{\mathrm{supp}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\sig}{\mathrm{sig}}
+
+\newcommand{\comment}[1]{}
+
+% Define colors
+\def\colorful{1}
+\ifnum\colorful=1
+\newcommand{\violet}[1]{{\color{violet}{#1}}}
+\newcommand{\orange}[1]{{\color{orange}{#1}}}
+\newcommand{\blue}[1]{{{\color{blue}#1}}}
+\newcommand{\red}[1]{{\color{red} {#1}}}
+\newcommand{\green}[1]{{\color{green} {#1}}}
+\newcommand{\pink}[1]{{\color{pink}{#1}}}
+\newcommand{\gray}[1]{{\color{gray}{#1}}}
+\fi
+\ifnum\colorful=0
+\newcommand{\violet}[1]{{{#1}}}
+\newcommand{\orange}[1]{{{#1}}}
+\newcommand{\blue}[1]{{{#1}}}
+\newcommand{\red}[1]{{{#1}}}
+\newcommand{\green}[1]{{{#1}}}
+\newcommand{\gray}[1]{{{#1}}}
+\fi
+
+\title{Homework 4}
+\date{COMS W3261, Summer A 2023}
+
+\begin{document}
+
+\maketitle
+
+This homework is due \textbf{Monday, 6/19/2023, at 11:59pm EST}. Submit to GradeScope (course code: K3VK75). If you use late days, the absolute latest we can accept a submission is Friday at 11:59 PM EST.
+
+\textbf{Grading policy reminder:} \LaTeX~is preferred, but neatly typed or handwritten solutions are acceptable.\footnote{The website \href{https://www.overleaf.com/}{Overleaf} (essentially Google Docs for LaTeX) may make compiling and organizing your .tex files easier. Here's a quick \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{tutorial}.} Feel free to use the .tex file for the homework as a template to write up your answers, or use the template posted on the course website. Your TAs may dock points for indecipherable writing.\\
+
+Proofs should be complete; that is, include enough information that a reader can clearly tell that the argument is rigorous. \\
+
+If a question is ambiguous, please state your assumptions. This way, we can give you credit for correct work. (Even better, post on Ed so that we can resolve the ambiguity.) \\
+
+\textbf{\LaTeX~resources.}
+\begin{itemize}
+    \item \href{https://detexify.kirelabs.org/classify.html}{Detexify} is a nice tool that lets you draw a symbol and returns the \LaTeX~codes for similar symbols. 
+    \item The tool \href{https://www.tablesgenerator.com/}{Table Generator} makes building tables in \LaTeX~much easier.
+    \item The tool \href{http://madebyevan.com/fsm/}{Finite State Machine Designer} may be useful for drawing automata. See also this example (\href{https://static.us.edusercontent.com/files/HZeTXimODzWeLvHIqsvjL2BG}{PDF}) (\href{https://static.us.edusercontent.com/files/RI3W8tQNvHMWFe9MkXV1KztA}{.tex}) of how to make fancy edges (courtesy of Eumin Hong).
+    \item The website \href{https://www.mathcha.io/}{mathcha.io} allows you to draw diagrams and convert them to \LaTeX~code.
+    \item To use the previous drawing tools (and for most drawing in \LaTeX), you'll need to use the package Tikz (add the command ``\textbackslash usepackage\{tikz\}'' to the preamble of your .tex file to import the package). 
+    \item \href{https://www.overleaf.com/learn/latex/Positioning_of_Figures}{This tutorial} is a helpful guide to positioning figures.
+\end{itemize}  
+
+
+
+\clearpage
+\section*{Problem 1 (12 points)}
+    The following questions concern the pushdown automaton $P$ pictured below. $P$'s tape alphabet is $\Sigma = \{0, 1, \#\}$, and $P$'s stack alphabet is $\Gamma = \{0, 1, \#, S, A, B, \$\}$.
+
+    In the state diagram below, we have employed the same shorthand as we used in class when converting CFGs to PDAs: if a transition indicates to push the string ``abc'', for instance, this is short for pushing $c$, then $b$, and then $a$, so that $a$ is on the top of the stack.
+    \begin{center}
+    \begin{tikzpicture}[scale=0.2]
+    \tikzstyle{every node}+=[inner sep=0pt]
+    \draw [black] (15.6,-25.1) circle (3);
+    \draw (15.6,-25.1) node {$q_0$};
+    \draw [black] (62.1,-24.9) circle (3);
+    \draw (62.1,-24.9) node {$q_{accept}$};
+    \draw [black] (62.1,-24.9) circle (2.4);
+    \draw [black] (38.4,-25.1) circle (3);
+    \draw (38.4,-25.1) node {$q_{loop}$};
+    \draw [black] (18.6,-25.1) -- (35.4,-25.1);
+    \fill [black] (35.4,-25.1) -- (34.6,-24.6) -- (34.6,-25.6);
+    \draw (27,-24.6) node [above] {$\epsilon,\epsilon\rightarrow S\$$};
+    \draw [black] (41.4,-25.07) -- (59.1,-24.93);
+    \fill [black] (59.1,-24.93) -- (58.3,-24.43) -- (58.3,-25.43);
+    \draw (50.26,-25.57) node [below] {$\epsilon,\$,\rightarrow\epsilon$};
+    \draw [black] (39.723,-27.78) arc (54:-234:2.25);
+    \draw (38.4,-32.35) node [below, align=center] 
+        {
+            $ \epsilon, S \rightarrow \#S\#$ \\
+            $ \epsilon, S \rightarrow A$ \\
+            $ \epsilon, A \rightarrow BA$ \\
+            $ \epsilon, A \rightarrow \epsilon$ \\
+            $ \epsilon, B \rightarrow 00$ \\
+            $ \epsilon, B \rightarrow\; 1$ \\
+            $ 0, 0 \rightarrow \epsilon$ \\
+            $ 1, 1, \rightarrow \epsilon$ \\
+            $ \#, \# \rightarrow \epsilon$ \\
+        };
+    \fill [black] (37.08,-27.78) -- (36.2,-28.13) -- (37.01,-28.72);
+
+    \draw [black] (10.5,-25.6) -- (12.5,-25.6);
+    \fill [black] (12.5,-25.6) -- (11.7,-25.1) -- (11.7,-26.1);
+    \end{tikzpicture}
+    \end{center}
+
+    \begin{enumerate}
+        \item (3 points.) Which of the following six strings are accepted by this PDA? $\epsilon$, $\#\#$, $\#111\#$, $001100$, $\#0100\#$, $\#\#\#1001\#\#\#$. 
+        
+        \item (5 points.) $P$ was constructed by starting with a context-free grammar, and following the process sketched in class to turn a CFG into an equivalent PDA. Construct a grammar $G$ that derives the same language that $P$ recognizes. (You may wish to reverse-engineer the PDA construction process. However, any equivalent grammar is OK).
+
+        No explanation required for this question; however, if you're uncertain about part of the grammar please feel free to include an explanation to ensure partial credit.
+
+         \item (4 points). What is the language recognized by $P$ (and derived by your grammar)? If you like, you may state your answer using set notation and/or regular expressions. Justify your answer by reference to $P$ or by reference to your newly created grammar from the previous part.
+
+    \end{enumerate}
+
+    \blfootnote{ Rationale: The goal of this problem is to practice evaluating PDAs, determining which language they recognize, and relating between PDAs and CFGs. }
+    \blfootnote{ References: Sipser p.112 for an introduction to PDAs, p.113 for the formal definition and pp.114-116 for examples. For converting CFGs to PDAs, see Lemma 2.21 on page 117 and the Proof Idea/Proof sections that follow. See also Lightning Review 6 on Pushdown Automata. }
+
+
+
+\clearpage
+\section*{Problem 2 (8 points)}
+
+Use the context-free pumping lemma to prove that the following language is not context-free. [Hint: the CFPL has the form ``In any context-free language, all sufficiently long strings can be divided into substrings in a way that satisfies three properties''. To show that a language is not context-free, we need to contradict this statement; i.e., show that ``In this particular language, there exists at least one long string such that \emph{no} division of this string into substrings satisfies all three properties.'']
+\begin{enumerate}
+    \item (8 points).
+    \[
+        L_1 = \{ q \# r \# q^R \; | \; q, r \in \{0,1\}^*, \text{ and $|q| \geq |r|$. }\}.
+    \]
+    That is, $q$ and $r$ are binary strings, but $L_1$ is over the alphabet $\{0, 1, \#\}$. Recall that $q^R$ denotes the reverse of $q$: the third section of the string should be the same as the first section, but backwards.
+    
+    \blfootnote{ Rationale: The goal of this question is to practice using the context-free pumping lemma. }
+    \blfootnote{ References: The CFPL is stated in Sipser p.125, with examples on pp. 128-129. Also see the video Example 5: Using the Context-Free Pumping Lemma on the resources section of the course webpage. }
+\end{enumerate}
+
+
+
+\clearpage
+\section*{Problem 3 (8 points)}
+    For the following question, refer to the Turing Machine state diagram $T$ drawn below. The input alphabet of $T$ is $\Sigma = \{0, 1\}$, and the tape alphabet of $T$ is $\Gamma = \{\sqcup, 0, 1, x, X\}$ (here $\sqcup$ indicates a blank tape square). Certain transitions have been omitted for tidiness: if a state does not have a transition on a certain symbol, you may assume that the missing transition goes to $q_{reject}$.
+    
+    \begin{center}
+    \begin{tikzpicture}[scale=0.2]
+    \tikzstyle{every node}+=[inner sep=0pt]
+    \draw [black] (20.1,-6.7) circle (3);
+    \draw (20.1,-6.7) node {$q_0$};
+    \draw [black] (43.8,-6.7) circle (3);
+    \draw (43.8,-6.7) node {$q_1$};
+    \draw [black] (43.8,-27.3) circle (3);
+    \draw (43.8,-27.3) node {$q_2$};
+    \draw [black] (20.7,-26.8) circle (3);
+    \draw (20.7,-26.8) node {$q_3$};
+    \draw [black] (43.8,-48) circle (3);
+    \draw (43.8,-48) node {$q_4$};
+    \draw [black] (8.2,-36.1) circle (3);
+    \draw (8.2,-36.1) node {$q_{acc}$};
+    \draw [black] (8.2,-36.1) circle (2.4);
+    \draw [black] (71.2,-26.8) circle (3);
+    \draw (71.2,-26.8) node {$q_{reject}$};
+    \draw [black] (14.5,-6.7) -- (17.1,-6.7);
+    \fill [black] (17.1,-6.7) -- (16.3,-6.2) -- (16.3,-7.2);
+    \draw [black] (23.1,-6.7) -- (40.8,-6.7);
+    \fill [black] (40.8,-6.7) -- (40,-6.2) -- (40,-7.2);
+    \draw (31.95,-7.2) node [below] {$0\mbox{ }\rightarrow\mbox{ }X,\mbox{ }R$};
+    \draw [black] (42.477,-4.02) arc (234:-54:2.25);
+    \draw (43.8,0.55) node [above, align=center] 
+        {
+            $0\mbox{ }\rightarrow\mbox{ }0,\mbox{ }R\mbox{ }$ \\
+            $\mbox{ }x\mbox{ }\rightarrow\mbox{ }x,\mbox{ }R$
+        };
+    \fill [black] (45.12,-4.02) -- (46,-3.67) -- (45.19,-3.08);
+    \draw [black] (45.123,-29.98) arc (54:-234:2.25);
+    \draw (43.8,-34.55) node [below, align=center] 
+        {
+            $x\mbox{ }\rightarrow\mbox{ }x,\mbox{ }L\mbox{ }$ \\
+            $\mbox{ }0\mbox{ }\rightarrow\mbox{ }0,\mbox{ }L$ \\
+            $\mbox{ }1\mbox{ }\rightarrow\mbox{ }1,\mbox{ }L$
+        };
+    \fill [black] (42.48,-29.98) -- (41.6,-30.33) -- (42.41,-30.92);
+    \draw [black] (40.8,-27.24) -- (23.7,-26.86);
+    \fill [black] (23.7,-26.86) -- (24.49,-27.38) -- (24.51,-26.38);
+    \draw (32.33,-26.38) node [above] {$X\mbox{ }\rightarrow\mbox{ }X,\mbox{ }R$};
+    \draw [black] (17.76,-26.268) arc (287.47051:-0.52949:2.25);
+    \draw (14.7,-21.39) node [left] {$x\mbox{ }\rightarrow\mbox{ }x,\mbox{ }R$};
+    \fill [black] (19.33,-24.14) -- (19.57,-23.23) -- (18.62,-23.53);
+    \draw [black] (22.96,-24.83) -- (41.54,-8.67);
+    \fill [black] (41.54,-8.67) -- (40.61,-8.82) -- (41.26,-9.57);
+    \draw (26.57,-16.26) node [above] {$0\mbox{ }\rightarrow\mbox{ }x,\mbox{ }R$};
+    \draw [black] (22.91,-28.83) -- (41.59,-45.97);
+    \fill [black] (41.59,-45.97) -- (41.34,-45.06) -- (40.66,-45.8);
+    \draw (26.35,-37.89) node [below] {$1\mbox{ }\rightarrow\mbox{ }x,\mbox{ }R$};
+    \draw [black] (45.123,-50.68) arc (54:-234:2.25);
+    \draw (43.8,-55.25) node [below, align=center]
+        {
+            $1\mbox{ }\rightarrow\mbox{ }1,\mbox{ }R\mbox{ }$ \\
+            $\mbox{ }x\mbox{ }\rightarrow\mbox{ }x,\mbox{ }R$
+        };
+    \fill [black] (42.48,-50.68) -- (41.6,-51.03) -- (42.41,-51.62);
+    \draw [black] (46.759,-7.125) arc (73.48558:-73.48558:10.3);
+    \fill [black] (46.76,-26.88) -- (47.67,-27.13) -- (47.38,-26.17);
+    \draw (54.63,-17) node [right] {$1\mbox{ }\rightarrow\mbox{ }x,\mbox{ }L$};
+    \draw [black] (46.745,-27.812) arc (71.83308:-71.83308:10.354);
+    \fill [black] (46.75,-27.81) -- (47.35,-28.54) -- (47.66,-27.59);
+    \draw (54.37,-37.65) node [right] {$0\mbox{ }\rightarrow\mbox{ }x,\mbox{ }L$};
+    \draw [black] (18.29,-28.59) -- (10.61,-34.31);
+    \fill [black] (10.61,-34.31) -- (11.55,-34.23) -- (10.95,-33.43);
+    \draw (2.56,-30.95) node [above] {$\sqcup\mbox{ }\rightarrow\mbox{ }\sqcup,\mbox{ }R$};
+    \draw [black] (46.743,-6.129) arc (97.04012:10.43408:21.806);
+    \fill [black] (70.86,-23.82) -- (71.21,-22.94) -- (70.22,-23.13);
+    \draw (70,-9.69) node [above] {$\sqcup\mbox{ }\rightarrow\mbox{ }\sqcup,\mbox{ }R$};
+    \draw [black] (71.085,-29.795) arc (-6.21904:-98.32109:21.387);
+    \fill [black] (71.08,-29.8) -- (70.5,-30.54) -- (71.5,-30.64);
+    \draw (70,-44.89) node [below] {$\sqcup\mbox{ }\rightarrow\mbox{ }\sqcup,\mbox{ }R$};
+    \end{tikzpicture}
+    \end{center}
+
+    \begin{enumerate}
+    \item For each of the following strings, list the sequence of states that occur when $T$ runs on this string, and the contents of the tape when computation ends at $q_{accept}$ or $q_{reject}$. (For example, on the string $00$, the TM passes through the sequence $q_0, q_1, q_1, q_{reject}$, and leaves the string $X0$ on the tape.) Hint: a careful way to keep track of TM computation is to keep track of the sequence of tape strings, annotated with the current state and the position of the tape head.
+    
+    \begin{enumerate}
+        \item (1 point). The string $000$.
+
+        \item (1 point). The string $\epsilon$.
+
+        \item (1 point). The string $0111$.
+
+        \item (1 point). The string $01$.
+
+        \item (1 point). The string $0110$.
+
+        \item (1 bonus point). The string $00111100$.
+
+    \end{enumerate}
+
+    \item (3 points). What language does $T$ decide? No justification necessary.
+    
+    \end{enumerate}
+    
+    \blfootnote{ Rationale: The goal of this question is to practice reading TM state diagrams and tracking TM computation. }
+    \blfootnote{ References: Sipser pp. 167-169 (formal definition of a Turing Machine) and pp. 171-173 (Turing Machine state diagrams). See also Lightning Review 7: Turing Machines in the resource section of the course webpage. }
+    
+\clearpage
+\section*{Problem 4 (6 points)}
+Provide \emph{high-level descriptions} of Turing Machines that \emph{decide} the following languages. A high-level description is an algorithm for a Turing Machine described in prose, ignoring implementation details such as the way information is encoded or where the head needs to move. However, your TM's behavior should still be \emph{completely specified}: it should be clear what the Turing Machine does in every case.
+
+For example: we can build a Turing Machine $M$ that decides the language 
+\[
+    \{\langle G\rangle \; | \; \langle G \rangle \text{ encodes a\emph{ connected graph}.}\}
+\].
+Our Turing Machine will implement a breadth-first search on the encoded input as follows:
+\begin{enumerate}
+    \item First, check to see if the input encodes a graph and reject if not.
+    \item Mark the first vertex $v$ in the graph.
+    \item Review the encoded graph and mark every vertex adjacent to a marked vertex. Repeat this step until no new nodes are marked.
+    \item Accept if all vertices are marked and reject otherwise.
+\end{enumerate}
+
+(Recall that a decider must halt and accept strings in the language, and must halt and reject on strings not in the language.)
+
+\begin{enumerate}
+    \item (2 points.) $A_1 = $ the language containing every finite set of integers $S$ such that for every triple $a, b, c$ drawn from $S$ without replacement, $a + b \neq c$.
+    
+    \item (4 points.) $A_2 = $ the language containing every encoded DFA $\langle D \rangle$ such that $D$ accepts at least one string $s$. (Here, our Turing Machine receives the description of a DFA, encoded in some alphabet and written on its tape. The TM has access to any information that would normally be part of the DFA 5-tuple or state diagram.)
+    
+    \blfootnote{ Rationale: The goal of this question is to practice thinking about Turing Machines as general-purpose computers that can execute algorithms for solving complex decision problems. }
+    \blfootnote{ References: Sipser pp. 186-187 contains the high-level description given as an example, as well as a breakdown from the high level to the implementation level. TM descriptions later in the book (for instance, those on pp. 195-196) are also given at the high-level. }
+\end{enumerate}
+
+
+
+\clearpage
+\section*{Problem 5 (1 bonus point): Origins of the Turing Machine}
+
+Alan Turing first described the Turing Machine  in his 1936 paper ``On Computable Numbers, with Applications to the Entscheidungsproblem''. The TM wasn't even the main focus of the paper: instead, it was just a tool used to formalize what computational processes can accomplish, used to show that a particular sort of mathematical statement \emph{can't} be proved by a machine.
+
+Among other things, Turing was a decent writer (at least, compared to some mathematicians). Read Sections 1 and 2 of `On Computable Numbers' and consider Turing's original definition of the TM. You can find the paper here: \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}. (If you'd like a lighter Turing read, you might want to read `Computing Machinery and Intelligence', the paper that introduced the Turing Test: \url{https://redirect.cs.umbc.edu/courses/471/papers/turing.pdf}.)
+
+Turing's original machine has an additional function that makes it more similar to one of the three `Variant TMs' (multitape TMs, NTMs, and enumerators) listed in Sipser Section 3.2 than to our definition of a TM. Which one of these three is the most similar?
+
+\end{document}
