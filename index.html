@@ -19,7 +19,21 @@ To do list:
 		<title> Tim Randolph </title>
 	</head>
 	<body>
-		
+		<!-- MathJax -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- Below script mysteriously fixes subscript sizing issues w/ MathJax -->
+		<script>
+		MathJax = {
+		  startup: {
+			ready: function () {
+			  var math = MathJax._.core.MmlTree.MmlNodes.math.MmlMath;
+			  math.defaults.scriptminsize = '0px';
+			  MathJax.startup.defaultReady();
+			}
+		  }
+		};
+		</script>
 	
 		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
 			<div class=topblock>	
@@ -92,6 +106,23 @@ To do list:
 						<!--<h3> &nbsp; conference papers </h3> -->
 							
 						<ul>
+							<li class="collapsible">
+								Tim Randolph. "Exact and Parameterized Algorithms for Subset Sum Problems." PhD Thesis, 2024. <a style="float:right" href="pdfs/Thesis-singlespace-websitecopy.pdf">PDF</a>
+							</li>
+							<div class="content">
+								<p> We present a variety of exact and parameterized algorithms for Subset Sum and other related problems. The major contributions of this thesis include: </p>
+    
+								<ul>
+									<li>1. Average-case algorithms for Generalized Subset Sum, the problem that generalizes both Subset Sum and Equal Subset Sum, as well as structural results describing the parameter regime in which solutions exist. These results extend the application of the "Representation Method" and are the fastest known in this setting. </li>
+        
+									<li>2. A proof that Either-Or Subset Sum, the problem of solving <i> either </i> Subset Sum <i> or </i> Equal Subset Sum, can be solved exponentially faster than time \(2^{0.5n}\) in the worst case. In our view, this result illustrates the potential of the "structure vs. randomness" approach for Subset Sum. </li>
+        
+									<li>3.  Algorithms that solve worst-case Subset Sum faster than time \(2^{0.5n}\) by a polynomial factor. These improvements on the best known exact algorithms for Subset Sum represent the successful application of "log shaving" techniques to the problem. </li>
+									
+									<li>4.  Algorithms for Subset Sum and \(k\)-SUM with constant doubling. When considered in terms of a novel parameterization in the doubling constant, Subset Sum admits an XP-algorithm, while \(k\)-SUM is Fixed-Parameter Tractable. We also show that Subset Sum is FPT in the doubling constant if and only if an instance \(\mathcal{I}\) of Hyperplane-Constrained Integer Linear Programming with \(n\) variables, \(m\) constraints, and constraint matrix entries bounded by \(\Delta\) can be solved in time \(\Delta^{O(m)} \cdot poly(|\mathcal{I}|)\). </li>
+								</ul>
+							</div>
+						
 							<li type="button" class="uncollapsible">
 								Tim Randolph and Karol Węgrzycki.
 								"Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum." Preprint, 2024.
@@ -99,7 +130,7 @@ To do list:
 							</li>
 							
 							<li class="collapsible">
-								Tim Randolph. "Participatory Governance in the Computer Science Theory Classroom." </i> SIGCSE Technical Symposium, 2024. <a style="float:right" href="https://dl.acm.org/doi/10.1145/3626252.3630904">ACM Digital Library</a>
+								Tim Randolph. "Participatory Governance in the Computer Science Theory Classroom." <i>SIGCSE Technical Symposium</i> 2024. <a style="float:right" href="https://dl.acm.org/doi/10.1145/3626252.3630904">ACM Digital Library</a>
 							</li>
 							<div class="content">
 								<p> We implemented pedagogical strategies designed to give students greater control over the use of class time and grading methods in a major-required computer science theory (CST) course. Our methodology addresses the challenges inherent in transferring more power to students in a lecture-based class with a curriculum that requires the sequential mastery of formal mathematical concepts. </p>
@@ -122,7 +153,7 @@ To do list:
 						
 							<li class="collapsible">
 								Xi Chen, Yaonan Jin, Tim Randolph, and Rocco Servedio.
-								"Subset Sum in time \(2^{n/2} / poly(n)\)." <i> RANDOM/APPROX</i>, 2023. <a style="float:right" href="https://arxiv.org/abs/2301.07134">arXiv version</a>
+								"Subset Sum in time \(2^{n/2} / poly(n)\)." <i> RANDOM/APPROX</i> 2023. <a style="float:right" href="https://arxiv.org/abs/2301.07134">arXiv version</a>
 							</li>
 							<div class="content">
 								<!-- <br />
