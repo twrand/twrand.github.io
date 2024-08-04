@@ -146,9 +146,12 @@ To do list:
 				</div>
 				
 				<p>
-				My library & to-read list. TGB and TGB-NF refer to rankings on The Greatest Books' <a href="https://thegreatestbooks.org/">fiction</a> and <a href="https://thegreatestbooks.org/nonfiction">nonfiction</a> lists, respectively. I've relied heavily on the <a href="https://galaxy.opensyllabus.org/">Open Syllabus' Galaxy project </a> for nonfiction books. </p>
+				My library & to-read list. TGB and TGB-NF refer to rankings on The Greatest Books' <a href="https://thegreatestbooks.org/">fiction</a> and <a href="https://thegreatestbooks.org/nonfiction">nonfiction</a> lists, respectively, while NYT-21c refers to the <a href="https://www.nytimes.com/interactive/2024/books/best-books-21st-century.html">New York Times' list</a> of greatest books of the 21st century. I've relied heavily on the <a href="https://galaxy.opensyllabus.org/">Open Syllabus' Galaxy project </a> for nonfiction books. </p>
 				<p>
 				<span style="color:green;font-weight:bold;">(S)</span> indicates physical books currently on the shelf, <span style="color:chocolate;font-weight:bold;">(A)</span> indicates books in my Audible library, and <span style="color:purple;font-weight:bold;">(L)</span> indicates lost or on loan. Books are classified by subject according to a system adapted from the <a href="https://bisg.org/page/BISACEdition">BISAC Subject Headings List</a>, <a href="https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes">Dewey Decimal Classification</a>, and Wikipedia's <a href="https://en.wikipedia.org/wiki/Outline_of_science">Outline of Science</a>. Within sections, books are sorted lexicographically by author last name.
+				</p>
+				<p>
+				Entries colored black are from the first-generation list (2019-2024). <span style="color:fuchsia;">Entries colored fuchsia are from the second-generation list (2024-).</span>
 				</p>
 				<p>
 				Word count and page count are <i>very</i> approximate.
@@ -166,16 +169,15 @@ To do list:
 				
 				<button type="button" class="bcollapsible bactive"> ART </button> <div class="bcontent bopen">
 					<button type="button" class="bcollapsible bactive"> AESTHETICS and CRITICISM </button> <div class="bcontent bopen" id="aesthetics"> </div>
-					<button type="button" class="bcollapsible bactive"> PHOTOGRAPHY </button> <div class="bcontent bopen" id="film"> </div> 
-					<button type="button" class="bcollapsible bactive"> FILM </button> <div class="bcontent bopen" id="film"> </div> 
+					<button type="button" class="bcollapsible bactive"> FILM and PHOTOGRAPHY </button> <div class="bcontent bopen" id="film"> </div>
 					<button type="button" class="bcollapsible bactive"> MUSIC </button> <div class="bcontent bopen" id="music"> </div>
-					<button type="button" class="bcollapsible bactive"> PERFORMING ARTS </button> <div id="performing" class="bcontent bopen" id="performing"> </div>
+					<!-- <button type="button" class="bcollapsible bactive"> PERFORMING ARTS </button> <div id="performing" class="bcontent bopen" id="performing"> </div> -->
 					<button type="button" class="bcollapsible bactive"> VISUAL ARTS </button> <div class="bcontent bopen" id="visual"> </div>
 				</div> 
 				<button type="button" class="bcollapsible bactive"> HISTORY </button> <div class="bcontent bopen">
 					<button type="button" class="bcollapsible bactive"> PREHISTORY and CLASSICAL HISTORY </button> <div class="bcontent bopen" id="prehist"> </div> 
-					<button type="button" class="bcollapsible bactive"> REGIONAL HISTORY </button> <div class="bcontent bopen" id="worldhist"> </div> 
-					<button type="button" class="bcollapsible bactive"> GLOBAL and PERSPECTIVE HISTORY </button> <div class="bcontent bopen" id="contemphist"> </div> 
+					<button type="button" class="bcollapsible bactive"> REGIONAL HISTORY </button> <div class="bcontent bopen" id="regionhist"> </div> 
+					<button type="button" class="bcollapsible bactive"> GLOBAL and PERSPECTIVE HISTORY </button> <div class="bcontent bopen" id="global-persp-hist"> </div> 
 					<button type="button" class="bcollapsible bactive"> TOPIC HISTORY and HISTORICAL NARRATIVE </button> <div class="bcontent bopen" id="historical"> </div> 
 				</div> 
 				<button type="button" class="bcollapsible bactive"> LITERATURE </button> <div class="bcontent bopen">
@@ -243,38 +245,55 @@ To do list:
 				
 				<!-- Load and populate the medialist -->
 				<script src="js/books.js"></script>
+				<script src="js/books2.js"></script>
 				<script>
+					books = books1.concat(books2);
 					function bstring(b) {
 						listing = " " + b.author + ". <i>" + b.title +"</i>. ("+b.year+").";
+						if(b.hasOwnProperty("gen")) {
+							if(b.gen == 2) {
+								listing = "<span style=\"color:fuchsia;\">" + listing;
+							}
+						}
 						if(b.done) { listing = "☑" + listing; }
 						else {       listing = "☐" + listing; }
 						if(b.hasOwnProperty("rank")) {  
 							listing = listing + " ["
 							if(b.rank.hasOwnProperty("tgb")) {
-								listing = listing + "TGB #" + b.rank.tgb;
+								listing = listing + " TGB #" + b.rank.tgb;
 							}
 							if(b.rank.hasOwnProperty("tgbn")) {
-								listing = listing + "TGB-NF #" + b.rank.tgbn;
+								listing = listing + " TGB-NF #" + b.rank.tgbn;
 							}
-							listing = listing + "]"
+							if(b.rank.hasOwnProperty("nyt")) {
+								listing = listing + " NYT-21c #" + b.rank.nyt;
+							}
+							listing = listing + " ]"
 						}
-						if(b.hasOwnProperty("S")) {
+						if(b.hasOwnProperty("gen")) {
+							if(b.gen == 2) {
+								listing = listing + "</span>";
+							}
+						}
+						if(b.hasOwnProperty("S") && b.S) {
 							listing = listing + " <span style=\"color:green;font-weight:bold;\">(S)</span> ";
 						}
-						if(b.hasOwnProperty("A")) {
+						if(b.hasOwnProperty("A") && b.A) {
 							listing = listing + " <span style=\"color:chocolate;font-weight:bold;\">(A)</span> ";
 						}
-						if(b.hasOwnProperty("L")) {
+						if(b.hasOwnProperty("L") && b.L) {
 							listing = listing + " <span style=\"color:purple;font-weight:bold;\">(L)</span> ";
 						}
-						if(b.hasOwnProperty("K")) {
+						if(b.hasOwnProperty("K") && b.K) {
 							listing = listing + " <span style=\"color:#6495ED;font-weight:bold;\">(K)</span> ";
 						}
 						
 						listing = "<button type=\"button\" class=\"book\">" + listing;
 						listing = listing + "</button> <div class=\"bcontent\">"
 						listing = listing + "<p>\"" + b.sum + "\" ~" + b.ss + ". </p>"
-						if(b.hasOwnProperty("wc")) {
+						if(b.hasOwnProperty("wc") && b.hasOwnProperty("pc")) {
+							listing = listing + "<p><b>Word count:</b> approx. " + b.wc + ". &nbsp;&nbsp; <b>Page count:</b> approx. " + b.pc + "p."
+						} else if(b.hasOwnProperty("wc") && b.wc) {
 							listing = listing + "<p><b>Word count:</b> approx. " + b.wc + ". &nbsp;&nbsp; <b>Page count:</b> approx. " + Math.round(b.wc/300) + "p."
 						} else if(b.hasOwnProperty("pc")) {
 							listing = listing + "<p><b>Word count:</b> approx. " + (b.pc*300) + ". &nbsp;&nbsp; <b>Page count:</b> approx. " + b.pc + "p."
@@ -297,12 +316,15 @@ To do list:
 					}
 				
 					genres = [
-						"aesthetics", "film", "performing", "visual", "music", "prehist", "worldhist", "contemphist", "classical", "premodern", "early", "19th", "20th", "21st", "biography", "children", "commentary", "drama", "genre", "historical", "criticism", "poetry", "wisdom", "business", "communications", "education", "engineering", "medicine", "rationality", "policy", "psychiatry", "computer", "math", "philosophy", "metaphysics", "ethics", "natural", "astronomy", "biology", "chemistry", "earth", "ecology", "physics", "social", "anthropology", "gender", "economics", "language", "political", "polecon", "psychology", "race", "sociology", "fitness", "popsci", "work", "cogsci", "recent"
+						"aesthetics", "film", "visual", "music", "prehist", "regionhist", "global-persp-hist", "classical", "premodern", "early", "19th", "20th", "21st", "biography", "children", "commentary", "drama", "genre", "historical", "criticism", "poetry", "wisdom", "business", "communications", "education", "engineering", "medicine", "rationality", "policy", "psychiatry", "computer", "math", "philosophy", "metaphysics", "ethics", "natural", "astronomy", "biology", "chemistry", "earth", "ecology", "physics", "social", "anthropology", "gender", "economics", "language", "political", "polecon", "psychology", "race", "sociology", "fitness", "popsci", "work", "cogsci", "recent"
 					]
 					for (g of genres) {
 						glist = books.filter(obj => {return obj.genre === g});
 						document.getElementById(g).innerHTML = lstring(glist);
 					}
+					// In addition, fill in the "recent reads" section
+					recentlist = books.filter(obj => {return obj.hasOwnProperty("recent")});
+					document.getElementById("recent").innerHTML = lstring(recentlist);
 				</script>
 				<!-- Create the bcollapsible objects -->
 				<script>
