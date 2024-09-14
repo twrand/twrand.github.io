@@ -62,7 +62,7 @@ To do list:
 					<div class=mainsection>
 						<a class="anchor" name="about"></a>
 						<div class="lalign" id="mephoto">
-							<img src="img/me4.png" height="250px">
+							<img src="img/me7-circle.png" height="250px">
 						</div>
 						<div class=lalign >
 							<h2> About Me </h2>
@@ -70,7 +70,7 @@ To do list:
 						<a class="anchor" name="about"></a>
 						<div>
 							<p> 
-							As of Fall 2024, I'm an Assistant Professor in the <a href="https://www.hmc.edu/cs/">Department of Computer Science at Harvey Mudd College</a>.
+							I'm an Assistant Professor in the <a href="https://www.hmc.edu/cs/">Department of Computer Science at Harvey Mudd College</a>.
 							I recently completed a PhD in the 
 							<a href="http://www.cs.columbia.edu/theory/">Theory of Computation Group</a>
 							at Columbia University, advised by <a href="https://www.cs.columbia.edu/~rocco/">Rocco Servedio</a> and <a href="https://www.cs.columbia.edu/~xichen/Welcome.html">Xi Chen</a>.  </p>
@@ -109,6 +109,20 @@ To do list:
 						<!--<h3> &nbsp; conference papers </h3> -->
 							
 						<ul>
+							<li type="button" class="collapsible">
+								Tim Randolph and Karol Węgrzycki.
+								"Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum." ESA 2024.
+								<a style="float:right" href="https://arxiv.org/pdf/2407.18228">arXiv version</a>
+							</li>
+							<div class="content">
+								<p> We study the parameterized complexity of algorithmic problems whose input is an integer set A in terms of the doubling constant \(C:=|A+A|/|A|\), a fundamental measure of additive structure. We present evidence that this new parameterization is algorithmically useful in the form of new results for two difficult, well-studied problems: Integer Programming and Subset Sum.</p>
+								
+								<p> First, we show that determining the feasibility of bounded Integer Programs is a tractable problem when parameterized in the doubling constant. Specifically, we prove that the feasibility of an integer program I with n polynomially-bounded variables and m constraints can be determined in time \(n^{O_C(1)} poly(|I|)\) when the column set of the constraint matrix has doubling constant C.</p>
+								
+								<p> Second, we show that the Subset Sum and Unbounded Subset Sum problems can be solved in time \(n^{O_C(1)}\) and \(n^{O_C(\log \log \log n)}\), respectively, where the \(O_C\) notation hides functions that depend only on the doubling constant C. We also show the equivalence of achieving an FPT algorithm for Subset Sum with bounded doubling and achieving a milestone result for the parameterized complexity of Box ILP. Finally, we design near-linear time algorithms for k-SUM as well as tight lower bounds for 4-SUM and nearly tight lower bounds for k-SUM, under the k-SUM conjecture. Several of our results rely on a new proof that Freiman's Theorem, a central result in additive combinatorics, can be made efficiently constructive.</p>
+							</div>
+							
+						
 							<li class="collapsible">
 								Tim Randolph. "Exact and Parameterized Algorithms for Subset Sum Problems." PhD Thesis, 2024. <a style="float:right" href="pdfs/Thesis-singlespace-websitecopy.pdf">PDF</a>
 							</li>
@@ -126,12 +140,6 @@ To do list:
 								</ul>
 							</div>
 						
-							<li type="button" class="uncollapsible">
-								Tim Randolph and Karol Węgrzycki.
-								"Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum." Preprint, 2024.
-								<!-- <a style="float:right" href="">Conference version</a> -->
-							</li>
-							
 							<li class="collapsible">
 								Tim Randolph. "Participatory Governance in the Computer Science Theory Classroom." <i>SIGCSE Technical Symposium</i> 2024. <a style="float:right" href="https://dl.acm.org/doi/10.1145/3626252.3630904">ACM Digital Library</a>
 							</li>
@@ -141,11 +149,14 @@ To do list:
 								<p> We offered students increased control over four classroom variables: the <i>degree of interactivity</i>, the selection of <i>in-class activities </i>, increased <i>emphasis on standards-based outcomes</i> as opposed to averaging over all coursework, and the <i>granularity of the grading schema</i> used by TAs. In this experience report, we present our methodology, report on our classroom experience, and conclude that increasing student control over the undergraduate CST classroom via participatory governance can increase student motivation and encourage critical reflection in budding computer scientists. </p>
 							</div>
 						
-							<li type="button" class="uncollapsible">
+							<li type="button" class="collapsible">
 								Xi Chen, Shivam Nadimpalli, Tim Randolph, Rocco Servedio, and Or Zamir.
 								"Testing Sumsets is Hard." Preprint, 2024.
-								<!-- <a style="float:right" href="">Conference version</a> -->
+								<a style="float:right" href="https://arxiv.org/pdf/2401.07242">arXiv version</a>
 							</li>
+							<div class="content">
+								<p> A subset S of the Boolean hypercube \(\mathbb{F}^n_2\) is a sumset if \( S=\{a+b:a,b \in A\}\) for some \(A \in \mathbb{F}^n_2\). Sumsets are central objects of study in additive combinatorics, featuring in several influential results. We prove a lower bound of \( \Omega(2^{n/2}) \)	for the number of queries needed to test whether a Boolean function \( f : \mathbb{F}^n_2 \rightarrow \{0,1\} \) is the indicator function of a sumset. Our lower bound for testing sumsets follows from sharp bounds on the related problem of shift testing, which may be of independent interest. We also give a near-optimal \(2^{n/2} \cdot poly(n)\)-query algorithm for a smoothed analysis formulation of the sumset refutation problem.</p>
+							</div>
 						
 							<li type="button" class="uncollapsible">
 								Tim Randolph.
