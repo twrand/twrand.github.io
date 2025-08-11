@@ -4,8 +4,6 @@ To do list:
  - Font compatibility and testing
  - LaTeX embedding
  - Review other pages for updates.
- 
- - Add to CV: DSI poster session (11/12/19)
 
 -->
 
@@ -47,7 +45,7 @@ To do list:
 						<a href="3261-sum23.html">W3261</a> 	
 						<a href="index.html#research">RESEARCH</a> 						
 						<a href="index.html#teaching">TEACHING</a>
-						<a href="index.html#service">SERVICE</a>
+						<!-- <a href="index.html#service">SERVICE</a> -->
 						<!-- <a href="exact.html">X-REVIEW</a> -->
 						<a href="pdfs/Randolph_CV.pdf">CV</a>
 						<a href="https://www.hmc.edu/cs/">CS@MUDD</a>
@@ -80,9 +78,9 @@ To do list:
 							<p>
 							Things I'm actively thinking about:
 							<ul>
-								<li class="uncollapsible"> Faster exact and parameterized algorithms for hard computational problems </li>
-								<li class="uncollapsible"> Applications of additive structure in computer science </li>
-								<li class="uncollapsible"> Grading for equity and student agency in the CS classroom </li>
+								<li class="uncollapsible"> Faster exact and parameterized algorithms for algorithmic problems on integer sets </li>
+								<li class="uncollapsible"> Applications of additive structure in algorithms </li>
+								<li class="uncollapsible"> Adapting innovative teaching and grading practices to the domain of theoretical computer science </li>
 							</ul>
 							</p>
 							
@@ -93,34 +91,63 @@ To do list:
 							</p>
 							
 							<p>
-							If you'd like to chat, please email me at the address at the bottom of the page. I'll answer if time permits and I'm well-positioned to give you a helpful response.
+							If you'd like to chat, please email me at the address at the bottom of the page. I'll do my best to answer if time permits.
 							</p>
 						</div>
 					</div>
 					
-					
+					<div class=mainsection>
+						<div class=lalign>
+							<h2> Research Lab </h2>
+						</div>
+						<a class="anchor" name="research"></a>
+						
+						<div>
+							<p>
+							My research lab involves undergraduates from Harvey Mudd College and beyond in algorithms research. In Summer 2025, the "BEARD" (Building Exact Algorithms Research and Development) group developed algorithms for recognizing sumsets (<a href="pdfs/mtr-sumsets-poster.pdf">poster</a>) and partitioning integer sets (<a href="pdfs/ux-mp3-poster.pdf">poster</a>).
+							</p>
+						</div>
+					</div>
 					
 					<div class=mainsection>
 						<div class=lalign>
-							<h2> Research </h2>
+							<h2> Publications </h2>
 						</div>
 						<a class="anchor" name="research"></a>
 						
 						<!--<h3> &nbsp; conference papers </h3> -->
 							
 						<ul>
-							<li type="button" class="uncollapsible">
+							<li type="button" class="collapsible">
 								Tim Randolph and Karol Węgrzycki.
 								"Beating Meet-in-the-Middle for Subset Balancing Problems." Preprint, 2025.
 								<!-- <a style="float:right" href="">Conference version</a> -->
 							</li>
+							<div class="content">
+								<p>We consider exact algorithms for Subset Balancing, a family of related problems that generalizes Subset Sum, Partition, and Equal Subset Sum. Specifically, given as input an integer vector \(\vec{x} \in \mathbb{Z}^n\) and a constant-sized coefficient set \(C \subset \mathbb{Z}\), we seek a solution vector \(\vec{c} \in C^n\), \(\vec{c} \neq \vec{0}\) satisfying \(\vec{c} \cdot \vec{x} = 0\).
+								</p>
+
+								<p>
+								For \(C = \{-d,\ldots,d\}\), \(d > 1\) and \(C = \{-d,\ldots,d\}\setminus\{0\}\), \(d > 2\), we present algorithms that run in time \(O(|C|^{(0.5 - \epsilon)n})\) for a constant \(\epsilon > 0\) that depends only on \(C\). These are the first algorithms that break the \(O(|C|^{n/2})\)-time ``Meet-in-the-Middle barrier'' for these  coefficient sets in the worst-case. This improves on the result of Chen, Jin, Randolph and Servedio (SODA 2022), who broke the Meet-in-the-Middle barrier on these coefficient sets in the average-case setting. Additionally, our techniques allow us to improve the best exact algorithm for Equal Subset Sum (Subset Balancing with \(C = \{-1,0,1\}\)), due to Mucha, Nederlof, Pawlewicz and W&eogon;grzycki (ESA 2019), by an exponential margin.  Our results leave two major coefficient sets for which we cannot yet break the Meet-in-the-Middle barrier: \(C = \{-2, -1, 1, 2\}\) and \(C = \{-1, 1\}\) (Subset Sum).
+								</p>
+							</div>
+						
+							<li type="button" class="collapsible">
+								Xi Chen, Shivam Nadimpalli, Tim Randolph, Rocco Servedio, and Or Zamir.
+								"Testing Sumsets is Hard." <i>ESA</i> 2025.
+								<a style="float:right" href="https://arxiv.org/pdf/2401.07242">arXiv version</a>
+							</li>
+							<div class="content">
+								<p> A subset S of the Boolean hypercube \(\mathbb{F}^n_2\) is a sumset if \( S=\{a+b:a,b \in A\}\) for some \(A \in \mathbb{F}^n_2\). Sumsets are central objects of study in additive combinatorics, featuring in several influential results. We prove a lower bound of \( \Omega(2^{n/2}) \)	for the number of queries needed to test whether a Boolean function \( f : \mathbb{F}^n_2 \rightarrow \{0,1\} \) is the indicator function of a sumset. Our lower bound for testing sumsets follows from sharp bounds on the related problem of shift testing, which may be of independent interest. We also give a near-optimal \(2^{n/2} \cdot poly(n)\)-query algorithm for a smoothed analysis formulation of the sumset refutation problem.</p>
+							</div>
+						
 						
 							<li type="button" class="collapsible">
 								Ryan E. Dougherty, Tim Randolph, Tzu-Yi Chen, Jeff Erickson, Matthew Ferland, Dennis Komm, Jonathan Liu, Timothy Ng, Smaranda Sandu, Michael Shindler, Edward Talmage, and Thomas Zeume.
 								"A Survey of Undergraduate Theory of Computing Curricula."
 								SIGCSE Virtual 2024.
 								
-								<a style="float:right" href="https://dl.acm.org/doi/10.1145/3649409.3691070">conference abstract</a>
+								<a style="float:right" href="pdfs/toc-survey.pdf">PDF</a>
 							</li>
 							<div class="content">
 								<p> Theory of Computing (ToC) is an important aspect of nearly every undergraduate CS curriculum, as it concerns what computation fundamentally means. However, there has been little research into ToC pedagogy, both within the classroom and how it fits within its institutional context. We propose in this working group to create a survey of current ToC pedagogy. Our goals are to create a standard for teaching ToC, find trends, determine under-researched areas, and to build a community among ToC educators.</p>
@@ -128,7 +155,7 @@ To do list:
 						
 							<li type="button" class="collapsible">
 								Tim Randolph and Karol Węgrzycki.
-								"Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum." ESA 2024.
+								"Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum." <i>ESA</i> 2024.
 								<a style="float:right" href="https://arxiv.org/pdf/2407.18228">arXiv version</a>
 							</li>
 							<div class="content">
@@ -166,19 +193,11 @@ To do list:
 								<p> We offered students increased control over four classroom variables: the <i>degree of interactivity</i>, the selection of <i>in-class activities </i>, increased <i>emphasis on standards-based outcomes</i> as opposed to averaging over all coursework, and the <i>granularity of the grading schema</i> used by TAs. In this experience report, we present our methodology, report on our classroom experience, and conclude that increasing student control over the undergraduate CST classroom via participatory governance can increase student motivation and encourage critical reflection in budding computer scientists. </p>
 							</div>
 						
-							<li type="button" class="collapsible">
-								Xi Chen, Shivam Nadimpalli, Tim Randolph, Rocco Servedio, and Or Zamir.
-								"Testing Sumsets is Hard." Preprint, 2024.
-								<a style="float:right" href="https://arxiv.org/pdf/2401.07242">arXiv version</a>
-							</li>
-							<div class="content">
-								<p> A subset S of the Boolean hypercube \(\mathbb{F}^n_2\) is a sumset if \( S=\{a+b:a,b \in A\}\) for some \(A \in \mathbb{F}^n_2\). Sumsets are central objects of study in additive combinatorics, featuring in several influential results. We prove a lower bound of \( \Omega(2^{n/2}) \)	for the number of queries needed to test whether a Boolean function \( f : \mathbb{F}^n_2 \rightarrow \{0,1\} \) is the indicator function of a sumset. Our lower bound for testing sumsets follows from sharp bounds on the related problem of shift testing, which may be of independent interest. We also give a near-optimal \(2^{n/2} \cdot poly(n)\)-query algorithm for a smoothed analysis formulation of the sumset refutation problem.</p>
-							</div>
-						
+							
 							<li type="button" class="uncollapsible">
 								Tim Randolph.
 								"Exact Algorithms for Finding Sumsets." Preprint, 2023.
-								<!-- <a style="float:right" href="">Conference version</a> -->
+								<a style="float:right" href="https://twrand.github.io/pdfs/Sumset-Equivalence-woApx-4-24.pdf">PDF</a>
 							</li>
 						
 						
@@ -287,7 +306,7 @@ To do list:
 								Timothy W. Randolph, advised by William J. Lenhart.
 								"\((k,p)\)-Planar Graphs: A Generalization of Planar Representations for Cluster Graphs."
 								2018.
-								<a style="float:right" href="pdfs/(k,p)-planar-thesis.pdf">PDF version</a>
+								<a style="float:right" href="pdfs/(k,p)-planar-thesis.pdf">PDF</a>
 							</li>
 						</ul>
 					</div>
@@ -303,8 +322,19 @@ To do list:
 						<!-- (Interested in hiring me? See my <a href="portfolio/overview.html">Teaching Portfolio</a>.) -->
 						
 						<ul class="inline">
+							<li type="button" class="collapsible"> 
+								Instructor for Harvey Mudd CSCI 145: Advanced Topics in Algorithms. Spring 2026. 
+								<a style="float:right" href="3261-sum23.html"></a>
+							</li>
+							<div class="content">
+								<p> A new course I developed for AY 2025-2026. In addition to building mathematical independence and learning advanced algorithms topics, the course focuses on developing collaboration and presentation skills.</p>
+							</div>
 							<li type="button" class="uncollapsible"> 
-								Instructor for Harvey Mudd CSCI 140/MATH 168: Algorithms. Fall 2024. 
+								Instructor for Harvey Mudd WRIT 1: Introduction to Academic Writing. Fall 2025. 
+								<a style="float:right" href="3261-sum23.html"></a>
+							</li>
+							<li type="button" class="uncollapsible"> 
+								Instructor for Harvey Mudd CSCI 140/MATH 168: Algorithms. Fall 2024, Spring 2025, Fall 2025, Spring 2026. 
 								<a style="float:right" href="3261-sum23.html"></a>
 							</li>
 							<li type="button" class="collapsible"> 
@@ -315,7 +345,7 @@ To do list:
 								<p> My third time teaching of COMS W3261 focused on participatory governance in the CS classroom. See my <a href="portfolio/overview.html">Teaching Portfolio</a> for more details.</p>
 							</div>
 							<li type="button" class="collapsible">
-								Teaching Development Program Advanced Track
+								Columbia CTL Teaching Development Program (Advanced Track) Certification
 								<a style="float:right" href="https://tdp.ctl.columbia.edu/">CTL TDP webpage</a>
 							</li>
 							<div class="content">
@@ -338,13 +368,13 @@ To do list:
 								<p> Mathematics teaches us to ask questions like "What is the value of f(x)?", "Do any objects of type Y exist?", and "Is Z true?" Theoretical computer science builds on this tradition, expanding our field of inquiry to include questions like "How much time (and other limited resources) does it take to evaluate f(x)?", "Can I write down formal instructions for finding a Y?", and "Can the truth of Z be computed?" In theoretical computer science, we define problems formally and think about how hard they are to solve under various models of computation.</p>
 							</div>
 							
-							<li type="button" class="uncollapsible"> Peer lectures in Columbia CSCI 6261: Advanced Cryptography. 2/5/2020; 2/11/2020. </li>
+							<!-- <li type="button" class="uncollapsible"> Peer lectures in Columbia CSCI 6261: Advanced Cryptography. 2/5/2020; 2/11/2020. </li>
 							<li type="button" class="uncollapsible"> Guest lecture in Columbia CSCI 4236: Computational Complexity. 11/1/2019. </li>
 							<li type="button" class="uncollapsible"> Substitute for Columbia CSOR 4231: Analysis of Algorithms. 10/24/19. </li>
-							<li type="button" class="uncollapsible"> TA for Columbia CSOR 4231: Analysis of Algorithms. Fall 2019. </li>
+							<li type="button" class="uncollapsible"> TA for Columbia CSOR 4231: Analysis of Algorithms. Fall 2019. </li> -->
 							
 							<li type="button" class="collapsible"> 
-								2019-2020 Teaching Observation Fellowship.
+								Columbia CTL 2019-2020 Teaching Observation Fellowship.
 								<a style="float:right" href="https://ctl.columbia.edu/graduate-instructors/opportunities-for-graduate-students/teaching-observation-fellows/">CTL TOF webpage</a>
 							</li>
 							<div class="content">
@@ -361,12 +391,12 @@ To do list:
 								-Columbia CTL
 							</div>
 							
-							<li type="button" class="uncollapsible"> TA for Columbia COMS 3261: Computer Science Theory. Summer 2019. </li>
-							<li type="button" class="uncollapsible"> TA for Columbia COMS 6998-06: Computation and the Brain. Fall 2018. </li>
+							<!-- <li type="button" class="uncollapsible"> TA for Columbia COMS 3261: Computer Science Theory. Summer 2019. </li>
+							<li type="button" class="uncollapsible"> TA for Columbia COMS 6998-06: Computation and the Brain. Fall 2018. </li> -->
 						</ul>
 					</div>
 					
-					<div class=mainsection>
+					<!-- <div class=mainsection>
 						<div class=lalign>
 							<h2> Service </h2>
 						</div>
@@ -435,7 +465,7 @@ To do list:
 								<p> Along with <a href="https://claytonsanford.com/">Clayton Sanford</a>, I organized Columbia's first two annual theory student retreats! I'm now an organizer emeritus. </p>
 							</div>
 						<ul>
-					</div>
+					</div> -->
 				</div> <!-- maintext -->
 			</div> <!-- centerblock -->
 			
