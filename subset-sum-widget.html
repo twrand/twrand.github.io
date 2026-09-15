@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Subset Sum &ndash; Tim Randolph</title>
+		<script>
+		/* Set theme before CSS renders, to avoid a flash of the wrong theme */
+		(function () {
+			try {
+				var saved = localStorage.getItem('theme');
+				if (saved === 'dark' || saved === 'light') {
+					document.documentElement.setAttribute('data-theme', saved);
+				}
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="concept.css">
+		<link rel="shortcut icon" href="img/twr.ico">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant&family=Cantarell&family=Crimson+Text:ital@0;1&display=swap">
+		<style>
+			.ss-widget {
+				max-width: 480px;
+				margin: 60px auto;
+				padding: 0 20px;
+				text-align: center;
+			}
+			.ss-target {
+				font-size: 1.2em;
+				margin-bottom: 20px;
+			}
+			.ss-chips {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 8px;
+				margin-bottom: 20px;
+			}
+			.ss-chip {
+				border: 1px solid var(--alt-color);
+				background: var(--bgcolor);
+				color: var(--text-color);
+				padding: 10px 16px;
+				border-radius: 20px;
+				cursor: pointer;
+				font-family: var(--font);
+				font-size: 1em;
+				transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+			}
+			.ss-chip.selected {
+				background: var(--link-color);
+				border-color: var(--link-color);
+				color: #FFFFFF;
+			}
+			.ss-chip:hover {
+				border-color: var(--link-color);
+			}
+			.ss-sum {
+				margin-bottom: 20px;
+				font-family: var(--alt-font);
+				letter-spacing: 1px;
+				color: var(--muted-color);
+			}
+			.ss-sum.match {
+				color: var(--link-color);
+				font-weight: bold;
+			}
+			.ss-chip:disabled {
+				cursor: default;
+				opacity: 0.6;
+			}
+			.ss-chip:disabled:hover {
+				border-color: var(--alt-color);
+			}
+			.ss-buttons button {
+				font-family: var(--alt-font);
+				letter-spacing: 1px;
+				font-size: 12px;
+				border: 1px solid var(--alt-color);
+				background: none;
+				color: var(--text-color);
+				padding: 8px 16px;
+				cursor: pointer;
+				border-radius: 3px;
+				margin: 0 5px;
+			}
+			.ss-buttons button:hover {
+				border-color: var(--link-color);
+				color: var(--link-color);
+			}
+			.ss-note {
+				margin-top: 25px;
+				font-size: 0.85em;
+				color: var(--muted-color);
+			}
+			.ss-result {
+				margin-top: 12px;
+				font-size: 0.9em;
+				min-height: 1.2em;
+			}
+		</style>
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to main content</a>
+		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
+			<header class=topblock>
+				<div class=topcontent>
+					<div id="name">
+					<h1> <a href="https://twrand.github.io/"> Tim Randolph </a> </h1>
+					</div>
+					<nav id="menubar">
+						<a href="index.html#about">ABOUT</a>
+						<a href="index.html#research">RESEARCH</a>
+						<a href="index.html#teaching">TEACHING</a>
+						<!-- <a href="index.html#service">SERVICE</a> -->
+						<!-- <a href="exact.html">X-REVIEW</a> -->
+						<a href="pdfs/Randolph_CV.pdf">CV</a>
+						<a href="https://opx-blog.blogspot.com/">BLOG</a>
+						<a href="widgets.html">WIDGETS</a>
+						<a href="https://www.hmc.edu/cs/">CS@MUDD</a>
+						<button id="theme-toggle" aria-label="Toggle dark mode">&#9789;</button>
+					</nav>
+				</div>
+			</header>
+
+
+			<div class=centerblock>
+				<main class=maintext id="main-content">
+					<div class="ss-widget">
+						<h2>Subset Sum</h2>
+						<div class="ss-target">Find a subset that sums to <strong id="ss-target-value">&mdash;</strong></div>
+						<div class="ss-chips" id="ss-chips"></div>
+						<div class="ss-sum" id="ss-sum">selected sum: 0</div>
+						<div class="ss-buttons">
+							<button id="ss-shuffle">New puzzle</button>
+							<button id="ss-giveup">I give up</button>
+						</div>
+						<div class="ss-note">Guessing every subset takes 2<sup>n</sup> guesses. Can you do better?</div>
+					</div>
+				</main>
+			</div> <!-- centerblock -->
+
+
+			<footer class=bottomblock>
+				<div class=bottomtext>
+					CONTACT: [FIRST INITIAL][LAST NAME]@HMC.EDU.
+				</div>
+
+				<div id="copy">
+					<img src="img/cc.png" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2026.
+				</div>
+
+			</footer>
+		</div> <!--wrapper -->
+
+		<script>
+		(function () {
+			var btn = document.getElementById('theme-toggle');
+			function current() {
+				var attr = document.documentElement.getAttribute('data-theme');
+				if (attr) return attr;
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			}
+			function refresh() {
+				btn.innerHTML = current() === 'dark' ? '&#9728;' : '&#9789;';
+			}
+			btn.addEventListener('click', function () {
+				var next = current() === 'dark' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', next);
+				try { localStorage.setItem('theme', next); } catch (e) {}
+				refresh();
+			});
+			refresh();
+		})();
+		</script>
+
+		<script>
+		(function () {
+			var N = 7;
+			var numbers = [];
+			var selected = [];
+			var solution = [];
+			var target = 0;
+			var solved = false;
+
+			function randInt(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			function newPuzzle() {
+				numbers = [];
+				for (var i = 0; i < N; i++) numbers.push(randInt(1, 30));
+
+				var subsetSize = randInt(2, N - 1);
+				var indices = numbers.map(function (_, i) { return i; });
+				indices.sort(function () { return Math.random() - 0.5; });
+				var chosen = indices.slice(0, subsetSize);
+				target = chosen.reduce(function (sum, i) { return sum + numbers[i]; }, 0);
+				solution = chosen;
+
+				selected = [];
+				solved = false;
+				render();
+			}
+
+			function render() {
+				document.getElementById('ss-target-value').textContent = target;
+
+				var sum = selected.reduce(function (s, i) { return s + numbers[i]; }, 0);
+				if (sum === target && selected.length > 0) solved = true;
+
+				var chipsEl = document.getElementById('ss-chips');
+				chipsEl.innerHTML = '';
+				numbers.forEach(function (n, i) {
+					var chip = document.createElement('button');
+					chip.className = 'ss-chip' + (selected.indexOf(i) > -1 ? ' selected' : '');
+					chip.textContent = n;
+					chip.disabled = solved;
+					chip.setAttribute('aria-pressed', selected.indexOf(i) > -1);
+					chip.addEventListener('click', function () {
+						if (solved) return;
+						var idx = selected.indexOf(i);
+						if (idx > -1) selected.splice(idx, 1);
+						else selected.push(i);
+						render();
+					});
+					chipsEl.appendChild(chip);
+				});
+
+				var sumEl = document.getElementById('ss-sum');
+				sumEl.textContent = solved ? 'Solved!' : 'selected sum: ' + sum;
+				sumEl.className = 'ss-sum' + (solved ? ' match' : '');
+			}
+
+			document.getElementById('ss-shuffle').addEventListener('click', newPuzzle);
+			document.getElementById('ss-giveup').addEventListener('click', function () {
+				if (solved) return;
+				selected = solution.slice();
+				render();
+			});
+
+			newPuzzle();
+		})();
+		</script>
+	</body>
+</html>

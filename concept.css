@@ -5,17 +5,54 @@
 	--alt-font: Cantarell, sans-serif;
 	--line-height: 1.3;
 	
-	--content-width: 800px;
+	--content-width: 850px;
 	--content-margin: 15px;
 	
-	--spacing: 15px;
+	--spacing: 5px;
 
 	--alt-color: #AAA0A0;
-	--link-color: #86B3D1;
+	--link-color: #609BC3;
 	--text-color: #000000;
-	
+	--muted-color: #444444;
+	--divider-color: #E5E2E2;
+
 	--bgcolor: #FFFFFF;
 	--alt-bgcolor: #FFFFFF;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--text-color: #E8E6E3;
+		--muted-color: #B5B2AE;
+		--divider-color: #3A3A3A;
+		--alt-color: #6B6666;
+		--bgcolor: #181818;
+		--alt-bgcolor: #181818;
+	}
+}
+:root[data-theme="dark"] {
+	--text-color: #E8E6E3;
+	--muted-color: #B5B2AE;
+	--divider-color: #3A3A3A;
+	--alt-color: #6B6666;
+	--bgcolor: #181818;
+	--alt-bgcolor: #181818;
+}
+
+/* Visually hidden until focused: lets keyboard/screen-reader users jump past the nav */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	background: var(--bgcolor);
+	color: var(--text-color);
+	padding: 10px 16px;
+	border: 1px solid var(--alt-color);
+	z-index: 100;
+}
+.skip-link:focus {
+	left: 10px;
+	top: 10px;
 }
 
 
@@ -54,7 +91,7 @@
 .collapsible > summary {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: baseline;
+	align-items: flex-start;
 	background-color: var(--bgcolor);
 	color: var(--text-color);
 	cursor: pointer;
@@ -62,48 +99,69 @@
 	width: 100%;
 	list-style: none;
 }
-/* Native browser marker, hidden in favor of the custom triangle below.
-   Delete this rule (and the "list-style: none;" line above) to go back to the browser's built-in marker.
-.collapsible > summary::marker,
-.collapsible > summary::-webkit-details-marker {
-	font-size: 0.5em;
-}
-*/
 .collapsible > summary::-webkit-details-marker {
 	display: none;
 }
-.collapsible > summary:before {
-  content: "\25B8\00a0\00a0";
-  color: var(--text-color);
+.collapsible > summary::before {
+	content: "\203A";
+	flex: 0 0 auto;
+	margin-right: 0.5em;
+	margin-top: 0em;
+	color: var(--muted-color);
+	font-size: 1.2em;
+	line-height: 1;
+	transition: transform 0.15s ease;
 }
-.collapsible[open] > summary:before {
-    content: '\25BE\00a0\00a0';
+.collapsible[open] > summary::before {
+	transform: rotate(90deg);
 }
 .collapsible > summary:focus-visible {
 	outline: 2px solid var(--link-color);
 	outline-offset: 2px;
 }
 .collapsible > summary:hover {
-    box-shadow: 0px 1px var(--link-color);
+	background-color: var(--divider-color);
 }
 .uncollapsible {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
   background-color: var(--bgcolor);
 	color: var(--text-color);
 	padding: 5px;
 	margin-bottom: 3px;
+	width: calc(100% + 40px); /* li has margin-left:-40px; make the width explicit rather than relying on auto-width absorbing it */
 }
-.uncollapsible:before {
-  content: "\25AA\00a0\00a0\00a0\00a0";
-  color: var(--text-color);
+.uncollapsible::before {
+	content: "\25CB";
+	flex: 0 0 auto;
+	margin-right: 0.5em;
+	margin-top: 0.25em;
+	color: var(--muted-color);
+	font-size: 0.8em;
+	line-height: 1;
+}
+/* Top-level list items get breathing room instead of a marker glyph */
+.mainsection > ul > li {
+	padding-bottom: 7px;
+	margin-bottom: 5px;
 }
 .collapsible > summary > span,
 .uncollapsible > span {
 	flex: 1 1 0%;
 	min-width: 0;
 	margin-right: 1em;
+}
+/* Publications: title on its own line, authors/venue/year as a smaller line beneath */
+.pub-title {
+	display: block;
+	color: var(--text-color);
+}
+.pub-meta {
+	display: block;
+	margin-top: 0.1em;
+	color: var(--muted-color);
+	font-size: 0.85em;
 }
 .collapsible > summary > a,
 .uncollapsible > a {
@@ -115,7 +173,8 @@
 	margin-left: 1em;
 }
 .content {
-	padding: 0px 30px 0px 0px;
+	padding: 0px 30px 10px 0px;
+	color: var(--text-color);
 }
 
 
@@ -188,16 +247,16 @@ img{
 
 body {
 	background-color: var(--bgcolor);
+	color: var(--text-color);
 	font-family: var(--font);
 	margin:0;
 	padding:0;
 	font-size: 1.1em;
 }
 
-a  { 
-	color: var(--link-color); 
+a  {
+	color: var(--link-color);
 	text-decoration: none;
-	font-weight:500;
 }
 a:hover { 
 	text-decoration: underline; 
@@ -255,8 +314,7 @@ h3 { /* Used for paper subheadings in subsection */
 
 .topblock {
 	margin: auto;
-	border: 1px;
-} 
+}
 .topcontent {
 	position: fixed;
 	width: 100%;
@@ -285,17 +343,58 @@ h3 { /* Used for paper subheadings in subsection */
 #menubar {
 	font-family: var(--alt-font);
 	position: absolute;
-	top: 21px;
+	top: 0;
+	bottom: 0;
 	right: 20px;
+	display: flex;
+	align-items: flex-end;
+	gap: 15px;
 	font-size: 12px;
-	word-spacing: 15px;
 	letter-spacing: 2px;
 }
-/* Special underline for the menu bar only */
-#menubar a:hover{
+/* Underline is always reserved (transparent) so hover only swaps color,
+   never changes box size or vertical position. It's bottom-anchored via
+   #menubar's flex alignment, so it always lines up with .topcontent's
+   border-bottom regardless of what else is in the menu bar. */
+#menubar a,
+#theme-toggle {
+	display: inline-block;
+	padding-bottom: 6px;
+	border-bottom: 5px solid transparent;
+}
+#menubar a:hover,
+#theme-toggle:hover {
 	text-decoration: none;
-	padding-bottom: 10px;
-	border-bottom: 5px solid var(--link-color);
+	border-bottom-color: var(--link-color);
+}
+
+#theme-toggle {
+	background: none;
+	border: none; /* strips the default button border on 3 sides... */
+	border-bottom: 5px solid transparent; /* ...then this re-reserves the bottom one, matching #menubar a's box height so both stay anchored to the same line */
+	color: var(--link-color);
+	font-family: var(--alt-font);
+	font-size: 18px;
+	cursor: pointer;
+	margin: 0;
+	line-height: 1;
+	width: 1.2em;
+	text-align: center;
+}
+/* The sun glyph sits slightly right of center in this font; nudge it back
+   without touching the button's box (so the underline stays put). Only
+   applies when dark mode is active, since that's when the sun icon shows. */
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) #theme-toggle {
+		text-indent: -3px;
+	}
+}
+:root[data-theme="dark"] #theme-toggle {
+	text-indent: -3px;
+}
+#theme-toggle:focus-visible {
+	outline: 2px solid var(--link-color);
+	outline-offset: 2px;
 }
 
 #medialist {
@@ -305,7 +404,6 @@ h3 { /* Used for paper subheadings in subsection */
 .centerblock {
 	margin: auto;
 	width: 100%;
-	max-width: var(--content-width);
 	padding: 0 var(--content-margin);
 	box-sizing: border-box;
 }
@@ -314,6 +412,9 @@ h3 { /* Used for paper subheadings in subsection */
 	padding-top: 60px; /* Necessary to keep my face below the header bar */
 }
 .mainsection{
+	max-width: var(--content-width);
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 25px;
 	scroll-margin-top: 80px;
 }
@@ -322,15 +423,16 @@ h3 { /* Used for paper subheadings in subsection */
 }
 #mephoto {
 	margin: auto;
-	top: 70px;
 }
 #mephoto img {
 	width: 250px;
 	max-width: 100%;
 }
 #copy img {
+	display: inline-block;
 	height: 15px;
 	width: auto;
+	vertical-align: middle;
 }
 #copy {
 	padding-top: 20px;
@@ -355,7 +457,7 @@ h3 { /* Used for paper subheadings in subsection */
 }
 .bottomblock {
 	margin:auto;
-	color: var(--alt-color);
+	color: var(--muted-color);
 	padding-bottom:8px;
 
 	background-color: var(--alt-bgcolor);
@@ -374,10 +476,12 @@ h3 { /* Used for paper subheadings in subsection */
 	}
 	#menubar {
 		position: static;
-		display: block;
-		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: center;
 		margin-top: 6px;
-		word-spacing: 8px;
+		gap: 8px;
 		letter-spacing: 1px;
 	}
 	.maintext {

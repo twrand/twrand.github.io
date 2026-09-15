@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 
 To do list:
  - Font compatibility and testing
@@ -8,20 +8,32 @@ To do list:
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Tim Randolph, Assistant Professor of Computer Science at Harvey Mudd College. Research in algorithms, complexity, and CS education.">
 		<title>Tim Randolph</title>
-		<link rel="stylesheet" href="main.css">
+		<script>
+		/* Set theme before CSS renders, to avoid a flash of the wrong theme */
+		(function () {
+			try {
+				var saved = localStorage.getItem('theme');
+				if (saved === 'dark' || saved === 'light') {
+					document.documentElement.setAttribute('data-theme', saved);
+				}
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="concept.css">
 		<link rel="shortcut icon" href="img/twr.ico">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant&family=Cantarell&family=Crimson+Text">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://cdn.jsdelivr.net">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant&family=Cantarell&family=Crimson+Text:ital@0;1&display=swap">
 	</head>
 	<body>
-		<!-- MathJax -->
-		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		<!-- Below script mysteriously fixes subscript sizing issues w/ MathJax -->
+		<!-- MathJax config must be set before the library script loads -->
 		<script>
 		MathJax = {
 		  startup: {
@@ -33,40 +45,40 @@ To do list:
 		  }
 		};
 		</script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	
+		<a class="skip-link" href="#main-content">Skip to main content</a>
 		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
-			<div class=topblock>	
+			<header class=topblock>
 				<div class=topcontent>
 					<div id="name">
 					<h1> <a href="https://twrand.github.io/"> Tim Randolph </a> </h1>
 					</div>
-					<div id="menubar">
-						<a href="https://opx-blog.blogspot.com/">BLOG</a>
-						<a href="index.html#about">ABOUT</a>
-						<a href="3261-sum23.html">W3261</a> 	
-						<a href="index.html#research">RESEARCH</a> 						
-						<a href="index.html#teaching">TEACHING</a>
+					<nav id="menubar">
+						<a href="#about">ABOUT</a>
+						<a href="#research">RESEARCH</a>
+						<a href="#teaching">TEACHING</a>
 						<!-- <a href="index.html#service">SERVICE</a> -->
 						<!-- <a href="exact.html">X-REVIEW</a> -->
 						<a href="pdfs/Randolph_CV.pdf">CV</a>
+						<a href="https://opx-blog.blogspot.com/">BLOG</a>
+						<a href="widgets.html">WIDGETS</a>
 						<a href="https://www.hmc.edu/cs/">CS@MUDD</a>
-						<a href="goals.html">·</a>
-					</div>
+						<button id="theme-toggle" aria-label="Toggle dark mode">&#9789;</button>
+					</nav>
 				</div>
-			</div>
+			</header>
 
-			
+
 			<div class=centerblock>
-				<div class=maintext>
-					<div class=mainsection>
-						<a class="anchor" name="about"></a>
+				<main class=maintext id="main-content">
+					<section class=mainsection id="about">
 						<div class="lalign" id="mephoto">
-							<img src="img/me7-circle.png" height="250px">
+							<img src="img/me7-circle.png" alt="Tim Randolph">
 						</div>
 						<div class=lalign >
 							<h2> About Me </h2>
 						</div>
-						<a class="anchor" name="about"></a>
 						<div>
 							<p> 
 							I'm an Assistant Professor in the <a href="https://www.hmc.edu/cs/">Department of Computer Science at Harvey Mudd College</a>.
@@ -79,9 +91,12 @@ To do list:
 							<p>
 							Things I'm actively thinking about:
 							<ul>
-								<li class="uncollapsible"> Faster exact and parameterized algorithms for algorithmic problems on integer sets </li>
-								<li class="uncollapsible"> Applications of additive structure in algorithms </li>
-								<li class="uncollapsible"> Adapting innovative teaching and grading practices to the domain of theoretical computer science </li>
+								<li class="uncollapsible"><span> Faster exact and parameterized algorithms for algorithmic problems on integer sets</span>
+							</li>
+								<li class="uncollapsible"><span> Applications of additive structure in algorithms</span>
+							</li>
+								<li class="uncollapsible"><span> Adapting innovative teaching and grading practices to the domain of theoretical computer science</span>
+							</li>
 							</ul>
 							</p>
 							
@@ -95,95 +110,119 @@ To do list:
 							If you'd like to chat, please email me at the address at the bottom of the page. I'll do my best to answer if time permits.
 							</p>
 						</div>
-					</div>
+					</section>
 					
-					<div class=mainsection>
+					<section class=mainsection id="research">
 						<div class=lalign>
 							<h2> Research Lab </h2>
 						</div>
-						<a class="anchor" name="research"></a>
 						
 						<div>
 							<p>
 							My research lab involves undergraduates from Harvey Mudd College and beyond in algorithms research. In Summer 2025, the "BEARD" (Building Exact Algorithms Research and Development) group developed algorithms for recognizing sumsets (<a href="pdfs/mtr-sumsets-poster.pdf">poster</a>) and partitioning integer sets (<a href="pdfs/ux-mp3-poster.pdf">poster</a>).
 							</p>
 						</div>
-					</div>
+					</section>
 					
-					<div class=mainsection>
+					<section class=mainsection id="publications">
 						<div class=lalign>
 							<h2> Publications </h2>
 						</div>
-						<a class="anchor" name="research"></a>
 						
 						<!--<h3> &nbsp; conference papers </h3> -->
 							
 						<ul>
-							<li type="button" class="collapsible">
-								Ryan E. Dougherty and Tim Randolph.
-								"Surveying Theory of Computation Education in the United States." Invited contribution to the Bulletin of the European Association for Theoretical Computer Science (EATCS), 2026.
-								<a style="float:right" href="https://smtp.eatcs.org/index.php/beatcs/article/view/877/932">PDF via EATCS</a>
-							</li>
-							<div class="content">
-								<p>We summarize the results of a 2024 survey of theory of computing (ToC) courses that received responses from 166 institutions of higher education in the United States. Although our survey is far from comprehensive, it provides new information on many aspects of ToC in U.S. bachelor's degree programs in computer science. We report on the most frequently covered topics in ToC courses as well as structural features such as typical prerequisites, section sizes, teaching modalities, and course staff.</p>
-								
-								<p>In addition to summarizing survey results, we briefly discuss observed trends, suggest opportunities for future teaching and research, and conclude with a call for increased collaboration between American and European theoretical computer science educators.</p>
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Peer-to-Peer Tutorials in Algorithms: Reflections on Scaling Up Interactive Presentation-Based Learning.</span><span class="pub-meta">Tim Randolph. <i>SIGCSE Technical Symposium</i> 2027.</span></span>
+								<!-- <a href="https://arxiv.org/pdf/2511.10823">arXiv version</a> -->
+							</summary>
+								<div class="content">
+								<p> We report on our experiences implementing a novel “peer-to-peer tutorial” teaching model in an upper-division undergraduate algorithms seminar.</p>
+
+								<p> The traditional tutorial model offers students intensive practice in collaborative problem-solving, presentation, and critical discussion, as well as rich in-person feedback. However, because the model is extremely time-intensive for the instructor, it does not scale beyond 8-10 students. In our “peer-to-peer” modification, each week contains two complementary topic tracks. In class, student pairs from each topic track present to pairs from the other topic track under the guidance of the instructor. Our experience suggests that the tutorial can be adapted to upper-division courses of 16-24 students or more without sacrificing its pedagogical benefits. </p>
+    
+								<p> In this experience report, we describe the structure and context of the course and present pre- and post-course surveys in which students report increased confidence in communication, presentation, and independent learning. We then reflect on lessons learned, including cultivating a sense of intellectual ownership among students, the benefits of presenting to very small audiences, and the pros and cons of enabling different students to have different learning experiences. We conclude with guiding principles for instructors designing courses that prioritize self-directed learning, close collaboration and presentation skills. </p>
 							</div>
-						
-							<li type="button" class="collapsible">
-								Tim Randolph and Karol Węgrzycki.
-								"Beating Meet-in-the-Middle for Subset Balancing Problems." <i>STOC</i> 2026.
-								<a style="float:right" href="https://arxiv.org/pdf/2511.10823">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+						
+						
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Beating Meet-in-the-Middle for Subset Balancing Problems.</span><span class="pub-meta">Tim Randolph and Karol Węgrzycki. <i>STOC</i> 2026.</span></span>
+								<a href="https://arxiv.org/pdf/2511.10823">arXiv version</a>
+							</summary>
+									<div class="content">
 								<p>We consider exact algorithms for Subset Balancing, a family of related problems that generalizes Subset Sum, Partition, and Equal Subset Sum. Specifically, given as input an integer vector \(\vec{x} \in \mathbb{Z}^n\) and a constant-sized coefficient set \(C \subset \mathbb{Z}\), we seek a solution vector \(\vec{c} \in C^n\), \(\vec{c} \neq \vec{0}\) satisfying \(\vec{c} \cdot \vec{x} = 0\).
 								</p>
 
 								<p>
-								For \(C = \{-d,\ldots,d\}\), \(d > 1\) and \(C = \{-d,\ldots,d\}\setminus\{0\}\), \(d > 2\), we present algorithms that run in time \(O(|C|^{(0.5 - \epsilon)n})\) for a constant \(\epsilon > 0\) that depends only on \(C\). These are the first algorithms that break the \(O(|C|^{n/2})\)-time ``Meet-in-the-Middle barrier'' for these  coefficient sets in the worst-case. This improves on the result of Chen, Jin, Randolph and Servedio (SODA 2022), who broke the Meet-in-the-Middle barrier on these coefficient sets in the average-case setting. Additionally, our techniques allow us to improve the best exact algorithm for Equal Subset Sum (Subset Balancing with \(C = \{-1,0,1\}\)), due to Mucha, Nederlof, Pawlewicz and W&eogon;grzycki (ESA 2019), by an exponential margin.  Our results leave two major coefficient sets for which we cannot yet break the Meet-in-the-Middle barrier: \(C = \{-2, -1, 1, 2\}\) and \(C = \{-1, 1\}\) (Subset Sum).
+								For \(C = \{-d,\ldots,d\}\), \(d > 1\) and \(C = \{-d,\ldots,d\}\setminus\{0\}\), \(d > 2\), we present algorithms that run in time \(O(|C|^{(0.5 - \epsilon)n})\) for a constant \(\epsilon > 0\) that depends only on \(C\). These are the first algorithms that break the \(O(|C|^{n/2})\)-time "Meet-in-the-Middle barrier" for these coefficient sets in the worst-case. This improves on the result of Chen, Jin, Randolph and Servedio (SODA 2022), who broke the Meet-in-the-Middle barrier on these coefficient sets in the average-case setting. Additionally, our techniques allow us to improve the best exact algorithm for Equal Subset Sum (Subset Balancing with \(C = \{-1,0,1\}\)), due to Mucha, Nederlof, Pawlewicz and W&eogon;grzycki (ESA 2019), by an exponential margin. Our results leave two major coefficient sets for which we cannot yet break the Meet-in-the-Middle barrier: \(C = \{-2, -1, 1, 2\}\) and \(C = \{-1, 1\}\) (Subset Sum).
 								</p>
 							</div>
-						
-							<li type="button" class="collapsible">
-								Xi Chen, Shivam Nadimpalli, Tim Randolph, Rocco Servedio, and Or Zamir.
-								"Testing Sumsets is Hard." <i>ESA</i> 2025.
-								<a style="float:right" href="https://arxiv.org/pdf/2401.07242">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Surveying Theory of Computation Education in the United States.</span><span class="pub-meta">Ryan E. Dougherty and Tim Randolph. Invited contribution to the Bulletin of the European Association for Theoretical Computer Science (EATCS), 2026.</span></span>
+								<a href="https://smtp.eatcs.org/index.php/beatcs/article/view/877/932">PDF via EATCS</a>
+							</summary>
+									<div class="content">
+								<p>We summarize the results of a 2024 survey of theory of computing (ToC) courses that received responses from 166 institutions of higher education in the United States. Although our survey is far from comprehensive, it provides new information on many aspects of ToC in U.S. bachelor's degree programs in computer science. We report on the most frequently covered topics in ToC courses as well as structural features such as typical prerequisites, section sizes, teaching modalities, and course staff.</p>
+								
+								<p>In addition to summarizing survey results, we briefly discuss observed trends, suggest opportunities for future teaching and research, and conclude with a call for increased collaboration between American and European theoretical computer science educators.</p>
+							</div>
+								</details>
+							</li>
+						
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Testing Sumsets is Hard.</span><span class="pub-meta">Xi Chen, Shivam Nadimpalli, Tim Randolph, Rocco Servedio, and Or Zamir. <i>ESA</i> 2025.</span></span>
+								<a href="https://arxiv.org/pdf/2401.07242">arXiv version</a>
+							</summary>
+									<div class="content">
 								<p> A subset S of the Boolean hypercube \(\mathbb{F}^n_2\) is a sumset if \( S=\{a+b:a,b \in A\}\) for some \(A \in \mathbb{F}^n_2\). Sumsets are central objects of study in additive combinatorics, featuring in several influential results. We prove a lower bound of \( \Omega(2^{n/2}) \)	for the number of queries needed to test whether a Boolean function \( f : \mathbb{F}^n_2 \rightarrow \{0,1\} \) is the indicator function of a sumset. Our lower bound for testing sumsets follows from sharp bounds on the related problem of shift testing, which may be of independent interest. We also give a near-optimal \(2^{n/2} \cdot poly(n)\)-query algorithm for a smoothed analysis formulation of the sumset refutation problem.</p>
 							</div>
-						
-						
-							<li type="button" class="collapsible">
-								Ryan E. Dougherty, Tim Randolph, Tzu-Yi Chen, Jeff Erickson, Matthew Ferland, Dennis Komm, Jonathan Liu, Timothy Ng, Smaranda Sandu, Michael Shindler, Edward Talmage, and Thomas Zeume.
-								"A Survey of Undergraduate Theory of Computing Curricula."
-								SIGCSE Virtual 2024.
-								
-								<a style="float:right" href="https://dl.acm.org/doi/10.1145/3708550.3730559">ACM DL</a>
-								<a style="float:right;margin-right:10px" href="pdfs/toc-survey.pdf">PDF</a>
+								</details>
 							</li>
-							<div class="content">
+						
+						
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">A Survey of Undergraduate Theory of Computing Curricula.</span><span class="pub-meta">Ryan E. Dougherty, Tim Randolph, Tzu-Yi Chen, Jeff Erickson, Matthew Ferland, Dennis Komm, Jonathan Liu, Timothy Ng, Smaranda Sandu, Michael Shindler, Edward Talmage, and Thomas Zeume. <i>SIGCSE Virtual</i> 2024.</span></span>
+								
+								<a href="https://dl.acm.org/doi/10.1145/3708550.3730559">ACM DL</a>
+								<a href="pdfs/toc-survey.pdf">PDF</a>
+							</summary>
+									<div class="content">
 								<p> Theory of Computing (ToC) is an important aspect of nearly every undergraduate CS curriculum, as it concerns what computation fundamentally means. However, there has been little research into ToC pedagogy, both within the classroom and how it fits within its institutional context. We propose in this working group to create a survey of current ToC pedagogy. Our goals are to create a standard for teaching ToC, find trends, determine under-researched areas, and to build a community among ToC educators.</p>
 							</div>
-						
-							<li type="button" class="collapsible">
-								Tim Randolph and Karol Węgrzycki.
-								"Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum." <i>ESA</i> 2024.
-								<a style="float:right" href="https://arxiv.org/pdf/2407.18228">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+						
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Parameterized Algorithms on Integer Sets with Small Doubling: Freiman’s Theorem, Subset Sum and k-Sum.</span><span class="pub-meta">Tim Randolph and Karol Węgrzycki. <i>ESA</i> 2024.</span></span>
+								<a href="https://arxiv.org/pdf/2407.18228">arXiv version</a>
+							</summary>
+									<div class="content">
 								<p> We study the parameterized complexity of algorithmic problems whose input is an integer set A in terms of the doubling constant \(C:=|A+A|/|A|\), a fundamental measure of additive structure. We present evidence that this new parameterization is algorithmically useful in the form of new results for two difficult, well-studied problems: Integer Programming and Subset Sum.</p>
 								
 								<p> First, we show that determining the feasibility of bounded Integer Programs is a tractable problem when parameterized in the doubling constant. Specifically, we prove that the feasibility of an integer program I with n polynomially-bounded variables and m constraints can be determined in time \(n^{O_C(1)} poly(|I|)\) when the column set of the constraint matrix has doubling constant C.</p>
 								
 								<p> Second, we show that the Subset Sum and Unbounded Subset Sum problems can be solved in time \(n^{O_C(1)}\) and \(n^{O_C(\log \log \log n)}\), respectively, where the \(O_C\) notation hides functions that depend only on the doubling constant C. We also show the equivalence of achieving an FPT algorithm for Subset Sum with bounded doubling and achieving a milestone result for the parameterized complexity of Box ILP. Finally, we design near-linear time algorithms for k-SUM as well as tight lower bounds for 4-SUM and nearly tight lower bounds for k-SUM, under the k-SUM conjecture. Several of our results rely on a new proof that Freiman's Theorem, a central result in additive combinatorics, can be made efficiently constructive.</p>
 							</div>
+								</details>
+							</li>
 							
 						
-							<li class="collapsible">
-								Tim Randolph. "Exact and Parameterized Algorithms for Subset Sum Problems." PhD Thesis, 2024. <a style="float:right" href="pdfs/Thesis-singlespace-websitecopy.pdf">PDF</a>
-							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Exact and Parameterized Algorithms for Subset Sum Problems.</span><span class="pub-meta">Tim Randolph. PhD Thesis, 2024.</span></span> <a href="pdfs/Thesis-singlespace-websitecopy.pdf">PDF</a>
+							</summary>
+									<div class="content">
 								<p> We present a variety of exact and parameterized algorithms for Subset Sum and other related problems. The major contributions of this thesis include: </p>
     
 								<ul>
@@ -191,69 +230,74 @@ To do list:
         
 									<li>2. A proof that Either-Or Subset Sum, the problem of solving <i> either </i> Subset Sum <i> or </i> Equal Subset Sum, can be solved exponentially faster than time \(2^{0.5n}\) in the worst case. In our view, this result illustrates the potential of the "structure vs. randomness" approach for Subset Sum. </li>
         
-									<li>3.  Algorithms that solve worst-case Subset Sum faster than time \(2^{0.5n}\) by a polynomial factor. These improvements on the best known exact algorithms for Subset Sum represent the successful application of "log shaving" techniques to the problem. </li>
+									<li>3. Algorithms that solve worst-case Subset Sum faster than time \(2^{0.5n}\) by a polynomial factor. These improvements on the best known exact algorithms for Subset Sum represent the successful application of "log shaving" techniques to the problem. </li>
 									
-									<li>4.  Algorithms for Subset Sum and \(k\)-SUM with constant doubling. When considered in terms of a novel parameterization in the doubling constant, Subset Sum admits an XP-algorithm, while \(k\)-SUM is Fixed-Parameter Tractable. We also show that Subset Sum is FPT in the doubling constant if and only if an instance \(\mathcal{I}\) of Hyperplane-Constrained Integer Linear Programming with \(n\) variables, \(m\) constraints, and constraint matrix entries bounded by \(\Delta\) can be solved in time \(\Delta^{O(m)} \cdot poly(|\mathcal{I}|)\). </li>
+									<li>4. Algorithms for Subset Sum and \(k\)-SUM with constant doubling. When considered in terms of a novel parameterization in the doubling constant, Subset Sum admits an XP-algorithm, while \(k\)-SUM is Fixed-Parameter Tractable. We also show that Subset Sum is FPT in the doubling constant if and only if an instance \(\mathcal{I}\) of Hyperplane-Constrained Integer Linear Programming with \(n\) variables, \(m\) constraints, and constraint matrix entries bounded by \(\Delta\) can be solved in time \(\Delta^{O(m)} \cdot poly(|\mathcal{I}|)\). </li>
 								</ul>
 							</div>
-						
-							<li class="collapsible">
-								Tim Randolph. "Participatory Governance in the Computer Science Theory Classroom." <i>SIGCSE Technical Symposium</i> 2024. <a style="float:right" href="https://dl.acm.org/doi/10.1145/3626252.3630904">ACM Digital Library</a>
+								</details>
 							</li>
-							<div class="content">
+						
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Participatory Governance in the Computer Science Theory Classroom.</span><span class="pub-meta">Tim Randolph. <i>SIGCSE Technical Symposium</i> 2024.</span></span> <a href="https://dl.acm.org/doi/10.1145/3626252.3630904">ACM Digital Library</a>
+							</summary>
+									<div class="content">
 								<p> We implemented pedagogical strategies designed to give students greater control over the use of class time and grading methods in a major-required computer science theory (CST) course. Our methodology addresses the challenges inherent in transferring more power to students in a lecture-based class with a curriculum that requires the sequential mastery of formal mathematical concepts. </p>
 
 								<p> We offered students increased control over four classroom variables: the <i>degree of interactivity</i>, the selection of <i>in-class activities </i>, increased <i>emphasis on standards-based outcomes</i> as opposed to averaging over all coursework, and the <i>granularity of the grading schema</i> used by TAs. In this experience report, we present our methodology, report on our classroom experience, and conclude that increasing student control over the undergraduate CST classroom via participatory governance can increase student motivation and encourage critical reflection in budding computer scientists. </p>
 							</div>
+								</details>
+							</li>
 						
 							
-							<li type="button" class="uncollapsible">
-								Tim Randolph.
-								"Exact Algorithms for Finding Sumsets." Preprint, 2023.
-								<a style="float:right" href="https://twrand.github.io/pdfs/Sumset-Equivalence-woApx-4-24.pdf">PDF</a>
+							<li class="uncollapsible"><span><span class="pub-title">Exact Algorithms for Finding Sumsets.</span><span class="pub-meta">Tim Randolph. Preprint, 2023.</span></span>
+								<a href="https://twrand.github.io/pdfs/Sumset-Equivalence-woApx-4-24.pdf">PDF</a>
 							</li>
 						
 						
-							<li class="collapsible">
-								Xi Chen, Yaonan Jin, Tim Randolph, and Rocco Servedio.
-								"Subset Sum in time \(2^{n/2} / poly(n)\)." <i> RANDOM/APPROX</i> 2023. <a style="float:right" href="https://arxiv.org/abs/2301.07134">arXiv version</a>
-							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Subset Sum in time \(2^{n/2} / poly(n)\).</span><span class="pub-meta">Xi Chen, Yaonan Jin, Tim Randolph, and Rocco Servedio. <i> RANDOM/APPROX</i> 2023.</span></span> <a href="https://arxiv.org/abs/2301.07134">arXiv version</a>
+							</summary>
+									<div class="content">
 								<!-- <br />
 								<img src="img/gss.PNG" width="450"/> -->
 								<p> A major goal in the area of exact exponential algorithms is to give an algorithm for the (worst-case) n-input Subset Sum problem that runs in time \(2^{(1/2−c)n}\) for some constant \(c>0\). In this paper we give a Subset Sum algorithm with worst-case running time \(O(2^{n/2⋅n−γ})\) for a constant \(γ>0.5023\) in standard word RAM or circuit RAM models. To the best of our knowledge, this is the first improvement on the classical "meet-in-the-middle" algorithm for worst-case Subset Sum, due to Horowitz and Sahni, which can be implemented in time \(O(2^{n/2})\) in these memory models. </p>
 
 								<p> Our algorithm combines a number of different techniques, including the "representation method" introduced by Howgrave-Graham and Joux and subsequent adaptations of the method in Austrin, Kaski, Koivisto, and Nederlof, and Nederlof and Wegrzycki, and "bit-packing" techniques used in the work of Baran, Demaine, and Patrascu on subquadratic algorithms for 3SUM. </p>
 							</div>
-						
-							<li class="collapsible">
-								Xi Chen, Yaonan Jin, Tim Randolph, and Rocco Servedio.
-								"Average-Case Subset Balancing Problems." <i> SODA </i> 2022. <a style="float:right" href="https://arxiv.org/abs/2110.14607">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+						
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Average-Case Subset Balancing Problems.</span><span class="pub-meta">Xi Chen, Yaonan Jin, Tim Randolph, and Rocco Servedio. <i> SODA </i> 2022.</span></span> <a href="https://arxiv.org/abs/2110.14607">arXiv version</a>
+							</summary>
+									<div class="content">
 								<br />
 								<img src="img/gss.PNG" width="450"/>
 							
-								<p>Given a set of \(n\) input integers, the <i>Equal Subset Sum</i> problem asks us to find two distinct subsets with the same sum. In this paper we present an algorithm that runs in time \(O^*(3^{0.387n})\) in the~average case, significantly improving over the \(O^*(3^{0.488n})\) running time of the best known worst-case algorithm and the  Meet-in-the-Middle benchmark of \(O^*(3^{0.5n})\). </p>
+								<p>Given a set of \(n\) input integers, the <i>Equal Subset Sum</i> problem asks us to find two distinct subsets with the same sum. In this paper we present an algorithm that runs in time \(O^*(3^{0.387n})\) in the average case, significantly improving over the \(O^*(3^{0.488n})\) running time of the best known worst-case algorithm and the Meet-in-the-Middle benchmark of \(O^*(3^{0.5n})\). </p>
 
-								<p>Our algorithm generalizes to a number of related problems, such as the <i>Generalized Equal Subset Sum</i> problem, which asks us to assign a coefficient \(c_i\) from a set \(C\) to each input number \(x_i\) such that \(\sum_{i} c_i x_i = 0\). Our algorithm for the average-case version of this problem runs in~time \(|C|^{(0.5-c_0/|C|)n}\) for some positive constant \(c_0\), whenever  \(C=\{0, \pm 1, \dots, \pm d\}\) or \(\{\pm 1, \dots, \pm d\}\) for some positive integer \(d\) (with \(O^*(|C|^{0.45n})\) when \(|C|&lt;10\)). 
-								Our results extend to the~problem of finding "nearly balanced" solutions in which the target is a not-too-large nonzero offset \(\tau\).</p>
+								<p>Our algorithm generalizes to a number of related problems, such as the <i>Generalized Equal Subset Sum</i> problem, which asks us to assign a coefficient \(c_i\) from a set \(C\) to each input number \(x_i\) such that \(\sum_{i} c_i x_i = 0\). Our algorithm for the average-case version of this problem runs in time \(|C|^{(0.5-c_0/|C|)n}\) for some positive constant \(c_0\), whenever \(C=\{0, \pm 1, \dots, \pm d\}\) or \(\{\pm 1, \dots, \pm d\}\) for some positive integer \(d\) (with \(O^*(|C|^{0.45n})\) when \(|C|&lt;10\)).
+								Our results extend to the problem of finding "nearly balanced" solutions in which the target is a not-too-large nonzero offset \(\tau\).</p>
 
-								<p>Our approach relies on new structural results that characterize the probability that \(\sum_{i} c_i x_i =\tau\) has a solution \(c \in C^n\) when \(x_i\)'s are chosen randomly; these results may be of independent interest. Our algorithm is inspired by the "representation technique"  introduced by Howgrave-Graham and Joux. This requires several new ideas to overcome preprocessing hurdles that arise in the representation framework, as well as a novel application of dynamic programming in the solution recovery phase of the algorithm.</p>
+								<p>Our approach relies on new structural results that characterize the probability that \(\sum_{i} c_i x_i =\tau\) has a solution \(c \in C^n\) when \(x_i\)'s are chosen randomly; these results may be of independent interest. Our algorithm is inspired by the "representation technique" introduced by Howgrave-Graham and Joux. This requires several new ideas to overcome preprocessing hurdles that arise in the representation framework, as well as a novel application of dynamic programming in the solution recovery phase of the algorithm.</p>
 							</div>
-							
-							<li type="button" class="uncollapsible">
-								Marshall Ball and Tim Randolph.
-								"A Note on the Complexity of Private Simultaneous Messages with Many Parties." <i> ITC </i> 2022.
-								<a style="float:right" href="https://drops.dagstuhl.de/opus/volltexte/2022/16485/pdf/LIPIcs-ITC-2022-7.pdf">Conference version</a>
+								</details>
 							</li>
 							
-							<li type="button" class="collapsible">
-								Nick Arnosti and Tim Randolph.
-								"Parallel Lotteries: Insights from Alaskan Hunting Permit Allocation." <i> Management Science </i> 2021; <i> EC </i> 2021.
-								<a <a style="float:right" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3370605">SSRN version</a>
+							<li class="uncollapsible"><span><span class="pub-title">A Note on the Complexity of Private Simultaneous Messages with Many Parties.</span><span class="pub-meta">Marshall Ball and Tim Randolph. <i> ITC </i> 2022.</span></span>
+								<a href="https://drops.dagstuhl.de/opus/volltexte/2022/16485/pdf/LIPIcs-ITC-2022-7.pdf">Conference version</a>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Parallel Lotteries: Insights from Alaskan Hunting Permit Allocation.</span><span class="pub-meta">Nick Arnosti and Tim Randolph. <i> Management Science </i> 2021; <i> EC </i> 2021.</span></span>
+								<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3370605">SSRN version</a>
+							</summary>
+									<div class="content">
 								<br />
 								<img src="img/ktix.PNG" width="450"/>
 							
@@ -263,50 +307,56 @@ To do list:
 
 								<p>The wastefulness of the \(k\)-ticket lottery has some benefits: agents with strong preferences may prefer \(k\)-ticket lottery outcomes to those of any nonwasteful envy-free mechanism. These agents prefer small values of \(k\), while agents with weak preferences prefer large values of \(k\). Together, these results suggest that the \(k\)-ticket lottery performs well under most circumstances, and may be suitable for other settings where items are rationed.</p>
 							</div>
-							
-							<li type="button" class="collapsible">
-								Xi Chen, Tim Randolph, Rocco Servedio, and Tim Sun.
-								"A Lower Bound on Cycle Finding in Sparse Digraphs." <i> SODA </i> 2020.
-								<a style="float:right" href="https://arxiv.org/abs/1907.12106">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">A Lower Bound on Cycle Finding in Sparse Digraphs.</span><span class="pub-meta">Xi Chen, Tim Randolph, Rocco Servedio, and Tim Sun. <i> SODA </i> 2020.</span></span>
+								<a href="https://arxiv.org/abs/1907.12106">arXiv version</a>
+							</summary>
+									<div class="content">
 								<br />
 								<img src="img/cycle-finding.PNG" width="450"/>
 							
 								<p>We consider the problem of finding a cycle in a sparse directed graph \(G\) that is promised to be far from acyclic, meaning that the smallest feedback arc set in \(G\) is large. We prove an information-theoretic lower bound, showing that for \(N\)-vertex graphs with constant outdegree any algorithm for this problem must make \(\tilde{\Omega}(N^{5/9})\) queries to an adjacency list representation of \(G\). In the language of property testing, our result is an \(\tilde{\Omega}(N^{5/9})\) lower bound on the query complexity of one-sided algorithms for testing whether sparse digraphs with constant outdegree are far from acyclic. This is the first improvement on the \(\tilde{\Omega}(\sqrt{N})\) lower bound, implicit in Bender and Ron, which follows from a simple birthday paradox argument.</p>
 							</div>
-							
-							<li type="button" class="collapsible">
-								Emilio Di Giacomo, William J. Lenhart, Giuseppe Liotta, Timothy W. Randolph and Alessandra Tappini.
-								"(k,p)-Planarity: A Relaxation of Hybrid Planarity." <i> WALCOM </i> 2019.
-								<a style="float:right" href="https://arxiv.org/abs/1806.11413v2">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">(k,p)-Planarity: A Relaxation of Hybrid Planarity.</span><span class="pub-meta">Emilio Di Giacomo, William J. Lenhart, Giuseppe Liotta, Timothy W. Randolph and Alessandra Tappini. <i> WALCOM </i> 2019.</span></span>
+								<a href="https://arxiv.org/abs/1806.11413v2">arXiv version</a>
+							</summary>
+									<div class="content">
 								<br />
 								<img src="img/kpp.png" width="450"/>
 							
 								<p> We present a new model for hybrid planarity that relaxes existing hybrid representations. A graph \(G=(V,E)\) is \((k,p)\)-planar if \(V\) can be partitioned into clusters of size at most \(k\) such that \(G\) admits a drawing where: (i) each cluster is associated with a closed, bounded planar region, called a cluster region; (ii) cluster regions are pairwise disjoint, (iii) each vertex \(v \in V\) is identified with at most \(p\) distinct points, called <i>ports</i>, on the boundary of its cluster region; (iv) each inter-cluster edge \((u,v)\in E\) is identified with a Jordan arc connecting a port of \(u\) to a port of \(v\); (v) inter-cluster edges do not cross or intersect cluster regions except at their endpoints. We first tightly bound the number of edges in a \((k,p)\)-planar graph with \(p&lt;k\). We then prove that \((4,1)\)-planarity testing and \((2,2)\)-planarity testing are NP-complete problems. Finally, we prove that neither the class of \((2,2)\)-planar graphs nor the class of \(1\)-planar graphs contains the other, indicating that the \((k,p)\)-planar graphs are a large and novel class.</p>
 							</div>
-							
-							<li type="button" class="collapsible">
-								Timothy W. Randolph.
-								"Asymptotically Optimal Bounds for \((t,2)\) Broadcast Domination on Finite Grids." 
-								<i> Rose-Hulman Undergraduate Mathematics Journal </i> 20, 2019.
-								<a style="float:right" href="https://arxiv.org/abs/1805.06058">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Asymptotically Optimal Bounds for \((t,2)\) Broadcast Domination on Finite Grids.</span><span class="pub-meta">Timothy W. Randolph. <i> Rose-Hulman Undergraduate Mathematics Journal </i> 20, 2019.</span></span>
+								<a href="https://arxiv.org/abs/1805.06058">arXiv version</a>
+							</summary>
+									<div class="content">
 								<p> Let \(G=(V,E)\) be a graph and \(t,r\) be positive integers. The <i>signal</i> that a tower vertex \(T\) of signal strength \(t\) supplies to a vertex \(v\) is defined as \(sig(T,v)=max(t−dist(T,v),0)\), where \(dist(T,v)\) denotes the distance between the vertices \(v\) and \(T\). In 2015 Blessing, Insko, Johnson, and Mauretour defined a <i>\((t,r)\) broadcast dominating set</i>, or simply a <i>\((t,r)\) broadcast</i>, on \(G\) as a set \(T \subseteq V\) such that the sum of all signals received at each vertex \(v\in V\) from the set of towers \(T\) is at least \(r\). The \((t,r)\) broadcast domination number of a finite graph \(G\), denoted \(\gamma_{t,r}(G)\), is the minimum cardinality over all \((t,r)\) broadcasts for \(G\). </p>
 								
 								<p> Recent research has focused on bounding the \((t,r)\) broadcast domination number for the \(m \times n\) grid graph \(G_{m,n}\). In 2014, Grez and Farina bounded the \(k\)-distance domination number for grid graphs, equivalent to bounding \(\gamma_{t,1}(G_{m,n})\). In 2015, Blessing et al. established bounds on \(\gamma_{2,2}(G_{m,n})\), \(\gamma_{3,2}(G_{m,n})\), and \(\gamma_{3,3}(G_{m,n})\). In this paper, we take the next step and provide a tight upper bound on \(\gamma_{t,2}(G_{m,n})\) for all \(t&gt;2\). We also prove the conjecture of Blessing et al. that their bound on \(\gamma_{3,2}(G_{m,n})\) is tight for large values of \(m\) and \(n\). </p>
 							</div>
-							
-							<li type="button" class="collapsible">
-								Benjamin F. Drews, Pamela E. Harris, and Timothy W. Randolph.
-								"Optimal \((t,r)\) Broadcasts on the Infinite Grid." 
-								<i>Discrete Applied Mathematics </i> 255, 2018.
-								<a style="float:right" href="https://arxiv.org/abs/1711.11116">arXiv version</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span><span class="pub-title">Optimal \((t,r)\) Broadcasts on the Infinite Grid.</span><span class="pub-meta">Benjamin F. Drews, Pamela E. Harris, and Timothy W. Randolph. <i>Discrete Applied Mathematics </i> 255, 2018.</span></span>
+								<a href="https://arxiv.org/abs/1711.11116">arXiv version</a>
+							</summary>
+									<div class="content">
 								<br />
 								<img src="img/trb.png" width="450"/>
 							
@@ -314,209 +364,150 @@ To do list:
 								
 								<p> In their paper, Blessing et al. considered \((t,r) \in \{(2,2),(3,1),(3,2),(3,3)\}\) and gave optimal \((t,r)\) broadcasts on \(G_{m,n}\), the grid graph of dimension \(m\times n\), for small values of \(m\) and \(n\). They also provided upper bounds on the optimal \((t,r)\) broadcast numbers for grid graphs of arbitrary dimensions. In this paper, we define the density of a \((t,r)\) broadcast, which allows us to provide optimal \((t,r)\) broadcasts on the infinite grid graph for all \(t \geq 2\) and \(r=1,2\), and bound the density of the optimal \((t,3)\) broadcast for all \(t \geq 2\). In addition, we give a family of counterexamples to the conjecture of Blessing et al. that the optimal \((t,r)\) and \((t+1,r+2)\) broadcasts are identical for all \(t \geq 1\) and \(r \geq 1\) on the infinite grid. </p>
 							</div>
+								</details>
+							</li>
 							
-							<li type="button" class="uncollapsible">
-								Timothy W. Randolph, advised by William J. Lenhart.
-								"\((k,p)\)-Planar Graphs: A Generalization of Planar Representations for Cluster Graphs."
-								2018.
-								<a style="float:right" href="pdfs/(k,p)-planar-thesis.pdf">PDF</a>
+							<li class="uncollapsible"><span><span class="pub-title">\((k,p)\)-Planar Graphs: A Generalization of Planar Representations for Cluster Graphs.</span><span class="pub-meta">Timothy W. Randolph, advised by William J. Lenhart. 2018.</span></span>
+								<a href="pdfs/(k,p)-planar-thesis.pdf">PDF</a>
 							</li>
 						</ul>
-					</div>
+					</section>
 					
 
 					
-					<div class=mainsection>
+					<section class=mainsection id="teaching">
 						<div class=lalign>
 							<h2> Teaching </h2>
 						</div>
-						<a class="anchor" name="teaching"></a>
-						
-						<!-- (Interested in hiring me? See my <a href="portfolio/overview.html">Teaching Portfolio</a>.) -->
 						
 						<ul class="inline">
-							<li type="button" class="collapsible"> 
-								Instructor for Harvey Mudd CSCI 145: Advanced Topics in Algorithms. Spring 2026. 
-								<a style="float:right" href="3261-sum23.html"></a>
-							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span> 
+								Instructor for Harvey Mudd CSCI 145: Advanced Topics in Algorithms. Spring 2026.</span> 
+								<!-- <a href="3261-sum23.html"></a> -->
+							</summary>
+									<div class="content">
 								<p> A new course developed for AY 2025-2026. In addition to building mathematical independence and learning advanced algorithms topics, the course focuses on developing collaboration and presentation skills.</p>
 							</div>
-							<li type="button" class="uncollapsible"> 
-								Instructor for Harvey Mudd WRIT 1: Introduction to Academic Writing. Fall 2025. 
-								<a style="float:right" href="3261-sum23.html"></a>
+								</details>
 							</li>
-							<li type="button" class="uncollapsible"> 
-								Instructor for Harvey Mudd CSCI 140/MATH 168: Algorithms. Fall 2024, Spring 2025, Fall 2025, Spring 2026, Fall 2026.
-								<a style="float:right" href="3261-sum23.html"></a>
+							<li class="uncollapsible"><span> 
+								Instructor for Harvey Mudd WRIT 1: Introduction to Academic Writing. Fall 2025.</span> 
+								<!-- <a href="3261-sum23.html"></a> -->
 							</li>
-							<li type="button" class="collapsible"> 
-								Instructor for Columbia COMS W3261: Computer Science Theory. Summer 2023. 
-								<a style="float:right" href="3261-sum23.html">Course webpage</a>
+							<li class="uncollapsible"><span> 
+								Instructor for Harvey Mudd CSCI 140/MATH 168: Algorithms. Fall 2024, Spring 2025, Fall 2025, Spring 2026, Fall 2026.</span>
+								<!-- <a href="3261-sum23.html"></a> -->
 							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span> 
+								Instructor for Columbia COMS W3261: Computer Science Theory. Summer 2023.</span> 
+								<a href="3261-sum23.html">Course webpage</a>
+							</summary>
+									<div class="content">
 								<p> My third time teaching of COMS W3261 focused on participatory governance in the CS classroom. See my <a href="portfolio/overview.html">Teaching Portfolio</a> for more details.</p>
 							</div>
-							<li type="button" class="collapsible">
-								Columbia CTL Teaching Development Program (Advanced Track) Certification
-								<a style="float:right" href="https://tdp.ctl.columbia.edu/">CTL TDP webpage</a>
+								</details>
 							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span>
+								Columbia CTL Teaching Development Program (Advanced Track) Certification</span>
+								<a href="https://tdp.ctl.columbia.edu/">CTL TDP webpage</a>
+							</summary>
+									<div class="content">
 								<p>
 									The Teaching Development Program is a multiyear teaching certification in association with Columbia's Center for Teaching and Learning (CTL). It focuses on cultivating, documenting, and reflecting upon evidence-based, student-centered teaching. The TDP Advanced Track is the highest level teaching certification offered by the CTL.
 								</p>
 							</div>
-							<li type="button" class="collapsible"> 
-								Instructor for Columbia COMS W3261: Computer Science Theory. Summer 2022. 
-								<a style="float:right" href="3261-sum22.html">Course webpage</a>
+								</details>
 							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span> 
+								Instructor for Columbia COMS W3261: Computer Science Theory. Summer 2022.</span> 
+								<a href="3261-sum22.html">Course webpage</a>
+							</summary>
+									<div class="content">
 								<p> My second time teaching COMS W3261, I focused on accessibility, effective use of virtual resources, and equity in grading. See my <a href="portfolio/overview.html">Teaching Portfolio</a> for more details.</p>
 							</div>
-							<li type="button" class="collapsible"> 
-								Instructor for Columbia COMS W3261: Computer Science Theory. Summer 2021. 
-								<a style="float:right" href="3261-sum21.html">Course webpage</a>
+								</details>
 							</li>
-							<div class="content">
+							<li>
+								<details class="collapsible">
+									<summary><span> 
+								Instructor for Columbia COMS W3261: Computer Science Theory. Summer 2021.</span> 
+								<a href="3261-sum21.html">Course webpage</a>
+							</summary>
+									<div class="content">
 								<p> Mathematics teaches us to ask questions like "What is the value of f(x)?", "Do any objects of type Y exist?", and "Is Z true?" Theoretical computer science builds on this tradition, expanding our field of inquiry to include questions like "How much time (and other limited resources) does it take to evaluate f(x)?", "Can I write down formal instructions for finding a Y?", and "Can the truth of Z be computed?" In theoretical computer science, we define problems formally and think about how hard they are to solve under various models of computation.</p>
 							</div>
-							
-							<!-- <li type="button" class="uncollapsible"> Peer lectures in Columbia CSCI 6261: Advanced Cryptography. 2/5/2020; 2/11/2020. </li>
-							<li type="button" class="uncollapsible"> Guest lecture in Columbia CSCI 4236: Computational Complexity. 11/1/2019. </li>
-							<li type="button" class="uncollapsible"> Substitute for Columbia CSOR 4231: Analysis of Algorithms. 10/24/19. </li>
-							<li type="button" class="uncollapsible"> TA for Columbia CSOR 4231: Analysis of Algorithms. Fall 2019. </li> -->
-							
-							<li type="button" class="collapsible"> 
-								Columbia CTL 2019-2020 Teaching Observation Fellowship.
-								<a style="float:right" href="https://ctl.columbia.edu/graduate-instructors/opportunities-for-graduate-students/teaching-observation-fellows/">CTL TOF webpage</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span> 
+								Columbia CTL 2019-2020 Teaching Observation Fellowship.</span>
+								<a href="https://ctl.columbia.edu/graduate-instructors/opportunities-for-graduate-students/teaching-observation-fellows/">CTL TOF webpage</a>
+							</summary>
+									<div class="content">
 								<p> Teaching Observation Fellows are Columbia University doctoral students who work closely with the Center for Teaching and Learning and with each other on a range of supportive, formative, peer-to-peer teaching observation activities.</p>
 								-Columbia CTL
 							</div>
-							
-							<li type="button" class="collapsible">
-								Innovative Teaching Summer Institute (ITSI) Certification.
-								<a style="float:right" href="https://ctl.columbia.edu/graduate-instructors/programs-for-graduate-students/seminars-institutes-for-graduate-students/innovative-teaching-summer-institute/">CTL ITSI webpage</a>
+								</details>
 							</li>
-							<div class="content">
+							
+							<li>
+								<details class="collapsible">
+									<summary><span>
+								Innovative Teaching Summer Institute (ITSI) Certification.</span>
+								<a href="https://ctl.columbia.edu/graduate-instructors/programs-for-graduate-students/seminars-institutes-for-graduate-students/innovative-teaching-summer-institute/">CTL ITSI webpage</a>
+							</summary>
+									<div class="content">
 								<p> The Innovative Teaching Summer Institute (ITSI) is a four-day series of collaborative workshops, discussions, and shared reflections all centered on the use of emerging teaching practices and technologies to support effective teaching. ITSI is a unique opportunity for graduate student instructors to work with peers from a variety of disciplines, discuss pedagogical priorities, connect with resources and support, and develop themselves as innovative teachers.</p>
 								-Columbia CTL
 							</div>
-							
-							<!-- <li type="button" class="uncollapsible"> TA for Columbia COMS 3261: Computer Science Theory. Summer 2019. </li>
-							<li type="button" class="uncollapsible"> TA for Columbia COMS 6998-06: Computation and the Brain. Fall 2018. </li> -->
+								</details>
+							</li>
 						</ul>
-					</div>
-					
-					<!-- <div class=mainsection>
-						<div class=lalign>
-							<h2> Service </h2>
-						</div>
-						<a class="anchor" name="service"></a>
-						
-						<ul>
-							<li type="button" class="collapsible">
-								PhD Student Representative
-								<a style="float:right" href="http://www.cs.columbia.edu/">CS@CU</a>
-							</li>
-							<div class="content">
-								<p> Along with <a href="https://claytonsanford.com/">Clayton Sanford</a>, I was the Computer Science PhD Student Representative at Columbia University from 2022-2024. We worked to make the department more transparent and accessible to PhD students by building knowledge bases and creating structured channels for feedback to faculty and administration. </p>
-							</div>
-						
-							<li type="button" class="collapsible">
-								Emerging Scholars Program 
-								<a style="float:right" href="http://www.cs.columbia.edu/esp/">Program website</a>
-							</li>
-							<div class="content">
-								<p> With <a href="https://rolandmaio.github.io/">Roland Maio</a>, I coordinated the Emerging Scholars Program at Columbia University from 2019-2022. We worked to broaden the diversity of student perspectives in the department and give CS majors at Columbia the tools to reason ethically about Computer Science. </p>
-							</div>
-							
-							<li type="button" class="collapsible">
-								Demystifying the PhD / Demystifying the Dissertation
-								<a style="float:right" href="https://www.cs.columbia.edu/demystifying-the-phd/">Dem. PhD</a>
-								<a style="float:right" href="https://www.cs.columbia.edu/demystifying-the-dissertation/">Dem. Dissertation;&nbsp;</a> 
-							</li>
-							<div class="content">
-								<p> At Columbia, I focused my outreach work on making the path to graduate education easier to understand and navigate. I spoke as part of the Demystifying the PhD and Demystifying the Dissertation outreach lecture series. </p>
-							</div>
-							
-							<li type="button" class="collapsible">
-								Mentorship
-								<a style="float:right" href="https://www.womeninscienceatcolumbia.org/">CU WISC&nbsp;</a>
-								<a style="float:right" href="https://csc.barnard.edu/bears">BEARS;&nbsp;</a>
-							</li>
-							<div class="content">
-								<p> I have participated in undergraduate mentorship as part of Women in Science at Columbia's mentorship program and the Barnard BEARS (Better, Enhance, & Advance Research Series) program. I've also mentored high schoolers in research with Lumiere Education and the Williams College Alumni Mentorship Program. </p>
-							</div>
-							
-							<li type="button" class="collapsible">
-								Student Workers of Columbia
-								<a style="float:right" href="https://www.studentworkersofcolumbia.com/">SWC-UAW website</a>
-							</li>
-							<div class="content">
-								<p> In 2021-2022, I assisted in organizing the Student Workers of Columbia. Living wages, fair benefits, and discrimination recourses ensure that student workers can do their jobs without facing poverty and harassment. Moreover, they make work in academia accessible to those with fewer outside resources. </p>
-							</div>
-							
-							<li type="button" class="collapsible">
-								Pre-Submission Application Review Program
-								<a style="float:right" href="https://www.cs.columbia.edu/education/admissions8/">CUCS PhD application page</a>
-							</li>
-							<div class="content">
-								<p> I'm a proud participant in the ongoing struggle to create a just, antiracist Computer Science department at Columbia. In this context, I have worked on expanded outreach to broaden the pool of research applicants and improving admissions practices and oversight. (If you're interested in recieving feedback on your personal statement for a PhD program, check out CUCS' <a href="https://www.cs.columbia.edu/cscu-phd-par-program/">Pre-Submission Application Review program</a>.) </p>
-							</div>
-							
-							<li type="button" class="collapsible">
-								CUCS Graduate Student Theory Retreat
-								<a style="float:right" href="img/waterfall_2021.png">2021</a>
-								<a style="float:right" href="img/retreat.jpg">2019;&nbsp;</a>
-							</li>
-							<div class="content">
-								<br />
-								<img src="img/waterfall_2021.png" width="450"/>
-								
-								<p> Along with <a href="https://claytonsanford.com/">Clayton Sanford</a>, I organized Columbia's first two annual theory student retreats! I'm now an organizer emeritus. </p>
-							</div>
-						<ul>
-					</div> -->
-				</div> <!-- maintext -->
+					</section>
+				</main>
 			</div> <!-- centerblock -->
 			
-					<!-- create collapsible objects -->
-					<script>
-						var coll = document.getElementsByClassName("collapsible");
-						var i;
-
-						for (i = 0; i < coll.length; i++) {
-						  coll[i].addEventListener("click", function() {
-							this.classList.toggle("active");
-							var content = this.nextElementSibling;
-							content.classList.toggle("open");
-						  });
-						}
-							
-						var coll = document.getElementsByClassName("book");
-						var i;
-
-						for (i = 0; i < coll.length; i++) {
-							  coll[i].addEventListener("click", function() {
-							this.classList.toggle("book-active");
-							var content = this.nextElementSibling;
-							content.classList.toggle("open");
-						  });
-						}
-					</script>
 			
-			<div class=bottomblock>
+			<footer class=bottomblock>
 				<div class=bottomtext>
 					CONTACT: [FIRST INITIAL][LAST NAME]@HMC.EDU.
 				</div>
 				
 				<div id="copy"> 
-					<img src="img/cc.png" height="15px" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2026.
+					<img src="img/cc.png" alt="" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2026.
 				</div> 
 				
-			</div>
+			</footer>
 		</div> <!--wrapper -->
+		<script>
+		(function () {
+			var btn = document.getElementById('theme-toggle');
+			function current() {
+				var attr = document.documentElement.getAttribute('data-theme');
+				if (attr) return attr;
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			}
+			function refresh() {
+				btn.innerHTML = current() === 'dark' ? '&#9728;' : '&#9789;';
+			}
+			btn.addEventListener('click', function () {
+				var next = current() === 'dark' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', next);
+				try { localStorage.setItem('theme', next); } catch (e) {}
+				refresh();
+			});
+			refresh();
+		})();
+		</script>
 	</body>
 </html>

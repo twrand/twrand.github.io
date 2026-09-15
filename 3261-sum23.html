@@ -6,13 +6,26 @@ To do list:
 
 -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+<!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="main.css" id="main"/>
+		<meta charset="UTF-8">
+		<script>
+		/* Set theme before CSS renders, to avoid a flash of the wrong theme */
+		(function () {
+			try {
+				var saved = localStorage.getItem('theme');
+				if (saved === 'dark' || saved === 'light') {
+					document.documentElement.setAttribute('data-theme', saved);
+				}
+			} catch (e) {}
+		})();
+		</script>
+		<link rel="stylesheet" href="concept.css">
 		<link rel="shortcut icon" href="img/twr.ico">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant|Cantarell">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant&family=Cantarell&family=Crimson+Text:ital@0;1&display=swap">
 		<title> COMS W3261: Summer 2023 </title>
 	</head>
 	<body>
@@ -33,22 +46,23 @@ To do list:
 		</script>
 		
 		<div class=wrapper> <!-- Wrapper class, contains entire web page -->
-			<div class=topblock>	
+			<header class=topblock>
 				<div class=topcontent>
 					<div id="name">
 					<h1> <a href="3261-sum23.html"> COMS W3261: Summer 2023 </a> </h1>
 					</div>
-					<div id="menubar">
-						<!-- <a href="3261-sum23.html#syllabus">SYLLABUS</a> --> 	
+					<nav id="menubar">
+						<!-- <a href="3261-sum23.html#syllabus">SYLLABUS</a> -->
 						<a href="3261-sum23.html#calendar">CALENDAR</a>
-						<a href="3261-sum23.html#homework">HOMEWORK</a>							
+						<a href="3261-sum23.html#homework">HOMEWORK</a>
 						<a href="3261-sum23.html#lectures">LECTURES</a>
-						
+
 						<a href="index.html">HOME</a>
 						<a href="http://www.cs.columbia.edu/theory/">THEORY@CU</a>
-					</div>
+						<button id="theme-toggle" aria-label="Toggle dark mode">&#9789;</button>
+					</nav>
 				</div>
-			</div>
+			</header>
 			
 			<div class=centerblock>
 				<div class=maintext>
@@ -384,18 +398,38 @@ To do list:
 			
 			
 			
-			<div class=bottomblock>
+			<footer class=bottomblock>
 				<div class=bottomtext>
 					CONTACT: [FIRST INITIAL].[LAST NAME]@COLUMBIA.EDU.
 				</div>
-				
-				<div id="copy"> 
+
+				<div id="copy">
 					<img src="img/cc.png" height="15px" style="display:inline-block; padding:-10px;"> LICENSED UNDER CC BY-SA 2015-2023.
-				</div> 
-				
-			</div>
+				</div>
+
+			</footer>
 		</div> <!--wrapper -->
-		
+		<script>
+		(function () {
+			var btn = document.getElementById('theme-toggle');
+			function current() {
+				var attr = document.documentElement.getAttribute('data-theme');
+				if (attr) return attr;
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			}
+			function refresh() {
+				btn.innerHTML = current() === 'dark' ? '&#9728;' : '&#9789;';
+			}
+			btn.addEventListener('click', function () {
+				var next = current() === 'dark' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', next);
+				try { localStorage.setItem('theme', next); } catch (e) {}
+				refresh();
+			});
+			refresh();
+		})();
+		</script>
+
 		<!-- Script for collapsible divs -->
 		<script>
 			var coll = document.getElementsByClassName("collapsible");
